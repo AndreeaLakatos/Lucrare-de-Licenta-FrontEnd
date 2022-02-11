@@ -1,0 +1,16 @@
+{
+  "locale": "en-US",
+  "translations": {
+    "login": "Login",
+    "username": "Username",
+    "password": "Password",
+    "register": "Register",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "street": "Street",
+    "city": "City",
+    "county": "County"
+  }
+}

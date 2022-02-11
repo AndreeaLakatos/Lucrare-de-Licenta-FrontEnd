@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header fxLayout="row" color="primary">
+        <mat-card-title fxFlex></mat-card-title>
+        <span i18n="@@login">Login</span>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" autocomplete="off">
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@username">Username</mat-label>
+                <input type="text" matInput formControlName="username"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@password">Password</mat-label>
+                <input type="password" matInput formControlName="password"/>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button [disabled] = "!loginForm.valid" (click)="login()" type="submit" i18n="@@login">Login</button>
+        <button mat-raised-button (click)="register()" i18n="@@register">Register</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-header fxLayout="row" color="primary">
+        <mat-card-title fxFlex></mat-card-title>
+        <span i18n="@@register">Register</span>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@firstName">First Name</mat-label>
+                <input type="text" matInput formControlName="firstName"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@lastName">Last Name</mat-label>
+                <input type="text" matInput formControlName="lastName"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@username">Username</mat-label>
+                <input type="text" matInput formControlName="username"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@email">Email</mat-label>
+                <input type="text" matInput formControlName="email"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
+                <input type="text" matInput formControlName="phoneNumber"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@street">Street</mat-label>
+                <input type="text" matInput formControlName="street"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@city">City</mat-label>
+                <input type="text" matInput formControlName="city"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@county">County</mat-label>
+                <input type="text" matInput formControlName="county"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label i18n="@@password">Password</mat-label>
+                <input type="password" matInput formControlName="password"/>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button [disabled] = "!registerForm.valid" (click)="register()" type="submit" i18n="@@register">Register</button>
+    </mat-card-actions>
+</mat-card>

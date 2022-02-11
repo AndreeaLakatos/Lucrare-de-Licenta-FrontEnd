@@ -10,6 +10,12 @@
           "strict": true
         }
       },
+      "i18n": { 
+        "sourceLocale": "en-US", 
+        "locales": { 
+          "ro": "src/locale/messages.ro.json" 
+        } 
+      }, 
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,6 +23,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true, 
+            "aot": true,
             "outputPath": "dist/AnimalAdoption",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,11 +35,18 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
+            "en-US": { 
+              "localize": ["en-US"] 
+            }, 
+            "ro": { 
+              "localize": ["ro"] 
+            },
             "production": {
               "budgets": [
                 {
@@ -67,6 +82,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "en-US": { 
+              "browserTarget": "AnimalAdoption:build:en-US" 
+            }, 
+            "ro": { 
+              "browserTarget": "AnimalAdoption:build:ro" 
+            },
             "production": {
               "browserTarget": "AnimalAdoption:build:production"
             },
@@ -94,6 +115,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []

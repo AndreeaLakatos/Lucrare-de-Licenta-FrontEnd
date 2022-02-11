@@ -1,0 +1,16 @@
+{
+    "locale": "ro",
+    "translations": {
+      "login": "Autentificare",
+      "username": "Nume de utilizator",
+      "password": "Parolă",
+      "register": "Înregistrare",
+      "firstName": "Prenume",
+      "lastName": "Nume",
+      "email": "Email",
+      "phoneNumber": "Număr de telefon",
+      "street": "Stradă",
+      "city": "Oraș",
+      "county": "Județ"
+    }
+  }
