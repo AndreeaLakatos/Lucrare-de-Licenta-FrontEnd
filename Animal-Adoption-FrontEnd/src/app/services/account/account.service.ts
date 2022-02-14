@@ -14,7 +14,7 @@ export class AccountService {
 
   private apiUrl = `${environment.apiUrl}account/`;
   private currentUserSubject = new ReplaySubject<User>(1);
-  private currentUser$ = this.currentUserSubject.asObservable();
+  public currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 

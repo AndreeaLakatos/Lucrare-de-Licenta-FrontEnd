@@ -11,6 +11,8 @@
     "phoneNumber": "Phone Number",
     "street": "Street",
     "city": "City",
-    "county": "County"
+    "county": "County",
+    "userAlreadyExist": "The user with this username already exist!",
+    "undefinedError": "Something wrong happened!"
   }
 }

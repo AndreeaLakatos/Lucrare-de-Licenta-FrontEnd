@@ -11,6 +11,8 @@
       "phoneNumber": "Număr de telefon",
       "street": "Stradă",
       "city": "Oraș",
-      "county": "Județ"
+      "county": "Județ",
+      "userAlreadyExist": "Există deja un utilizator cu acest nume de utilizator",
+      "undefinedError": "A aparut o eroare neașteptată!"
     }
   }

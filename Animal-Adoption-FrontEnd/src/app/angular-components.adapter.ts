@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const modules = {
     material: [
@@ -30,7 +31,8 @@ const modules = {
         MatDatepickerModule,
         MatNativeDateModule,
         MatPaginatorModule,
-        MatRadioModule
+        MatRadioModule,
+        MatSnackBarModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }
