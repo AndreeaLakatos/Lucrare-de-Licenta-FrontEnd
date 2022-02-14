@@ -16,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 const modules = {
     material: [
@@ -32,7 +33,8 @@ const modules = {
         MatNativeDateModule,
         MatPaginatorModule,
         MatRadioModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatSelectModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

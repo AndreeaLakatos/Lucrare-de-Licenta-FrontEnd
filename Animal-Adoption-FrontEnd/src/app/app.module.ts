@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './angular-components.adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DynamicLocaleService } from 'src/locale/dynamic-locale.service';
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DynamicLocaleService } from 'src/locale/dynamic-locale.service';
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
-    { provide: LOCALE_ID, useClass: DynamicLocaleService}
+    { provide: LOCALE_ID, useClass: DynamicLocaleService},
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

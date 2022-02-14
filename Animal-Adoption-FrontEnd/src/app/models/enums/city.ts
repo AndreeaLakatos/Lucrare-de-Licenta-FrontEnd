@@ -1,8 +1,8 @@
 export enum City {
-    ClujNapoca = 1,
-    Turda,
-    Dej, 
-    CampiaTurzii,
-    Gherla,
-    Huedin
+    ClujNapoca = "Cluj-Napoca",
+    Turda = "Turda",
+    Dej = "Dej", 
+    CampiaTurzii = "Câmpia Turzii",
+    Gherla = "Gherla",
+    Huedin = "Huedin"
 }

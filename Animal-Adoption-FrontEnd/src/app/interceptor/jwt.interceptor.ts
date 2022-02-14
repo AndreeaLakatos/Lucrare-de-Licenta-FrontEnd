@@ -28,6 +28,7 @@ export class JwtInterceptor implements HttpInterceptor {
     this.accountService.currentUser$.pipe(take(1))
       .subscribe(user => { currentUser = user });
 
+    
     if (currentUser) {
       request = request.clone({
         setHeaders: {
@@ -40,13 +41,13 @@ export class JwtInterceptor implements HttpInterceptor {
       map((event: HttpEvent<any>) => {
         return event;
       }),
+      
 
       catchError((errorResponse: HttpErrorResponse) => {
         const errorData: Error = {
         errorCode: ErrorCode.SomethingWentWrong,
         message: ''
         };
-
       if(errorResponse.status == HttpStatusCode.UNAUTHORIZED) {
         errorData.errorCode = ErrorCode.Unauthorized;
         this.accountService.logout();
