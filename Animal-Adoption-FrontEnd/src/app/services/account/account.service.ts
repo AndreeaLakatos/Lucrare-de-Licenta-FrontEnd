@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AccountService {
 
-  private apiUrl = `${environment.apiUrl}account`;
+  private apiUrl = `${environment.apiUrl}account/`;
   private currentUserSubject = new ReplaySubject<User>(1);
   private currentUser$ = this.currentUserSubject.asObservable();
 
