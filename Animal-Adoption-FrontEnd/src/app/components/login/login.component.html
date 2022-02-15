@@ -17,6 +17,7 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button [disabled] = "!loginForm.valid" (click)="login()" type="submit" i18n="@@login">Login</button>
-        <button mat-raised-button (click)="register()" i18n="@@register">Register</button>
+        <button mat-raised-button (click)="registerBasicUser()" i18n="@@registerBasicUser">Register As Basic User</button>
+        <button mat-raised-button (click)="registerNGO()" i18n="@@registerNGO">Register As NGO</button>
     </mat-card-actions>
 </mat-card>

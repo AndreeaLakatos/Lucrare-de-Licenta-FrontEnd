@@ -38,8 +38,12 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  register(): void {
-    this.router.navigateByUrl('register');
+  registerBasicUser(): void {
+    this.router.navigateByUrl('basic-registration');
+  }
+
+  registerNGO(): void {
+    this.router.navigateByUrl('ngo-registration');
   }
 
 }

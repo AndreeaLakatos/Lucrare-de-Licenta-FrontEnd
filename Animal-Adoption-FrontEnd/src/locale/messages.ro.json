@@ -5,6 +5,8 @@
       "username": "Nume de utilizator",
       "password": "Parolă",
       "register": "Înregistrare",
+      "registerBasicUser": "Înregistrare ca utilizator",
+      "registerNGO": "Înregistrare ca ONG",
       "firstName": "Prenume",
       "firstNameRequired": "Prenumele este obligatoriu",
       "lastName": "Nume",

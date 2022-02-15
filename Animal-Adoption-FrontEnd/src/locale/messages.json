@@ -4,6 +4,8 @@
     "login": "Login",
     "username": "Username",
     "password": "Password",
+    "registerBasicUser": "Register As Basic User",
+    "registerNGO": "Register As NGO",
     "register": "Register",
     "firstName": "First Name",
     "firstNameRequired": "First Name is required",
@@ -23,7 +25,7 @@
     "countyRequired": "County is required",
     "passwordRequired": "Password is required",
     "passwordMinError": "Password must have at least 10 characters",
-    "userAlreadyExist": "The user with this username already exist!",
-    "undefinedError": "Something wrong happened!"
+    "userAlreadyExist": " The user with this username already exist!",
+    "undefinedError": " Something wrong happened!"
   }
 }

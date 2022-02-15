@@ -1,5 +1,5 @@
-import { City } from "./enums/city";
-import { County } from "./enums/county";
+import { City } from "./city";
+import { County } from "./county";
 
 export interface Address {
     id: number;

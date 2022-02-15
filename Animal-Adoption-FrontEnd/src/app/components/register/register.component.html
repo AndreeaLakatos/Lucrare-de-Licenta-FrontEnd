@@ -39,17 +39,17 @@
             <mat-form-field appearance="outline">
                 <mat-label i18n="@@city">City</mat-label>
                 <mat-select formControlName="city" name="city" required>
-                    <mat-option *ngFor="let city of cities" [value]="city.key">
-                        {{ city.value }}
+                    <mat-option *ngFor="let city of cities" [value]="city.id">
+                        {{ city.name }}
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="registerForm.controls['city'].hasError('required')" i18n="@@cityRequired">City is required</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label i18n="@@county">County</mat-label>
-                <mat-select formControlName="county" name="county" required>
-                    <mat-option *ngFor="let county of counties" [value]="county.key">
-                        {{ county.value }}
+                <mat-select formControlName="county" name="county" (selectionChange)="getCities()" required>
+                    <mat-option *ngFor="let county of counties" [value]="county.id">
+                        {{ county.name }}
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="registerForm.controls['county'].hasError('required')" i18n="@@countyRequired">County is required</mat-error>
