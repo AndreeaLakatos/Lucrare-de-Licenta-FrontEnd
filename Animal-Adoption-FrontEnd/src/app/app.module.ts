@@ -12,6 +12,7 @@ import { SharedModule } from './angular-components.adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DynamicLocaleService } from 'src/locale/dynamic-locale.service';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { JwtInterceptor } from './interceptor/jwt.interceptor';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
