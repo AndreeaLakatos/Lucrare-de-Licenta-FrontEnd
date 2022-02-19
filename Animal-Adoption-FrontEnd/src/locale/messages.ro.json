@@ -26,6 +26,7 @@
       "passwordRequired": "Parola este obligatorie",
       "passwordMinError": "Parola trebuie să conțină minim 10 caractere",
       "userAlreadyExist": "Există deja un utilizator cu acest nume de utilizator",
-      "undefinedError": "A aparut o eroare neașteptată!"
+      "undefinedError": "A aparut o eroare neașteptată!",
+      "welcomeLogin": "Bine ai revenit, te rugăm să te autentifici."
     }
   }

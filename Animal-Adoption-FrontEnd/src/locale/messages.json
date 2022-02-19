@@ -26,6 +26,7 @@
     "passwordRequired": "Password is required",
     "passwordMinError": "Password must have at least 10 characters",
     "userAlreadyExist": " The user with this username already exist!",
-    "undefinedError": " Something wrong happened!"
+    "undefinedError": " Something wrong happened!",
+    "welcomeLogin": "Welcome back, please login to your account."
   }
 }

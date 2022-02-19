@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const modules = {
     material: [
@@ -34,7 +35,8 @@ const modules = {
         MatPaginatorModule,
         MatRadioModule,
         MatSnackBarModule,
-        MatSelectModule
+        MatSelectModule,
+        MatGridListModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }
