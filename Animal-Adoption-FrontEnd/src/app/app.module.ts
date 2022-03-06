@@ -13,6 +13,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DynamicLocaleService } from 'src/locale/dynamic-locale.service';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
