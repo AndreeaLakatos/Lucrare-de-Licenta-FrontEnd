@@ -2,6 +2,7 @@
   "locale": "en-US",
   "translations": {
     "login": "Login",
+    "welcomeLogin": "Welcome back, please login to your account.",
     "username": "Username",
     "password": "Password",
     "registerBasicUser": "Register As Basic User",
@@ -25,8 +26,12 @@
     "countyRequired": "County is required",
     "passwordRequired": "Password is required",
     "passwordMinError": "Password must have at least 10 characters",
-    "userAlreadyExist": " The user with this username already exist!",
+    "accountDetails": "Account Details",
+    "animals": "Animals",
+    "chat": "Chat",
+    "myApplications": "My Applications",
+    "userAlreadyExist": "The user with this username already exist!",
     "undefinedError": " Something wrong happened!",
-    "welcomeLogin": "Welcome back, please login to your account."
+    "logout": "Logout"
   }
 }

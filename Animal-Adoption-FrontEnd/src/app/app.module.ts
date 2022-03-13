@@ -15,12 +15,18 @@ import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerticalMenuComponent,
+    ToolbarComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

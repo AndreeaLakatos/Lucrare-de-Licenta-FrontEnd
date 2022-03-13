@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public getCities() {
-    var county = this.registerForm.get("county")?.value;
+    var county = this.registerForm.get("county")?.value.id;
     this.utilsService.getCities(county).subscribe((cities) => {
       this.cities = cities;
     });
