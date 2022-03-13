@@ -4,5 +4,6 @@ export enum ErrorCode {
     AddUserPreferencesException,
     AddUserException,
     InvalidUsernameOrPassword,
+    AddAnimalFailed,
     Unauthorized
 }
