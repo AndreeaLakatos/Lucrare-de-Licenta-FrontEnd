@@ -32,6 +32,8 @@
       "myApplications": "Aplicațiile mele",
       "undefinedError": "A aparut o eroare neașteptată!",
       "welcomeLogin": "Bine ai revenit, te rugăm să te autentifici.",
-      "logout": "Delogare"
+      "logout": "Delogare",
+      "forgotPassword": "Ți-ai uitat parola?",
+      "noAccount": "Nu ai încă un cont?"
     }
   }

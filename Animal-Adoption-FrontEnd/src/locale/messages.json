@@ -32,6 +32,8 @@
     "myApplications": "My Applications",
     "userAlreadyExist": "The user with this username already exist!",
     "undefinedError": " Something wrong happened!",
-    "logout": "Logout"
+    "logout": "Logout",
+    "forgotPassword": "Did you forgot your password?",
+    "noAccount": "Don't you have an account, yet?"
   }
 }

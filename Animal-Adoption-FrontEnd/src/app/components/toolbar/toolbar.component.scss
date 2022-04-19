@@ -1,13 +1,30 @@
 .app-header {
-    top:0;
-    left:0;
-    right:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
 }
 
-.flexed {
-    display: flex;
+.action-button {
+  color: rgb(55, 93, 219) !important;
 }
-  
-.example-spacer {
-    flex: 1 1 auto;
+
+.div {
+  color: black;
+}
+
+.span {
+  color: black !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.div-user {
+  display: flex;
+}
+
+.margins {
+    margin-right: 20px !important;
 }

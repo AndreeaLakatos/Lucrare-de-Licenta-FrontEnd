@@ -1,13 +1,33 @@
 .login-card {
-    width: 100%;
+  width: 45%;
+  margin-top: 8%;
+  margin-left: 25%;
 }
 
 .login-image {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-mat-grid-tile {
-    width: 300 !important;
-    height: 230 !important;
+.login-button {
+  width: 100%;
+  margin-left: 20px !important;
+}
+
+.register-button {
+  margin-top: 10px !important;
+  margin-left: 20px !important;
+}
+
+.mat-form-field {
+  align-self: center;
+  width: 100%;
+}
+
+.mat-card-content {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.margins {
+    margin: 20px !important;
 }

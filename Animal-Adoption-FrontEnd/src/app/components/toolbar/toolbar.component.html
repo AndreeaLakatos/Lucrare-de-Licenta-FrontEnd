@@ -1,13 +1,18 @@
-<mat-toolbar class="app-header" color="white">
-    <span>Animal Adoption</span>
-    <span class="example-spacer"></span>
-    <div *ngIf="!((accountService.currentUser$ | async) === undefined || (accountService.currentUser$ | async) === null)">
-        <div class="flexed" *ngIf="(accountService.currentUser$ | async) as user">
-            <mat-icon>account-circle</mat-icon>
-            <div> {{user.username}} </div>
-            <div>
-                <button type="submit" i18n="@@logout" color="primary" (click)="logout()">Logout</button>
-            </div>
+<div
+  *ngIf="
+    !(
+      (accountService.currentUser$ | async) === undefined ||
+      (accountService.currentUser$ | async) === null
+    )
+  "
+>
+  <mat-toolbar class="app-header">
+        <span color="black">Animal Adoption</span>
+        <span class="spacer"></span>
+        <div class="div-user" *ngIf="accountService.currentUser$ | async as user">
+            <mat-icon class="margins" color="black">account_circle</mat-icon> 
+            <div class="margins">{{ user.username }}</div>
+            <button class="margins" type="submit" i18n="@@logout" (click)="logout()">Logout</button>
         </div>
-    </div>
-</mat-toolbar>
+  </mat-toolbar>
+</div>

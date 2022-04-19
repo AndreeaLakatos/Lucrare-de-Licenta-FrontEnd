@@ -6,36 +6,39 @@ import { AccountService } from 'src/app/services/account/account.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   public loginForm!: FormGroup;
-  constructor(public accountService: AccountService, private router: Router, private formBuilder: FormBuilder) { }
+  public hide: boolean;
+  constructor(
+    public accountService: AccountService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    this.hide = true;
+  }
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  initForm(): void{
+  initForm(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
   login(): void {
-    this.accountService.login(this.loginForm.value).subscribe(() => {
-      this.router.navigateByUrl(`/main-page`);
-    },
-    (error) => {
-      console.log(error);
-    });
-  }
-
-  logout(): void {
-    this.accountService.logout();
-    this.router.navigateByUrl('');
+    this.accountService.login(this.loginForm.value).subscribe(
+      () => {
+        this.router.navigateByUrl(`/main-page`);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   registerBasicUser(): void {
@@ -45,5 +48,4 @@ export class LoginComponent implements OnInit {
   registerNGO(): void {
     this.router.navigateByUrl('ngo-registration');
   }
-
 }
