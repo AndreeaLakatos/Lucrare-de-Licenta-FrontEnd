@@ -37,6 +37,10 @@
       "noAccount": "Nu ai încă un cont?",
       "rememberMe": "Ține-mă minte",
       "completeForm": "Completează următorul formular pentru a crea un cont nou.",
-      "backToLogin": "Înapoi la autentificare"
+      "backToLogin": "Înapoi la autentificare",
+      "recoverPassword": "Recuperare parolă",
+      "enterEmail": "Introdu adresa de email și îți vom trimite instrucțiuni despre cum îți poți reseta parola.",
+      "recover": "Recuperează",
+      "verifyEmail": "Email-ul s-a trimis cu succes! Îți poți verifica email-ul."
     }
   }

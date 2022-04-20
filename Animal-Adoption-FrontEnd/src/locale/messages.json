@@ -37,6 +37,10 @@
     "noAccount": "Don't you have an account, yet?",
     "rememberMe": "Remember me",
     "completeForm": "Fill the below form to create a new account.",
-    "backToLogin": "Back to login"
+    "backToLogin": "Back to login",
+    "recoverPassword": "Recover password",
+    "enterEmail": "Please enter your email address and we'll send you instructions on how to reset your password.",
+    "recover": "Recover",
+    "verifyEmail": "Email successfully sent! Please verify your email."
   }
 }

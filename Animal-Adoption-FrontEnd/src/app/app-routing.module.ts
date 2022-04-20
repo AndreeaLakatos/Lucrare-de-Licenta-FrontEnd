@@ -5,6 +5,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'ngo-registration', component: RegisterComponent },
   { path: 'main-page', component: MainPageComponent},
   { path: 'toolbar', component: ToolbarComponent},
-  { path: 'vertical-menu', component: VerticalMenuComponent}
+  { path: 'vertical-menu', component: VerticalMenuComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent}
 ];
 
 @NgModule({

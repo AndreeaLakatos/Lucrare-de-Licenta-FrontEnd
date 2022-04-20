@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     RegisterComponent,
     VerticalMenuComponent,
     ToolbarComponent,
-    MainPageComponent
+    MainPageComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
