@@ -34,6 +34,9 @@
       "welcomeLogin": "Bine ai revenit, te rugăm să te autentifici.",
       "logout": "Delogare",
       "forgotPassword": "Ți-ai uitat parola?",
-      "noAccount": "Nu ai încă un cont?"
+      "noAccount": "Nu ai încă un cont?",
+      "rememberMe": "Ține-mă minte",
+      "completeForm": "Completează următorul formular pentru a crea un cont nou.",
+      "backToLogin": "Înapoi la autentificare"
     }
   }

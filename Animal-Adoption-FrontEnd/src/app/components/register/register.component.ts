@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   public cities?: City[];
   public counties?: County[];
+  public hide: boolean = true;
 
   constructor(
     public accountService: AccountService,
@@ -52,6 +53,10 @@ export class RegisterComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  public backToLogin() {
+    this.router.navigateByUrl(`/login`);
   }
 
   private getCounties() {

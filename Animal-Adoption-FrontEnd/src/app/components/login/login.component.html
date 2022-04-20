@@ -28,6 +28,7 @@
               <mat-form-field appearance="outline">
                 <mat-label i18n="@@username">Username</mat-label>
                 <input type="text" matInput formControlName="username" />
+                <mat-error *ngIf="loginForm.controls['username'].hasError('required')" i18n="@@usernameRequired">Username is required</mat-error>
               </mat-form-field>
             </div>
             <div fxLayout="row" fxLayout="start">
@@ -41,13 +42,19 @@
                 <mat-icon matSuffix (click)="hide = !hide">{{
                   hide ? "visibility_off" : "visibility"
                 }}</mat-icon>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')" i18n="@@passwordRequired">Password is required</mat-error>
               </mat-form-field>
             </div>
           </form>
           <div fxLayout="row">
-            <a i18n="@@forgotPassword" href="/forgot-password">
-              Did you forgot your password?
-            </a>
+            <div fxLayout="column">
+              <mat-checkbox i18n="@@rememberMe">Remember me</mat-checkbox>
+            </div>
+            <div fxLayout="column">
+              <a class="margins" i18n="@@forgotPassword" href="/forgot-password">
+                Did you forgot your password?
+              </a>
+            </div>
           </div>
         </mat-card-content>
         <mat-card-actions>
@@ -64,7 +71,9 @@
                 Login
               </button>
             </div>
-            <div class="margins" fxLayout="row" i18n="@@noAccount">Don't you have an account, yet?</div>
+            <div class="margins" fxLayout="row" i18n="@@noAccount">
+              Don't you have an account, yet?
+            </div>
             <div fxLayout="row">
               <div fxLayout="column">
                 <button
