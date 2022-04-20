@@ -11,6 +11,9 @@ import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   public forgotPasswordForm!: FormGroup;
+  public hide: boolean = true;
+  public successfullySent: boolean = false;
+  public unsuccessfullySent: boolean = false;
   constructor(
     public accountService: AccountService,
     private router: Router,
@@ -25,13 +28,25 @@ export class ForgotPasswordComponent implements OnInit {
   private initForm(): void {
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
+      clientURI: 'http://localhost:4200/reset-password',
     });
   }
 
-  public recover(): void {
-    const message = $localize`:@@verifyEmail: Email successfully sent! Please verify your email.`;
-    this.snackbarService.success(message);
+  public forgotPassword(): void {
+    this.accountService.forgotPassword(this.forgotPasswordForm.value).subscribe(
+      (_) => {
+        const message = $localize`:@@verifyEmail: Email successfully sent! Please verify your email.`;
+        this.snackbarService.success(message);
+        this.successfullySent = true;
+      },
+      (err) => {
+        console.log(err.message);
+        this.unsuccessfullySent = true;
+      }
+    );
   }
+
+  public recover(): void {}
 
   public backToLogin() {
     this.router.navigateByUrl(`/login`);

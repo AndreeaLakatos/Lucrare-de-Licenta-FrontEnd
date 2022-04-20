@@ -37,10 +37,21 @@
     "noAccount": "Don't you have an account, yet?",
     "rememberMe": "Remember me",
     "completeForm": "Fill the below form to create a new account.",
-    "backToLogin": "Back to login",
+    "backToLogin": "Back to login page",
     "recoverPassword": "Recover password",
     "enterEmail": "Please enter your email address and we'll send you instructions on how to reset your password.",
     "recover": "Recover",
-    "verifyEmail": "Email successfully sent! Please verify your email."
+    "verifyEmail": "Email successfully sent! Please verify your email.",
+    "codeRequired": "Code is required",
+    "codeLength": "Code must have exact 6 characters",
+    "code": "Code",
+    "enterCode": "Enter code",
+    "enterCodeReceived": "Please enter the code you received on the email we sent to you.",
+    "enterPassword": "Enter the new password you want",
+    "passwordChanged": "Password successfully changed!",
+    "changePassword": "Change password",
+    "resetPassord": "Reset password",
+    "successfullySent": "Email successfully sent! Please verify your email",
+    "passwordSuccessfullyChanged": "Password successfully changed!"
   }
 }

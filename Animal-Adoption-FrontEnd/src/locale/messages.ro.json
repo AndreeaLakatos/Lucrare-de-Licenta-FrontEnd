@@ -37,10 +37,21 @@
       "noAccount": "Nu ai încă un cont?",
       "rememberMe": "Ține-mă minte",
       "completeForm": "Completează următorul formular pentru a crea un cont nou.",
-      "backToLogin": "Înapoi la autentificare",
+      "backToLogin": "Înapoi la pagina de autentificare",
       "recoverPassword": "Recuperare parolă",
       "enterEmail": "Introdu adresa de email și îți vom trimite instrucțiuni despre cum îți poți reseta parola.",
       "recover": "Recuperează",
-      "verifyEmail": "Email-ul s-a trimis cu succes! Îți poți verifica email-ul."
+      "verifyEmail": "Email-ul s-a trimis cu succes! Îți poți verifica email-ul.",
+      "codeRequired": "Codul este obligatoriu",
+      "codeLength": "Codul trebuie să conțină exact 6 caractere",
+      "code": "Cod",
+      "enterCode": "Introducere cod",
+      "enterCodeReceived": "Introdu codul primit în email-ul pe care ți l-am trimis.",
+      "enterPassword": "Introdu noua parolă pe care o dorești",
+      "passwordChanged": "Parolă schimbată cu succes!",
+      "changePassword": "Schimbă parola",
+      "resetPassword": "Resetare parolă",
+      "successfullySent": "Email-ul s-a trimis cu succes! Poți verifica email-ul",
+      "passwordSuccessfullyChanged": "Parolă schimbată cu succes!"
     }
   }

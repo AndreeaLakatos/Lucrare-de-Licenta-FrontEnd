@@ -224,6 +224,7 @@
               <button
                 class="register-button"
                 mat-raised-button
+                [disabled]="!registerForm.valid"
                 (click)="register()"
                 type="submit"
                 i18n="@@register"

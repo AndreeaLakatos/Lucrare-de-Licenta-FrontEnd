@@ -19,6 +19,7 @@ import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     VerticalMenuComponent,
     ToolbarComponent,
     MainPageComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

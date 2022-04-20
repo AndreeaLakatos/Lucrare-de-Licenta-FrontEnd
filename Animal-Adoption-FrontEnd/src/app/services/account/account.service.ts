@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ForgotPasswordModel } from 'src/app/components/forgot-password/models/forgot-password.model';
+import { ResetPasswordModel } from 'src/app/components/reset-password/models/reset-password.model';
+import { ResetPasswordComponent } from 'src/app/components/reset-password/reset-password.component';
 import { LoginUser } from 'src/app/models/authentication/login-user';
 import { RegisterUser } from 'src/app/models/authentication/register-user';
 import { User } from 'src/app/models/user';
@@ -50,5 +53,13 @@ export class AccountService {
 
   logout () {
     this.currentUserSubject.next(undefined);
+  }
+
+  public forgotPassword(forgotPasswordModel: ForgotPasswordModel) {
+    return this.httpClient.post(`${this.apiUrl}forgot-password`, forgotPasswordModel);
+  }
+
+  public resetPassword(resetPasswordModel: ResetPasswordModel) {
+    return this.httpClient.post(`${this.apiUrl}reset-password`, resetPasswordModel);
   }
 }
