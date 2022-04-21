@@ -1,7 +1,7 @@
-import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterNgo } from 'src/app/models/authentication/register-ngo';
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -9,12 +9,13 @@ import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-register-ngo',
+  templateUrl: './register-ngo.component.html',
+  styleUrls: ['./register-ngo.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterNgoComponent implements OnInit {
   public registerForm!: FormGroup;
+  public citiesNgo?: City[];
   public cities?: City[];
   public counties?: County[];
   public hide: boolean = true;
@@ -33,7 +34,7 @@ export class RegisterComponent implements OnInit {
     this.getCounties();
   }
 
-  initForm(): void {
+  private initForm(): void {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -43,12 +44,18 @@ export class RegisterComponent implements OnInit {
       street: ['', Validators.required],
       city: ['', Validators.required],
       county: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(10)]]
+      ngoName: ['', Validators.required],
+      code: ['', Validators.required],
+      foundedDate: ['', Validators.required],
+      ngoStreet: ['', Validators.required],
+      ngoCity: ['', Validators.required],
+      ngoCounty: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
-  register(): void {
-    this.accountService.register(this.registerForm.value).subscribe(
+  public register(): void {
+    this.accountService.registerNgo(this.registerForm.value).subscribe(
       () => {
         const message = $localize`:@@successfullyRegister: Registration succeded!`;
         this.snackbarService.success(message);
@@ -70,8 +77,15 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  public getCitiesNgo() {
+    var county = this.registerForm.get('county')?.value.id;
+    this.utilsService.getCities(county).subscribe((cities) => {
+      this.citiesNgo = cities;
+    });
+  }
+
   public getCities() {
-    var county = this.registerForm.get("county")?.value.id;
+    var county = this.registerForm.get('county')?.value.id;
     this.utilsService.getCities(county).subscribe((cities) => {
       this.cities = cities;
     });

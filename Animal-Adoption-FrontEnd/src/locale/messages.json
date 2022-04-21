@@ -52,6 +52,13 @@
     "changePassword": "Change password",
     "resetPassord": "Reset password",
     "successfullySent": "Email successfully sent! Please verify your email",
-    "passwordSuccessfullyChanged": "Password successfully changed!"
+    "passwordSuccessfullyChanged": "Password successfully changed!",
+    "foundedDate": "Founded date",
+    "foundedDateRequired": "Founded date required",
+    "ngoName": "Ngo name",
+    "ngoNameRequired": "Ngo name is required",
+    "representantDetails": "Representant details",
+    "ngoDetails": "NGO details",
+    "successfullyRegister": "Registration succeded!"
   }
 }

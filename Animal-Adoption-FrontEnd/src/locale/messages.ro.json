@@ -52,6 +52,13 @@
       "changePassword": "Schimbă parola",
       "resetPassword": "Resetare parolă",
       "successfullySent": "Email-ul s-a trimis cu succes! Poți verifica email-ul",
-      "passwordSuccessfullyChanged": "Parolă schimbată cu succes!"
+      "passwordSuccessfullyChanged": "Parolă schimbată cu succes!",
+      "foundedDate": "Data fondării",
+      "foundedDateRequired": "Data fondării este obligatorie",
+      "ngoName": "Denumire Ong",
+      "ngoNameRequired": "Denumirea Ong-ului este obligatorie",
+      "representantDetails": "Detaliile reprezentantului",
+      "ngoDetails": "Detaliile ONG-ului",
+      "successfullyRegister": "Înregistrare cu success! De acum îți poți accesa contul."
     }
   }

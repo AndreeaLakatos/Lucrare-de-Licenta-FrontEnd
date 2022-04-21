@@ -6,6 +6,7 @@ import { ForgotPasswordModel } from 'src/app/components/forgot-password/models/f
 import { ResetPasswordModel } from 'src/app/components/reset-password/models/reset-password.model';
 import { ResetPasswordComponent } from 'src/app/components/reset-password/reset-password.component';
 import { LoginUser } from 'src/app/models/authentication/login-user';
+import { RegisterNgo } from 'src/app/models/authentication/register-ngo';
 import { RegisterUser } from 'src/app/models/authentication/register-user';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
@@ -34,6 +35,10 @@ export class AccountService {
 
   register (registerUser: RegisterUser) {
     return this.httpClient.post<User>(`${this.apiUrl}register`, registerUser);
+  }
+
+  public registerNgo (registerUser: RegisterNgo) {
+    return this.httpClient.post<User>(`${this.apiUrl}register-ngo`, registerUser);
   }
 
   private setCurrentUser(user: User): void {

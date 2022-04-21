@@ -20,6 +20,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ToolbarComponent,
     MainPageComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RegisterNgoComponent
   ],
   imports: [
     BrowserModule,

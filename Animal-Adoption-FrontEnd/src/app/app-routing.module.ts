@@ -7,12 +7,13 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'basic-registration', component: RegisterComponent },
-  { path: 'ngo-registration', component: RegisterComponent },
+  { path: 'ngo-registration', component: RegisterNgoComponent },
   { path: 'main-page', component: MainPageComponent},
   { path: 'toolbar', component: ToolbarComponent},
   { path: 'vertical-menu', component: VerticalMenuComponent},

@@ -19,6 +19,7 @@
           <mat-card-subtitle i18n="@@completeForm"
             >Fill the below form to create a new account.</mat-card-subtitle
           >
+          <h3 i18n="@@representantDetails">Representant details</h3>
           <form
             [formGroup]="registerForm"
             (ngSubmit)="registerForm.valid && register()"
@@ -147,20 +148,15 @@
             </div>
 
             <div fxLayout="row">
-                <mat-form-field class="street" appearance="outline">
-                  <mat-label i18n="@@street">Street</mat-label>
-                  <input
-                    type="text"
-                    matInput
-                    formControlName="street"
-                    required
-                  />
-                  <mat-error
-                    *ngIf="registerForm.controls['street'].hasError('required')"
-                    i18n="@@streetRequired"
-                    >Street is required</mat-error
-                  >
-                </mat-form-field>
+              <mat-form-field class="street" appearance="outline">
+                <mat-label i18n="@@street">Street</mat-label>
+                <input type="text" matInput formControlName="street" required />
+                <mat-error
+                  *ngIf="registerForm.controls['street'].hasError('required')"
+                  i18n="@@streetRequired"
+                  >Street is required</mat-error
+                >
+              </mat-form-field>
             </div>
 
             <div fxLayout="row">
@@ -204,6 +200,111 @@
                 </mat-form-field>
               </div>
             </div>
+
+            <h3 class="margins" i18n="@@ngoDetails">NGO details</h3>
+            <div fxLayout="row">
+              <div fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label i18n="@@ngoName">Ngo Name</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="ngoName"
+                    reguired
+                  />
+                  <mat-error
+                    *ngIf="
+                      registerForm.controls['ngoName'].hasError('required')
+                    "
+                    i18n="@@ngoNameRequired"
+                    >Ngo Name is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayout="column">
+                <mat-form-field class="margins" appearance="outline">
+                  <mat-label i18n="@@code">Code</mat-label>
+                  <input type="text" matInput formControlName="code" required />
+                  <mat-error
+                    *ngIf="registerForm.controls['code'].hasError('required')"
+                    i18n="@@codeRequired"
+                    >Code is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <mat-form-field class="date" appearance="outline">
+                <mat-label i18n="@@foundedDate">Founded date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="foundedDate" required/>
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['foundedDate'].hasError('required')
+                  "
+                  i18n="@@foundedDateRequired"
+                  >Founded date is required</mat-error
+                >
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row">
+              <div fxLayout="column">
+                <mat-form-field appearance="outline">
+                  <mat-label i18n="@@county">County</mat-label>
+                  <mat-select
+                    formControlName="ngoCounty"
+                    name="county"
+                    (selectionChange)="getCitiesNgo()"
+                    required
+                  >
+                    <mat-option
+                      *ngFor="let county of counties"
+                      [value]="county"
+                    >
+                      {{ county.name }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="registerForm.controls['ngoCounty'].hasError('required')"
+                    i18n="@@countyRequired"
+                    >County is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayout="column">
+                <mat-form-field class="margins" appearance="outline">
+                  <mat-label i18n="@@city">City</mat-label>
+                  <mat-select formControlName="ngoCity" name="city" required>
+                    <mat-option *ngFor="let city of citiesNgo" [value]="city">
+                      {{ city.name }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="registerForm.controls['ngoCity'].hasError('required')"
+                    i18n="@@cityRequired"
+                    >City is required</mat-error
+                  >
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <mat-form-field class="street" appearance="outline">
+                <mat-label i18n="@@street">Street</mat-label>
+                <input type="text" matInput formControlName="ngoStreet" required />
+                <mat-error
+                  *ngIf="registerForm.controls['ngoStreet'].hasError('required')"
+                  i18n="@@streetRequired"
+                  >Street is required</mat-error
+                >
+              </mat-form-field>
+            </div>
           </form>
         </mat-card-content>
         <mat-card-actions>
@@ -223,8 +324,8 @@
             <div fxLayout="column">
               <button
                 class="register-button"
-                mat-raised-button
                 [disabled]="!registerForm.valid || successfullyRegister"
+                mat-raised-button
                 (click)="register()"
                 type="submit"
                 i18n="@@register"
