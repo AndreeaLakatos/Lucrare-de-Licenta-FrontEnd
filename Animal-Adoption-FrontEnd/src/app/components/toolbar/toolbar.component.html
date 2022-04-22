@@ -4,7 +4,7 @@
       <img class="logo-image" src="assets/images/logo.png" />
       <span color="black">Animal Adoption</span>
     </div>
-    
+
     <span class="spacer"></span>
     <button class="margins" mat-button [matMenuTriggerFor]="menuCountries">
       <img class="image" [src]="languageImage" /><span>
@@ -19,18 +19,13 @@
         <img class="image" src="assets/images/flags/gb.png" /><span>EN</span>
       </button>
     </mat-menu>
-    <div
-      *ngIf="
-        !(
-          (accountService.currentUser$ | async) === undefined ||
-          (accountService.currentUser$ | async) === null
-        )
-      "
-    >
-      <div class="div-user" *ngIf="accountService.currentUser$ | async as user">
-        <button class="margins" mat-icon-button><mat-icon>notifications</mat-icon></button>
+    <div *ngIf="accountService.isUserLoggedIn()">
+      <div class="div-user">
+        <button class="margins" mat-icon-button>
+          <mat-icon>notifications</mat-icon>
+        </button>
         <div class="username-margins">
-          {{ user.username }}
+          {{ accountService.getUserUsername() }}
         </div>
         <mat-icon class="username-icon">account_circle</mat-icon>
         <button class="margins" mat-icon-button [matMenuTriggerFor]="menu">

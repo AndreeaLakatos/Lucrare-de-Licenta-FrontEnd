@@ -23,6 +23,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+// import { AuthGuard } from './services/account/auth.guard'; 
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
     })
   ],
   providers: [
+    // AuthGuard,
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
     { provide: LOCALE_ID, useClass: DynamicLocaleService},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

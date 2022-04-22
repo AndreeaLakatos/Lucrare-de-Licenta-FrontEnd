@@ -1,23 +1,15 @@
-<div
-  *ngIf="
-    (accountService.currentUser$ | async) === undefined ||
-    (accountService.currentUser$ | async) === null
-  "
->
+<div *ngIf="!accountService.isUserLoggedIn()">
   <mat-card class="login-card" flexLayoutAlign="center start">
     <div fxLayout="row">
       <div fxLayout="column">
-        <img
-          class="login-image"
-          src="assets/images/login.jpg"
-        />
+        <img class="login-image" src="assets/images/login.png" />
       </div>
       <div fxLayout="column">
         <mat-card-content>
-          <mat-card-title>{{'login' | translate}}</mat-card-title>
-          <mat-card-subtitle
-            >{{'welcomeLogin' | translate}}</mat-card-subtitle
-          >
+          <mat-card-title>{{ "login" | translate }}</mat-card-title>
+          <mat-card-subtitle>{{
+            "welcomeLogin" | translate
+          }}</mat-card-subtitle>
           <form
             [formGroup]="loginForm"
             (ngSubmit)="loginForm.valid && login()"
@@ -25,14 +17,17 @@
           >
             <div fxLayout="row" fxLayoutAlign="space-between">
               <mat-form-field appearance="outline">
-                <mat-label>{{'username' | translate}}</mat-label>
+                <mat-label>{{ "username" | translate }}</mat-label>
                 <input type="text" matInput formControlName="username" />
-                <mat-error *ngIf="loginForm.controls['username'].hasError('required')">{{'usernameRequired' | translate}}</mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls['username'].hasError('required')"
+                  >{{ "usernameRequired" | translate }}</mat-error
+                >
               </mat-form-field>
             </div>
             <div fxLayout="row" fxLayout="start">
               <mat-form-field appearance="outline">
-                <mat-label>{{'password' | translate}}</mat-label>
+                <mat-label>{{ "password" | translate }}</mat-label>
                 <input
                   [type]="hide ? 'password' : 'text'"
                   matInput
@@ -41,17 +36,20 @@
                 <mat-icon matSuffix (click)="hide = !hide">{{
                   hide ? "visibility_off" : "visibility"
                 }}</mat-icon>
-                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">{{'passwordRequired' | translate}}</mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls['password'].hasError('required')"
+                  >{{ "passwordRequired" | translate }}</mat-error
+                >
               </mat-form-field>
             </div>
           </form>
           <div fxLayout="row">
             <div fxLayout="column">
-              <mat-checkbox>{{'rememberMe' | translate}}</mat-checkbox>
+              <mat-checkbox>{{ "rememberMe" | translate }}</mat-checkbox>
             </div>
             <div fxLayout="column">
               <a class="margins" href="/forgot-password">
-                {{'forgotPassword' | translate}}
+                {{ "forgotPassword" | translate }}
               </a>
             </div>
           </div>
@@ -66,11 +64,11 @@
                 (click)="login()"
                 type="submit"
               >
-                {{'login' | translate}}
+                {{ "login" | translate }}
               </button>
             </div>
             <div class="margins" fxLayout="row">
-              {{'noAccount' | translate}}
+              {{ "noAccount" | translate }}
             </div>
             <div fxLayout="row">
               <div fxLayout="column">
@@ -79,7 +77,7 @@
                   mat-raised-button
                   (click)="registerBasicUser()"
                 >
-                  {{'registerBasicUser' | translate}}
+                  {{ "registerBasicUser" | translate }}
                 </button>
               </div>
               <div fxLayout="column">
@@ -88,7 +86,7 @@
                   mat-raised-button
                   (click)="registerNGO()"
                 >
-                 {{'registerNGO' | translate}}
+                  {{ "registerNGO" | translate }}
                 </button>
               </div>
             </div>

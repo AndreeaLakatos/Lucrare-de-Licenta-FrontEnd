@@ -1,4 +1,4 @@
-<div *ngIf="!((accountService.currentUser$ | async) === undefined || (accountService.currentUser$ | async) === null)">
+<div *ngIf="accountService.isUserLoggedIn()">
     <mat-list class="vertical-menu">
         <a mat-list-item>
             <mat-icon>account_circle</mat-icon>
