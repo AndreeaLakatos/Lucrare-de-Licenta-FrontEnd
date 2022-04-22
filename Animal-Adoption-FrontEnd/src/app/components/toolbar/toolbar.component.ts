@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -11,6 +11,8 @@ import { AccountService } from 'src/app/services/account/account.service';
 export class ToolbarComponent implements OnInit {
   public languageImage: string = "assets/images/flags/ro.png";
   public languageSpan: string = "RO";
+
+  @Output() toggleSidenav = new EventEmitter();
 
   constructor(private router:Router, public accountService: AccountService,
     public translate: TranslateService) {
@@ -35,6 +37,10 @@ export class ToolbarComponent implements OnInit {
       this.languageImage = "assets/images/flags/gb.png";
       this.languageSpan = "EN";
     }
+  }
+
+  public onToggleSidenav() {
+    this.toggleSidenav.emit();
   }
 
 }

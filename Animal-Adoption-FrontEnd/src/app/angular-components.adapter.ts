@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const modules = {
     material: [
@@ -40,7 +41,8 @@ const modules = {
         MatSelectModule,
         MatGridListModule,
         MatCheckboxModule,
-        MatMenuModule
+        MatMenuModule,
+        MatSidenavModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

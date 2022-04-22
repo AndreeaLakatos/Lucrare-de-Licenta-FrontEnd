@@ -1,2 +1,16 @@
-<app-toolbar></app-toolbar>
-<router-outlet></router-outlet>
+<app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
+
+<mat-sidenav-container *ngIf="accountService.isUserLoggedIn()">
+  <mat-sidenav mode="side" #sidenav="matSidenav">
+    <app-vertical-menu></app-vertical-menu
+  ></mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div *ngIf="!accountService.isUserLoggedIn()">
+  <router-outlet></router-outlet>
+</div>

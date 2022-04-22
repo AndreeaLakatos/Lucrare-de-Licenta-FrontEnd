@@ -8,7 +8,6 @@ import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
-// import { AuthGuard } from './services/account/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },

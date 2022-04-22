@@ -23,7 +23,12 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-// import { AuthGuard } from './services/account/auth.guard'; 
+import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
+import { AdoptionComponentComponent } from './components/adoption-component/adoption-component.component';
+import { FosteringComponentComponent } from './components/fostering-component/fostering-component.component';
+import { FosteringListComponent } from './components/fostering-list/fostering-list.component';
+import { AddAdoptionAnnouncementComponent } from './components/add-adoption-announcement/add-adoption-announcement.component';
+import { AddFosteringAnnouncementComponent } from './components/add-fostering-announcement/add-fostering-announcement.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
     MainPageComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    RegisterNgoComponent
+    RegisterNgoComponent,
+    AdoptionAnnouncesListComponent,
+    AdoptionComponentComponent,
+    FosteringComponentComponent,
+    FosteringListComponent,
+    AddAdoptionAnnouncementComponent,
+    AddFosteringAnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
     })
   ],
   providers: [
-    // AuthGuard,
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
     { provide: LOCALE_ID, useClass: DynamicLocaleService},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
