@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
@@ -18,7 +19,8 @@ export class ForgotPasswordComponent implements OnInit {
     public accountService: AccountService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class ForgotPasswordComponent implements OnInit {
   public forgotPassword(): void {
     this.accountService.forgotPassword(this.forgotPasswordForm.value).subscribe(
       (_) => {
-        const message = $localize`:@@verifyEmail: Email successfully sent! Please verify your email.`;
+        const message = this.translate.instant('verifyEmail');
         this.snackbarService.success(message);
         this.successfullySent = true;
       },

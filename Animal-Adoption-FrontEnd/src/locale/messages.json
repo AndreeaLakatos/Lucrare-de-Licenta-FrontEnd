@@ -59,6 +59,7 @@
     "ngoNameRequired": "Ngo name is required",
     "representantDetails": "Representant details",
     "ngoDetails": "NGO details",
-    "successfullyRegister": "Registration succeded!"
+    "successfullyRegister": "Registration succeded!",
+    "welcome":"Welcome, {$INTERPOLATION}"
   }
 }

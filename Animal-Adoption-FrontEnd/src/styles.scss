@@ -5,3 +5,13 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.bg-image {
+    background-image: url("assets/images/background.jpg");
+    filter: blur(8px);
+    -webkit-filter: blur(3px);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+

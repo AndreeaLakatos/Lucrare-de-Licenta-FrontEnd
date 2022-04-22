@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
 
 const modules = {
     material: [
@@ -38,7 +39,8 @@ const modules = {
         MatSnackBarModule,
         MatSelectModule,
         MatGridListModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatMenuModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

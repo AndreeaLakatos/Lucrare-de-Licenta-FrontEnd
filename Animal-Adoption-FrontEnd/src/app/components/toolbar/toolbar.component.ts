@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 
 @Component({
@@ -8,8 +9,14 @@ import { AccountService } from 'src/app/services/account/account.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  public languageImage: string = "assets/images/flags/ro.png";
+  public languageSpan: string = "RO";
 
-  constructor(private router:Router, public accountService: AccountService) { }
+  constructor(private router:Router, public accountService: AccountService,
+    public translate: TranslateService) {
+      translate.addLangs(['en-US', 'ro']);
+      translate.setDefaultLang('ro');
+     }
 
   ngOnInit(): void {
   }
@@ -17,6 +24,17 @@ export class ToolbarComponent implements OnInit {
   public logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/login');
+  }
+
+  public switchLang(lang: string) {
+    this.translate.use(lang);
+    if (lang === 'ro') {
+      this.languageImage = "assets/images/flags/ro.png";
+      this.languageSpan = "RO";
+    } else {
+      this.languageImage = "assets/images/flags/gb.png";
+      this.languageSpan = "EN";
+    }
   }
 
 }

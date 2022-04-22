@@ -59,6 +59,7 @@
       "ngoNameRequired": "Denumirea Ong-ului este obligatorie",
       "representantDetails": "Detaliile reprezentantului",
       "ngoDetails": "Detaliile ONG-ului",
-      "successfullyRegister": "Înregistrare cu success! De acum îți poți accesa contul."
+      "successfullyRegister": "Înregistrare cu success! De acum îți poți accesa contul.",
+      "welcome":"Bine ai venit, {$INTERPOLATION}"
     }
   }

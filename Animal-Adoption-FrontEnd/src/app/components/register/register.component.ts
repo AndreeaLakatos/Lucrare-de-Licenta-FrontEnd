@@ -2,6 +2,7 @@ import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +52,7 @@ export class RegisterComponent implements OnInit {
   register(): void {
     this.accountService.register(this.registerForm.value).subscribe(
       () => {
-        const message = $localize`:@@successfullyRegister: Registration succeded!`;
+        const message = this.translate.instant('successfullyRegister');
         this.snackbarService.success(message);
         this.successfullyRegister = true;
       },

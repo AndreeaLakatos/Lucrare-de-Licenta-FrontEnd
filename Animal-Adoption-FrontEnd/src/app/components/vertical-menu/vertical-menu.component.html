@@ -1,20 +1,20 @@
 <div *ngIf="!((accountService.currentUser$ | async) === undefined || (accountService.currentUser$ | async) === null)">
-    <mat-list>
+    <mat-list class="vertical-menu">
         <a mat-list-item>
             <mat-icon>account_circle</mat-icon>
-            <span i18n="@@accountDetails">Account Details</span>
+            <span>{{'accountDetails' | translate}}</span>
         </a>
         <a mat-list-item>
             <mat-icon svgIcon="animal"></mat-icon>
-            <span i18n="@@animals">Animals</span>
+            <span>{{'animals' | translate}}</span>
         </a>
         <a mat-list-item>
             <mat-icon>chat</mat-icon>
-            <span i18n="@@chat">Chat</span>
+            <span>{{'chat' | translate}}</span>
         </a>
         <a mat-list-item>
             <mat-icon>list_alt</mat-icon>
-            <span i18n="@@myApplications">My Applications</span>
+            <span>{{'myApplications' | translate}}</span>
         </a>
     </mat-list>
 </div>

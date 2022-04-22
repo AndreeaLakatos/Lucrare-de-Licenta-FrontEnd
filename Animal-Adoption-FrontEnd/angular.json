@@ -13,12 +13,6 @@
 					"style": "scss"
 				}
 			},
-			"i18n": {
-				"sourceLocale": "en-US",
-				"locales": {
-					"ro": "src/locale/messages.ro.json"
-				}
-			},
 			"root": "",
 			"sourceRoot": "src",
 			"prefix": "app",
@@ -106,12 +100,6 @@
 						}
 					},
 					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "AnimalAdoption:build"
-					}
 				},
 				"test": {
 					"builder": "@angular-devkit/build-angular:karma",

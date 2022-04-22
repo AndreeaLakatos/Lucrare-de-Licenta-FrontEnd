@@ -1,18 +1,52 @@
-<div
-  *ngIf="
-    !(
-      (accountService.currentUser$ | async) === undefined ||
-      (accountService.currentUser$ | async) === null
-    )
-  "
->
+<div>
   <mat-toolbar class="app-header">
-        <span color="black">Animal Adoption</span>
-        <span class="spacer"></span>
-        <div class="div-user" *ngIf="accountService.currentUser$ | async as user">
-            <mat-icon class="margins" color="black">account_circle</mat-icon> 
-            <div class="margins">{{ user.username }}</div>
-            <button class="margins" type="submit" i18n="@@logout" (click)="logout()">Logout</button>
+    <div fxLayout="row">
+      <img class="logo-image" src="assets/images/logo.png" />
+      <span color="black">Animal Adoption</span>
+    </div>
+    
+    <span class="spacer"></span>
+    <button class="margins" mat-button [matMenuTriggerFor]="menuCountries">
+      <img class="image" [src]="languageImage" /><span>
+        {{ languageSpan }}
+      </span>
+    </button>
+    <mat-menu #menuCountries="matMenu">
+      <button mat-menu-item (click)="switchLang('ro')">
+        <img class="image" src="assets/images/flags/ro.png" /><span>RO</span>
+      </button>
+      <button mat-menu-item (click)="switchLang('en-US')">
+        <img class="image" src="assets/images/flags/gb.png" /><span>EN</span>
+      </button>
+    </mat-menu>
+    <div
+      *ngIf="
+        !(
+          (accountService.currentUser$ | async) === undefined ||
+          (accountService.currentUser$ | async) === null
+        )
+      "
+    >
+      <div class="div-user" *ngIf="accountService.currentUser$ | async as user">
+        <button class="margins" mat-icon-button><mat-icon>notifications</mat-icon></button>
+        <div class="username-margins">
+          {{ user.username }}
         </div>
+        <mat-icon class="username-icon">account_circle</mat-icon>
+        <button class="margins" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>account_box</mat-icon>
+            <span>{{ "accountDetails" | translate }}</span>
+          </button>
+          <button mat-menu-item type="submit" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>{{ "logout" | translate }}</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
   </mat-toolbar>
 </div>

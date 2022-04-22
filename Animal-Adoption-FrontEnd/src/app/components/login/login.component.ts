@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public translate: TranslateService
   ) {
     this.hide = true;
   }

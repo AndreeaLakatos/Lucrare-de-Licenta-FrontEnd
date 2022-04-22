@@ -9,15 +9,14 @@
       <div fxLayout="column">
         <img
           class="login-image"
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-          alt="Photo of a Shiba Inu"
+          src="assets/images/login.jpg"
         />
       </div>
       <div fxLayout="column">
         <mat-card-content>
-          <mat-card-title i18n="@@login">Login</mat-card-title>
-          <mat-card-subtitle i18n="@@welcomeLogin"
-            >Welcome back, please login to your account.</mat-card-subtitle
+          <mat-card-title>{{'login' | translate}}</mat-card-title>
+          <mat-card-subtitle
+            >{{'welcomeLogin' | translate}}</mat-card-subtitle
           >
           <form
             [formGroup]="loginForm"
@@ -26,14 +25,14 @@
           >
             <div fxLayout="row" fxLayoutAlign="space-between">
               <mat-form-field appearance="outline">
-                <mat-label i18n="@@username">Username</mat-label>
+                <mat-label>{{'username' | translate}}</mat-label>
                 <input type="text" matInput formControlName="username" />
-                <mat-error *ngIf="loginForm.controls['username'].hasError('required')" i18n="@@usernameRequired">Username is required</mat-error>
+                <mat-error *ngIf="loginForm.controls['username'].hasError('required')">{{'usernameRequired' | translate}}</mat-error>
               </mat-form-field>
             </div>
             <div fxLayout="row" fxLayout="start">
               <mat-form-field appearance="outline">
-                <mat-label i18n="@@password">Password</mat-label>
+                <mat-label>{{'password' | translate}}</mat-label>
                 <input
                   [type]="hide ? 'password' : 'text'"
                   matInput
@@ -42,17 +41,17 @@
                 <mat-icon matSuffix (click)="hide = !hide">{{
                   hide ? "visibility_off" : "visibility"
                 }}</mat-icon>
-                <mat-error *ngIf="loginForm.controls['password'].hasError('required')" i18n="@@passwordRequired">Password is required</mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">{{'passwordRequired' | translate}}</mat-error>
               </mat-form-field>
             </div>
           </form>
           <div fxLayout="row">
             <div fxLayout="column">
-              <mat-checkbox i18n="@@rememberMe">Remember me</mat-checkbox>
+              <mat-checkbox>{{'rememberMe' | translate}}</mat-checkbox>
             </div>
             <div fxLayout="column">
-              <a class="margins" i18n="@@forgotPassword" href="/forgot-password">
-                Did you forgot your password?
+              <a class="margins" href="/forgot-password">
+                {{'forgotPassword' | translate}}
               </a>
             </div>
           </div>
@@ -66,13 +65,12 @@
                 [disabled]="!loginForm.valid"
                 (click)="login()"
                 type="submit"
-                i18n="@@login"
               >
-                Login
+                {{'login' | translate}}
               </button>
             </div>
-            <div class="margins" fxLayout="row" i18n="@@noAccount">
-              Don't you have an account, yet?
+            <div class="margins" fxLayout="row">
+              {{'noAccount' | translate}}
             </div>
             <div fxLayout="row">
               <div fxLayout="column">
@@ -80,9 +78,8 @@
                   class="register-button"
                   mat-raised-button
                   (click)="registerBasicUser()"
-                  i18n="@@registerBasicUser"
                 >
-                  Register As Basic User
+                  {{'registerBasicUser' | translate}}
                 </button>
               </div>
               <div fxLayout="column">
@@ -90,9 +87,8 @@
                   class="register-button"
                   mat-raised-button
                   (click)="registerNGO()"
-                  i18n="@@registerNGO"
                 >
-                  Register As NGO
+                 {{'registerNGO' | translate}}
                 </button>
               </div>
             </div>
