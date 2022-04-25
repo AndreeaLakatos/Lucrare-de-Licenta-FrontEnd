@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';

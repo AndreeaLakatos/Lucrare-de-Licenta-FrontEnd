@@ -22,6 +22,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const modules = {
     material: [
@@ -44,7 +45,8 @@ const modules = {
         MatCheckboxModule,
         MatMenuModule,
         MatSidenavModule,
-        MatDialogModule
+        MatDialogModule,
+        DragDropModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

@@ -17,22 +17,24 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
-import { AdoptionComponentComponent } from './components/adoption-component/adoption-component.component';
-import { FosteringComponentComponent } from './components/fostering-component/fostering-component.component';
-import { FosteringListComponent } from './components/fostering-list/fostering-list.component';
-import { AddAdoptionAnnouncementComponent } from './components/add-adoption-announcement/add-adoption-announcement.component';
-import { AddFosteringAnnouncementComponent } from './components/add-fostering-announcement/add-fostering-announcement.component';
+import { AdoptionComponentComponent } from './components/adoption-announces-list/adoption-component/adoption-component.component';
+import { AddAdoptionAnnouncementComponent } from './components/adoption-announces-list/add-adoption-announcement/add-adoption-announcement.component';
+import { AddFosteringAnnouncementComponent } from './components/fostering-announcements-list/add-fostering-announcement/add-fostering-announcement.component';
 import { UserPreferencesComponent } from './components/user-preferences/user-preferences.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { NgoDetailsComponent } from './components/ngo-details/ngo-details.component';
+import { ChatComponent } from './components/chat-list/chat/chat.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { FosteringComponent } from './components/fostering-announcements-list/fostering/fostering.component';
+import { FosteringAnnouncementsListComponent } from './components/fostering-announcements-list/fostering-announcements-list.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +49,15 @@ import { NgoDetailsComponent } from './components/ngo-details/ngo-details.compon
     RegisterNgoComponent,
     AdoptionAnnouncesListComponent,
     AdoptionComponentComponent,
-    FosteringComponentComponent,
-    FosteringListComponent,
     AddAdoptionAnnouncementComponent,
     AddFosteringAnnouncementComponent,
     UserPreferencesComponent,
     UserDetailsComponent,
-    NgoDetailsComponent
+    NgoDetailsComponent,
+    ChatComponent,
+    ChatListComponent,
+    FosteringComponent,
+    FosteringAnnouncementsListComponent
   ],
   imports: [
     BrowserModule,

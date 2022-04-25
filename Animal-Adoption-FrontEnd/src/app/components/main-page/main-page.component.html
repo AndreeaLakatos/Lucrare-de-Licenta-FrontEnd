@@ -1,0 +1,42 @@
+<div class="margins">
+  <div class="align-center" fxLayout="row" fxLayputAlign="center center">
+    <div class="gray font-weight-500">
+      <h1>{{ "welcome" | translate }},</h1>
+    </div>
+  </div>
+</div>
+<div class="align-center" fxLayout="row" fxLayputAlign="center center">
+  <h1 class="bold">{{ accountService.getUserUsername() }}</h1>
+</div>
+<div class="align-center" fxLayout="row" fxLayputAlign="center center">
+  <div class="gray font-weight-500">
+    <h1>
+      {{ "gladtoSeeYouBack" | translate }}
+    </h1>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <img src="assets/images/main-page.jpg" />
+</div>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <h2> {{'usefulLinks' | translate }}:</h2>
+</div>
+<div class="mt-10" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button>
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>{{'addAdoptionAnnounce' | translate }}</span>
+    </button>
+    <button class="ml-10" mat-raised-button>
+        <mat-icon>add_circle</mat-icon>
+        <span>{{'addFosteringAnnounce' | translate }}</span>
+    </button>
+    <button class="ml-10" mat-raised-button>
+        <mat-icon>format_list_bulleted</mat-icon>
+        <span>{{'myAdoptionAnnounces' | translate }}</span>
+    </button>
+    <button class="ml-10" mat-raised-button>
+        <mat-icon>format_list_numbered</mat-icon>
+        <span>{{'myFosteringAnnounces' | translate }}</span>
+    </button>
+</div>
+

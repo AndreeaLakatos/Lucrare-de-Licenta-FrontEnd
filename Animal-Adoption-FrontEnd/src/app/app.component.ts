@@ -12,14 +12,15 @@ import { AccountService } from './services/account/account.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'AnimalAdoption';
+  title = this.translate.instant('animalAdoption');
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitzer: DomSanitizer,
     public accountService: AccountService,
-    private observer: BreakpointObserver
+    private observer: BreakpointObserver,
+    public translate: TranslateService
   ){
     this.matIconRegistry.addSvgIcon(
       'animal',

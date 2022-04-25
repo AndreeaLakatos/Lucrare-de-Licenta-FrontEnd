@@ -4,11 +4,11 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 
 @Component({
-  selector: 'app-adoption-announces-list',
-  templateUrl: './adoption-announces-list.component.html',
-  styleUrls: ['./adoption-announces-list.component.scss']
+  selector: 'app-adoption-component',
+  templateUrl: './adoption-component.component.html',
+  styleUrls: ['./adoption-component.component.scss']
 })
-export class AdoptionAnnouncesListComponent implements OnInit {
+export class AdoptionComponentComponent implements OnInit {
 
   constructor(public accounService: AccountService, public ngpService: NgoService, public translate: TranslateService) { }
 

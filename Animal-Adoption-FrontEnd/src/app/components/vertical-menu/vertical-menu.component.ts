@@ -12,6 +12,7 @@ import { ROUTES } from './vertical-menu-routes.config';
 })
 export class VerticalMenuComponent implements OnInit {
   public menuItems: any[] = [];
+  public showAccountSubmenu: boolean = false;
   constructor(
     private router: Router,
     public accountService: AccountService,

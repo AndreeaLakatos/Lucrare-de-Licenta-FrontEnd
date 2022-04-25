@@ -1,5 +1,21 @@
-<h1 *ngIf="isEditing" mat-dialog-title>{{ "editUserDetails" | translate }}</h1>
-<h1 *ngIf="!isEditing" mat-dialog-title>{{ "userDetails" | translate }}</h1>
+<h1
+  *ngIf="isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "editUserDetails" | translate }}
+</h1>
+<h1
+  *ngIf="!isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "userDetails" | translate }}
+</h1>
 <form
   [formGroup]="userDetailsForm"
   (ngSubmit)="userDetailsForm.valid && save()"
@@ -117,16 +133,36 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <button *ngIf="isEditing" mat-raised-button (click)="cancel()">
+    <button
+      *ngIf="isEditing"
+      mat-raised-button
+      (click)="cancel()"
+      cdkFocusInitial
+    >
       {{ "cancel" | translate }}
     </button>
-    <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
+    <button
+      *ngIf="!isEditing"
+      mat-raised-button
+      mat-dialog-close
+      cdkFocusInitial
+    >
       {{ "close" | translate }}
     </button>
-    <button *ngIf="!isEditing" class="margins" mat-raised-button (click)="edit()">
+    <button
+      *ngIf="!isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="edit()"
+    >
       {{ "edit" | translate }}
     </button>
-    <button *ngIf="isEditing" class="margins" mat-raised-button (click)="save()">
+    <button
+      *ngIf="isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="save()"
+    >
       {{ "save" | translate }}
     </button>
   </div>

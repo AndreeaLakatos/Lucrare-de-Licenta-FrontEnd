@@ -1,5 +1,21 @@
-<h1 *ngIf="isEditing" mat-dialog-title>{{ "editNgoDetails" | translate }}</h1>
-<h1 *ngIf="!isEditing" mat-dialog-title>{{ "ngoDetails" | translate }}</h1>
+<h1
+  *ngIf="isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "editNgoDetails" | translate }}
+</h1>
+<h1
+  *ngIf="!isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "ngoDetails" | translate }}
+</h1>
 <form
   [formGroup]="ngoDetailsForm"
   (ngSubmit)="ngoDetailsForm.valid && save()"
@@ -80,12 +96,21 @@
     <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
       {{ "close" | translate }}
     </button>
-    <button *ngIf="!isEditing" class="margins" mat-raised-button (click)="edit()">
+    <button
+      *ngIf="!isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="edit()"
+    >
       {{ "edit" | translate }}
     </button>
-    <button *ngIf="isEditing" class="margins" mat-raised-button (click)="save()">
+    <button
+      *ngIf="isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="save()"
+    >
       {{ "save" | translate }}
     </button>
   </div>
 </form>
-

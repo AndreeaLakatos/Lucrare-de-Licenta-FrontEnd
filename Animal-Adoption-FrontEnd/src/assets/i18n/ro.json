@@ -1,4 +1,5 @@
 {
+  "animalAdoption": "Adopție de animale",
   "login": "Autentificare",
   "username": "Nume de utilizator",
   "password": "Parolă",
@@ -87,5 +88,14 @@
   "userDetails": "Detaliile utilizatorului",
   "userPreferences": "Preferințele utilizatorului",
   "close": "Închide",
-  "editNgoDetails": "Editează detaliile ONG-ului"
+  "editNgoDetails": "Editează detaliile ONG-ului",
+  "myAdoptionAnnounces": "Anunțurile mele de adopție",
+  "myFosteringAnnounces": "Anunțurile mele pentru stăpâni temporari",
+  "messages": "Mesaje",
+  "notifications": "Notificări",
+  "myAccount": "Contul meu",
+  "gladtoSeeYouBack": "Ne bucurăm să vedem că te-ai intors!",
+  "usefulLinks": "Legături utile",
+  "addAdoptionAnnounce": "Adaugă anunț adopție",
+  "addFosteringAnnounce": "Adaugă anunț pentru stăpân temporar"
 }

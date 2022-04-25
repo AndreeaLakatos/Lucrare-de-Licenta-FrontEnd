@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { ForgotPasswordModel } from 'src/app/components/forgot-password/models/forgot-password.model';
 import { NgoDetailsModel } from 'src/app/components/ngo-details/models/ngo-details.model';
 import { ResetPasswordModel } from 'src/app/components/reset-password/models/reset-password.model';
-import { ResetPasswordComponent } from 'src/app/components/reset-password/reset-password.component';
 import { UserDetailsModel } from 'src/app/components/user-details/models/user-details.model';
 import { UserPreferencesModel } from 'src/app/components/user-preferences/models/user-preferences.model';
 import { LoginUser } from 'src/app/models/authentication/login-user';
