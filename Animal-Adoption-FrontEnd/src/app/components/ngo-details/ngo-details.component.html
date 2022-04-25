@@ -1,0 +1,91 @@
+<h1 *ngIf="isEditing" mat-dialog-title>{{ "editNgoDetails" | translate }}</h1>
+<h1 *ngIf="!isEditing" mat-dialog-title>{{ "ngoDetails" | translate }}</h1>
+<form
+  [formGroup]="ngoDetailsForm"
+  (ngSubmit)="ngoDetailsForm.valid && save()"
+  autocomplete="off"
+>
+  <div fxLayout="row">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "ngoName" | translate }}</mat-label>
+        <input type="text" matInput formControlName="ngoName" reguired />
+        <mat-error
+          *ngIf="ngoDetailsForm.controls['ngoName'].hasError('required')"
+          >{{ "ngoNameRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "code" | translate }}</mat-label>
+        <input type="text" matInput formControlName="code" required />
+        <mat-error
+          *ngIf="ngoDetailsForm.controls['code'].hasError('required')"
+          >{{ "code" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "county" | translate }}</mat-label>
+        <mat-select
+          formControlName="ngoCounty"
+          (selectionChange)="getCities(ngoDetailsForm.get('ngoCounty')!.value)"
+          required
+        >
+          <mat-option *ngFor="let county of counties" [value]="county">
+            {{ county.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="ngoDetailsForm.controls['ngoCounty'].hasError('required')"
+          >{{ "countyRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "city" | translate }}</mat-label>
+        <mat-select formControlName="ngoCity" required>
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="ngoDetailsForm.controls['ngoCity'].hasError('required')"
+          >{{ "cityRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field class="street" appearance="outline">
+      <mat-label>{{ "street" | translate }}</mat-label>
+      <input type="text" matInput formControlName="ngoStreet" required />
+      <mat-error
+        *ngIf="ngoDetailsForm.controls['ngoStreet'].hasError('required')"
+        >{{ "streetRequired" | translate }}</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button *ngIf="isEditing" mat-raised-button (click)="cancel()">
+      {{ "cancel" | translate }}
+    </button>
+    <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
+      {{ "close" | translate }}
+    </button>
+    <button *ngIf="!isEditing" class="margins" mat-raised-button (click)="edit()">
+      {{ "edit" | translate }}
+    </button>
+    <button *ngIf="isEditing" class="margins" mat-raised-button (click)="save()">
+      {{ "save" | translate }}
+    </button>
+  </div>
+</form>
+

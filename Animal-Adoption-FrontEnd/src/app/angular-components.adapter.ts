@@ -21,6 +21,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const modules = {
     material: [
@@ -42,7 +43,8 @@ const modules = {
         MatGridListModule,
         MatCheckboxModule,
         MatMenuModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatDialogModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

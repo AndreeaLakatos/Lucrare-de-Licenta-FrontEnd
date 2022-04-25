@@ -1,0 +1,133 @@
+<h1 *ngIf="isEditing" mat-dialog-title>{{ "editUserDetails" | translate }}</h1>
+<h1 *ngIf="!isEditing" mat-dialog-title>{{ "userDetails" | translate }}</h1>
+<form
+  [formGroup]="userDetailsForm"
+  (ngSubmit)="userDetailsForm.valid && save()"
+  autocomplete="off"
+>
+  <div fxLayout="row">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "firstName" | translate }}</mat-label>
+        <input type="text" matInput formControlName="firstName" reguired />
+        <mat-error
+          *ngIf="userDetailsForm.controls['firstName'].hasError('required')"
+          >{{ "firstNameRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "lastName" | translate }}</mat-label>
+        <input type="text" matInput formControlName="lastName" required />
+        <mat-error
+          *ngIf="userDetailsForm.controls['lastName'].hasError('required')"
+          >{{ "lastNameRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "email" | translate }}</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          required
+          readonly
+        />
+        <mat-error
+          *ngIf="userDetailsForm.controls['email'].hasError('required')"
+          >{{ "emailRequired" | translate }}</mat-error
+        >
+        <mat-error
+          *ngIf="userDetailsForm.controls['email'].hasError('email')"
+          >{{ "emailError" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "phoneNumber" | translate }}</mat-label>
+        <input type="text" matInput formControlName="phoneNumber" required />
+        <mat-error
+          *ngIf="userDetailsForm.controls['phoneNumber'].hasError('required')"
+          >{{ "phoneNumberRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "county" | translate }}</mat-label>
+        <mat-select
+          formControlName="county"
+          (selectionChange)="getCities(userDetailsForm.get('county')!.value)"
+          required
+        >
+          <mat-option *ngFor="let county of counties" [value]="county">
+            {{ county.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="userDetailsForm.controls['county'].hasError('required')"
+          >{{ "countyRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "city" | translate }}</mat-label>
+        <mat-select formControlName="city" required>
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="userDetailsForm.controls['city'].hasError('required')"
+          >{{ "cityRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field class="street" appearance="outline">
+      <mat-label>{{ "street" | translate }}</mat-label>
+      <input type="text" matInput formControlName="street" required />
+      <mat-error
+        *ngIf="userDetailsForm.controls['street'].hasError('required')"
+        >{{ "streetRequired" | translate }}</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "username" | translate }}</mat-label>
+      <input type="text" matInput formControlName="userName" readonly />
+      <mat-error
+        *ngIf="userDetailsForm.controls['userName'].hasError('required')"
+        >{{ "usernameRequired" | translate }}</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button *ngIf="isEditing" mat-raised-button (click)="cancel()">
+      {{ "cancel" | translate }}
+    </button>
+    <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
+      {{ "close" | translate }}
+    </button>
+    <button *ngIf="!isEditing" class="margins" mat-raised-button (click)="edit()">
+      {{ "edit" | translate }}
+    </button>
+    <button *ngIf="isEditing" class="margins" mat-raised-button (click)="save()">
+      {{ "save" | translate }}
+    </button>
+  </div>
+</form>

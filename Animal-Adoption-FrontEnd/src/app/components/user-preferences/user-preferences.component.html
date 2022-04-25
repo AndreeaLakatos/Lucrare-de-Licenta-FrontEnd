@@ -1,0 +1,86 @@
+<h1 *ngIf="isEditing" mat-dialog-title>{{ "editUserPreferences" | translate }}</h1>
+<h1 *ngIf="!isEditing" mat-dialog-title>{{ "userPreferences" | translate }}</h1>
+<form
+  [formGroup]="userPreferencesForm"
+  (ngSubmit)="userPreferencesForm.valid && save()"
+  autocomplete="off"
+>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "favoriteAnimal" | translate }}</mat-label>
+        <mat-select formControlName="animalType">
+          <mat-option *ngFor="let animal of animals;let ind=index" [value]="animal">
+            {{ animalTranslations[ind] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "animalType" | translate }}</mat-label>
+        <mat-select formControlName="animalSize">
+          <mat-option *ngFor="let size of sizes; let ind=index" [value]="size">
+            {{ sizeTranslations[ind] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "forWho" | translate }}</mat-label>
+        <mat-select formControlName="hasFamily">
+          <mat-option [value]="false">
+            {{ "forMe" | translate }}</mat-option
+          >
+          <mat-option [value]="true">
+            {{ "forFamily" | translate }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "haveChildren" | translate }}</mat-label>
+        <mat-select formControlName="haveChildren">
+          <mat-option [value]="true">
+            {{ "yes" | translate }}</mat-option
+          >
+          <mat-option [value]="false">
+            {{ "no" | translate }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field class="margins" appearance="outline">
+      <mat-label>{{ "whereLeave" | translate }}</mat-label>
+      <mat-select formControlName="livingPlace">
+        <mat-option [value]="'house'">
+          {{ "house" | translate }}</mat-option
+        >
+        <mat-option [value]="'apartment'">
+          {{ "apartment" | translate }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button *ngIf="isEditing" mat-raised-button (click)="cancel()">
+      {{ "cancel" | translate }}
+    </button>
+    <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
+      {{ "close" | translate }}
+    </button>
+    <button *ngIf="!isEditing" class="margins" mat-raised-button (click)="edit()">
+      {{ "edit" | translate }}
+    </button>
+    <button *ngIf="isEditing" class="margins" mat-raised-button (click)="save()">
+      {{ "save" | translate }}
+    </button>
+  </div>
+</form>

@@ -21,7 +21,6 @@ export class ErrorCodeTranslationService {
     ];
 
     const newMessage: LocalizedError | any = localizedMessages.find((x) => x.errorCode === errorCode);
-    console.log(newMessage);
     if(newMessage) {
       return newMessage.localizedMessage;
     } else {

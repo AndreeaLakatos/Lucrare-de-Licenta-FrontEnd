@@ -29,6 +29,10 @@ import { FosteringComponentComponent } from './components/fostering-component/fo
 import { FosteringListComponent } from './components/fostering-list/fostering-list.component';
 import { AddAdoptionAnnouncementComponent } from './components/add-adoption-announcement/add-adoption-announcement.component';
 import { AddFosteringAnnouncementComponent } from './components/add-fostering-announcement/add-fostering-announcement.component';
+import { UserPreferencesComponent } from './components/user-preferences/user-preferences.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { NgoDetailsComponent } from './components/ngo-details/ngo-details.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,10 @@ import { AddFosteringAnnouncementComponent } from './components/add-fostering-an
     FosteringComponentComponent,
     FosteringListComponent,
     AddAdoptionAnnouncementComponent,
-    AddFosteringAnnouncementComponent
+    AddFosteringAnnouncementComponent,
+    UserPreferencesComponent,
+    UserDetailsComponent,
+    NgoDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +79,8 @@ import { AddFosteringAnnouncementComponent } from './components/add-fostering-an
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
     { provide: LOCALE_ID, useClass: DynamicLocaleService},
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false} }
   ],
   bootstrap: [AppComponent]
 })

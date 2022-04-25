@@ -34,13 +34,21 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button *ngIf="accountService.isBasicUser" mat-menu-item (click)="getAccountDetails()">
           <mat-icon>account_box</mat-icon>
-          <span>{{ "accountDetails" | translate }}</span>
+          <span>{{ 'accountDetails' | translate }}</span>
+        </button>
+        <button *ngIf="accountService.isBasicUser" mat-menu-item (click)="getUserPreferences()">
+          <mat-icon>favorite</mat-icon>
+          <span>{{ 'userPreferences' | translate }}</span>
+        </button>
+        <button *ngIf="accountService.isNgo" mat-menu-item (click)="getNgoDetails()">
+          <mat-icon>group_work</mat-icon>
+          <span>{{ 'ngoDetails' | translate }}</span>
         </button>
         <button mat-menu-item type="submit" (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
-          <span>{{ "logout" | translate }}</span>
+          <span>{{ 'logout' | translate }}</span>
         </button>
       </mat-menu>
     </div>

@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ForgotPasswordModel } from 'src/app/components/forgot-password/models/forgot-password.model';
+import { NgoDetailsModel } from 'src/app/components/ngo-details/models/ngo-details.model';
 import { ResetPasswordModel } from 'src/app/components/reset-password/models/reset-password.model';
 import { ResetPasswordComponent } from 'src/app/components/reset-password/reset-password.component';
+import { UserDetailsModel } from 'src/app/components/user-details/models/user-details.model';
+import { UserPreferencesModel } from 'src/app/components/user-preferences/models/user-preferences.model';
 import { LoginUser } from 'src/app/models/authentication/login-user';
 import { RegisterNgo } from 'src/app/models/authentication/register-ngo';
 import { RegisterUser } from 'src/app/models/authentication/register-user';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -76,19 +80,57 @@ export class AccountService {
     return localStorage.getItem('username')!;
   }
 
+  public get isBasicUser(): boolean {
+    return this.getUserRole() === 'BasicUser';
+  }
+
+  public get isNgo(): boolean {
+    return this.getUserRole() === 'Ngo';
+  }
+
+  public getUserRole(): string {
+    return localStorage.getItem('role')!;
+  }
+
+  public getUserDetails(): Observable<UserDetailsModel> {
+    return this.httpClient.get<UserDetailsModel>(`${this.apiUrl}user-details/${this.getUserUsername()}`);
+  }
+
+  public getUserPreferences(): Observable<UserPreferencesModel> {
+    return this.httpClient.get<UserPreferencesModel>(`${this.apiUrl}user-preferences/${this.getUserUsername()}`);
+  }
+
+  public getNgoDetails(): Observable<NgoDetailsModel> {
+    return this.httpClient.get<NgoDetailsModel>(`${this.apiUrl}ngo-details/${this.getUserUsername()}`);
+  }
+
+  public saveUserDetails(userDetails: UserDetailsModel): Observable<UserDetailsModel> {
+    return this.httpClient.post<UserDetailsModel>(`${this.apiUrl}user-details`, userDetails);
+  }
+
+  public saveUserPreferences(userPreferences: UserPreferencesModel): Observable<UserPreferencesModel> {
+    return this.httpClient.post<UserPreferencesModel>(`${this.apiUrl}user-preferences/${this.getUserUsername()}`, userPreferences);
+  }
+
+  public saveNgoDetails(ngoDetails: NgoDetailsModel): Observable<NgoDetailsModel> {
+    return this.httpClient.post<NgoDetailsModel>(`${this.apiUrl}ngo-details/${this.getUserUsername()}`, ngoDetails);
+  }
+
   private setCurrentUser(user: User): void {
     user.roles = [];
-    const roles = this.getDecodedToken(user.token).role;
-    if (Array.isArray(roles)) {
-      user.roles = roles;
-    } else {
-      user.roles.push(roles);
-    }
-    localStorage.setItem('role', user.roles[0]);
+    const token = this.getDecodedAccessToken(user.token);
+    const role = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    user.roles.push(role);
+
+    localStorage.setItem('role', role);
     this.currentUserSubject.next(user);
   }
 
-  private getDecodedToken(token: string) {
-    return JSON.parse(atob(token.split('.')[1]));
+  private getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
   }
 }
