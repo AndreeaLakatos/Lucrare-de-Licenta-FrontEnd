@@ -1,0 +1,135 @@
+<h1
+  *ngIf="isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "editAdoptionAnnouncement" | translate }}
+</h1>
+<h1
+  *ngIf="!isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "adoptionAnnouncement" | translate }}
+</h1>
+
+<form
+  [formGroup]="adoptionAnnouncementForm"
+  (ngSubmit)="adoptionAnnouncementForm.valid"
+  autocomplete="off"
+>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "title" | translate }}</mat-label>
+        <input type="text" matInput formControlName="title" required />
+        <mat-error
+          *ngIf="
+            adoptionAnnouncementForm.controls['title'].hasError('required')
+          "
+          >{{ "titleRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "description" | translate }}</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+        <mat-error
+          *ngIf="
+            adoptionAnnouncementForm.controls['description'].hasError(
+              'required'
+            )
+          "
+          >{{ "descriptionRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "favoriteAnimal" | translate }}</mat-label>
+        <mat-select formControlName="animalType">
+          <mat-option
+            *ngFor="let animal of animals; let ind = index"
+            [value]="animal"
+          >
+            {{ animalTranslations[ind] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field class="margins" appearance="outline">
+        <mat-label>{{ "animalType" | translate }}</mat-label>
+        <mat-select formControlName="animalSize">
+          <mat-option
+            *ngFor="let size of sizes; let ind = index"
+            [value]="size"
+          >
+            {{ sizeTranslations[ind] }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field class="margins" appearance="outline">
+      <mat-label>{{ "moreDetails" | translate }}</mat-label>
+      <textarea matInput formControlName="moreDetails" required></textarea>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
+    <input
+      type="file"
+      id="fileInput"
+      name="fileInput"
+      accept="image/*"
+      multiple
+      (change)="selectFiles($event)"
+    />
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
+    <img *ngFor="let preview of previews" [src]="preview" class="preview" />
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
+    <button
+      *ngIf="isEditing"
+      mat-raised-button
+      (click)="cancel()"
+      cdkFocusInitial
+    >
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      *ngIf="!isEditing"
+      mat-raised-button
+      mat-dialog-close
+      cdkFocusInitial
+    >
+      {{ "close" | translate }}
+    </button>
+    <button
+      *ngIf="!isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="edit()"
+    >
+      {{ "edit" | translate }}
+    </button>
+    <button
+      *ngIf="isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="save()"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
+</form>

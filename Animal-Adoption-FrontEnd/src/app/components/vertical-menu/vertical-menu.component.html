@@ -30,7 +30,7 @@
       <mat-icon>pets</mat-icon>
       <span class="margins">{{ "animals" | translate }}</span>
     </button>
-    <button mat-list-item>
+    <button mat-list-item (click)="redirectToAdoptionAnnounces()">
       <mat-icon>announcement</mat-icon>
       <span class="margins">{{ "myAdoptionAnnounces" | translate }}</span>
     </button>

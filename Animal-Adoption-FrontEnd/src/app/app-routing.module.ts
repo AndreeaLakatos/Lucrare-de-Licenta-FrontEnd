@@ -8,6 +8,7 @@ import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
+import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'toolbar', component: ToolbarComponent},
   { path: 'vertical-menu', component: VerticalMenuComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
-  { path: 'reset-password', component: ResetPasswordComponent}
+  { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'adoption-announcements', component: AdoptionAnnouncesListComponent}
 ];
 
 @NgModule({

@@ -22,4 +22,8 @@ export class VerticalMenuComponent implements OnInit {
   ngOnInit(): void {
     this.menuItems = ROUTES;
   }
+
+  public redirectToAdoptionAnnounces() {
+    this.router.navigateByUrl(`/adoption-announcements`);
+  }
 }

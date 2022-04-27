@@ -97,5 +97,12 @@
   "gladtoSeeYouBack": "Ne bucurăm să vedem că te-ai intors!",
   "usefulLinks": "Legături utile",
   "addAdoptionAnnounce": "Adaugă anunț adopție",
-  "addFosteringAnnounce": "Adaugă anunț pentru stăpân temporar"
+  "addFosteringAnnounce": "Adaugă anunț pentru stăpân temporar",
+  "title": "Titlu",
+  "titleRequired": "Titlul este obligatoriu",
+  "description": "Descriere",
+  "descriptionRequired": "Descrierea este obligatorie",
+  "editAdoptionAnnouncement": "Editează anunțul de adopție",
+  "adoptionAnnouncement": "Anunț de adopție",
+  "moreDetails": "Mai multe detalii"
 }

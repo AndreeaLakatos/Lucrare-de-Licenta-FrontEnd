@@ -97,5 +97,12 @@
   "gladtoSeeYouBack": "We're glad to see you're back!",
   "usefulLinks": "Useful links",
   "addAdoptionAnnounce": "Add adoption announce",
-  "addFosteringAnnounce": "Add fostering announce"
+  "addFosteringAnnounce": "Add fostering announce",
+  "title": "Title",
+  "titleRequired": "Title is required",
+  "description": "Description",
+  "descriptionRequired": "Description is required",
+  "editAdoptionAnnouncement": "Edit adoption announcement",
+  "adoptionAnnouncement": "Adoption announcement",
+  "moreDetails": "More details"
 }

@@ -24,7 +24,6 @@ import { RegisterNgoComponent } from './components/register-ngo/register-ngo.com
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
-import { AdoptionComponentComponent } from './components/adoption-announces-list/adoption-component/adoption-component.component';
 import { AddAdoptionAnnouncementComponent } from './components/adoption-announces-list/add-adoption-announcement/add-adoption-announcement.component';
 import { AddFosteringAnnouncementComponent } from './components/fostering-announcements-list/add-fostering-announcement/add-fostering-announcement.component';
 import { UserPreferencesComponent } from './components/user-preferences/user-preferences.component';
@@ -35,6 +34,7 @@ import { ChatComponent } from './components/chat-list/chat/chat.component';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { FosteringComponent } from './components/fostering-announcements-list/fostering/fostering.component';
 import { FosteringAnnouncementsListComponent } from './components/fostering-announcements-list/fostering-announcements-list.component';
+import { AdoptionComponent } from './components/adoption-announces-list/adoption/adoption.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { FosteringAnnouncementsListComponent } from './components/fostering-anno
     ResetPasswordComponent,
     RegisterNgoComponent,
     AdoptionAnnouncesListComponent,
-    AdoptionComponentComponent,
+    AdoptionComponent,
     AddAdoptionAnnouncementComponent,
     AddFosteringAnnouncementComponent,
     UserPreferencesComponent,
