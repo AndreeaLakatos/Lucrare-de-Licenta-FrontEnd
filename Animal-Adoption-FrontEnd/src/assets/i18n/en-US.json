@@ -104,5 +104,10 @@
   "descriptionRequired": "Description is required",
   "editAdoptionAnnouncement": "Edit adoption announcement",
   "adoptionAnnouncement": "Adoption announcement",
-  "moreDetails": "More details"
+  "moreDetails": "More details",
+  "size": "Size",
+  "addAdoptionRequest": "Add adoption request",
+  "showOnMap": "Show me on map",
+  "sendMessage": "Send message",
+  "address": "Address"
 }

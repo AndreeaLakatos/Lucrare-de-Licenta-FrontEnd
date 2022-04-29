@@ -104,5 +104,10 @@
   "descriptionRequired": "Descrierea este obligatorie",
   "editAdoptionAnnouncement": "Editează anunțul de adopție",
   "adoptionAnnouncement": "Anunț de adopție",
-  "moreDetails": "Mai multe detalii"
+  "moreDetails": "Mai multe detalii",
+  "size": "Mărime",
+  "addAdoptionRequest": "Adaugă cerere de adopție",
+  "showOnMap": "Arată-mi pe hartă",
+  "sendMessage": "Trimite mesaj",
+  "address": "Adresă"
 }

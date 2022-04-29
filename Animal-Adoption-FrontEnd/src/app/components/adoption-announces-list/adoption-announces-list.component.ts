@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AdoptionComponent } from './adoption/adoption.component';
+import { AdoptionAnnouncementListModel } from './models/adoption-announcement-list.model';
 import { AdoptionAnnouncementModel } from './models/adoption-announcement.model';
 
 @Component({
@@ -12,14 +13,17 @@ import { AdoptionAnnouncementModel } from './models/adoption-announcement.model'
   styleUrls: ['./adoption-announces-list.component.scss'],
 })
 export class AdoptionAnnouncesListComponent implements OnInit {
+  public adoptionAnnouncements: AdoptionAnnouncementListModel[] = [];
   constructor(
     public accounService: AccountService,
-    public ngpService: NgoService,
+    public ngoService: NgoService,
     public translate: TranslateService,
     public adoptionAnnouncementDialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAdoptionAnnounces();
+  }
 
   public addAnnouncement() {
     this.editAnnouncement(undefined);
@@ -27,9 +31,15 @@ export class AdoptionAnnouncesListComponent implements OnInit {
 
   public editAnnouncement(adoptionAnnouncement: AdoptionAnnouncementModel | undefined) {
     this.adoptionAnnouncementDialog.open(AdoptionComponent, {
-      height: '800px',
-      width: '700px',
+      height: '900px',
+      width: '600px',
       data: adoptionAnnouncement,
     });
+  }
+
+  public getAdoptionAnnounces() {
+    this.ngoService.getAdoptionAnnouncements().subscribe(
+      (res) => this.adoptionAnnouncements = res
+    )
   }
 }

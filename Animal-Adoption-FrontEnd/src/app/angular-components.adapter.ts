@@ -24,6 +24,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 const modules = {
     material: [
@@ -48,7 +49,8 @@ const modules = {
         MatSidenavModule,
         MatDialogModule,
         DragDropModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatTooltipModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

@@ -1,5 +1,3 @@
-import { City } from 'src/app/models/city';
-import { County } from 'src/app/models/county';
 import { AnimalSize } from '../../user-preferences/models/animal-size.enum';
 import { AnimalType } from '../../user-preferences/models/animal-type.enum';
 

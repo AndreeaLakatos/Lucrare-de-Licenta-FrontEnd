@@ -1,0 +1,103 @@
+<mat-card>
+  <mat-card-header>
+      <mat-card-title fxLayoutAlign="center center"> {{ adoptionAnnouncementModel.title }} </mat-card-title>
+      <mat-card-subtitle fxLayoutAlign="center center">
+        {{ adoptionAnnouncementModel.description }}
+      </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+          <span class="bold">Animal: </span>
+        </div>
+        <div fxLayput="column" class="mr-20" fxLayoutAlign="center center">
+          <span
+            >{{
+              animalTranslations[adoptionAnnouncementModel.animalType] | translate
+            }}
+          </span>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+          <span class="bold">{{ "size" | translate }}:</span>
+        </div>
+        <div fxLayput="column" fxLayoutAlign="center center">
+          <span
+            >{{
+              sizeTranslations[adoptionAnnouncementModel.animalSize] | translate
+            }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+        <span class="bold">{{ "address" | translate }}:</span>
+      </div>
+      <div fxLayput="column" fxLayoutAlign="center center">
+        <span
+          >{{
+            adoptionAnnouncementModel.county.name
+          }}, {{ adoptionAnnouncementModel.city.name }}, {{ adoptionAnnouncementModel.street }}
+        </span>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+        <span class="bold">{{ "moreDetails" | translate }}:</span>
+      </div>
+      <div fxLayput="column" fxLayoutAlign="center center">
+        <span
+          >{{
+            adoptionAnnouncementModel.moreDetails
+          }}
+        </span>
+      </div>
+    </div>
+    
+    <ngb-carousel>
+      <ng-template
+        ngbSlide
+        *ngFor="let image of adoptionAnnouncementModel.photos"
+      >
+        <div
+          fxLayout="row wrap"
+          fxLayout.xs="column wrap"
+          fxLayoutAlign="center center"
+          class="mt-10"
+        >
+          <img
+            class="preview"
+            mat-card-image
+            [src]="image.url"
+            alt="Random first slide"
+          />
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </mat-card-content>
+  <mat-card-actions>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxLayout="column">
+        <button
+          mat-raised-button
+          type="submit"
+        >
+          {{ "addAdoptionRequest" | translate }}
+        </button>
+      </div>
+      <div fxLayout="column">
+        <button mat-icon-button matTooltip="{{ 'showOnMap' | translate }}">
+          <mat-icon>map</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="column">
+        <button mat-icon-button matTooltip="{{ 'sendMessage' | translate }}">
+          <mat-icon>chat_bubble</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

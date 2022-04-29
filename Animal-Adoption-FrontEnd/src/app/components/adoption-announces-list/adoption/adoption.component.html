@@ -95,8 +95,8 @@
       (change)="selectFiles($event)"
     />
   </div>
-  <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
-    <img *ngFor="let preview of previews" [src]="preview" class="preview" />
+  <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="center center" class="mt-10">
+      <img *ngFor="let preview of previews" [src]="preview" class="preview" />
   </div>
   <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
     <button

@@ -24,8 +24,6 @@ import { RegisterNgoComponent } from './components/register-ngo/register-ngo.com
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
-import { AddAdoptionAnnouncementComponent } from './components/adoption-announces-list/add-adoption-announcement/add-adoption-announcement.component';
-import { AddFosteringAnnouncementComponent } from './components/fostering-announcements-list/add-fostering-announcement/add-fostering-announcement.component';
 import { UserPreferencesComponent } from './components/user-preferences/user-preferences.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
@@ -35,6 +33,8 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { FosteringComponent } from './components/fostering-announcements-list/fostering/fostering.component';
 import { FosteringAnnouncementsListComponent } from './components/fostering-announcements-list/fostering-announcements-list.component';
 import { AdoptionComponent } from './components/adoption-announces-list/adoption/adoption.component';
+import { AdoptionAnnouncementListModelComponent } from './components/adoption-announces-list/adoption-announcement-list-model/adoption-announcement-list-model.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -49,15 +49,14 @@ import { AdoptionComponent } from './components/adoption-announces-list/adoption
     RegisterNgoComponent,
     AdoptionAnnouncesListComponent,
     AdoptionComponent,
-    AddAdoptionAnnouncementComponent,
-    AddFosteringAnnouncementComponent,
     UserPreferencesComponent,
     UserDetailsComponent,
     NgoDetailsComponent,
     ChatComponent,
     ChatListComponent,
     FosteringComponent,
-    FosteringAnnouncementsListComponent
+    FosteringAnnouncementsListComponent,
+    AdoptionAnnouncementListModelComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +77,8 @@ import { AdoptionComponent } from './components/adoption-announces-list/adoption
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgbModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},

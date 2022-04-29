@@ -7,7 +7,6 @@ import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
-import { UtilsService } from 'src/app/services/utils/utils.service';
 import { AnimalSize } from '../../user-preferences/models/animal-size.enum';
 import { AnimalType } from '../../user-preferences/models/animal-type.enum';
 import { AdoptionAnnouncementModel } from '../models/adoption-announcement.model';
@@ -84,7 +83,7 @@ export class AdoptionComponent implements OnInit {
     this.ngoService.addAdoptionAnnouncement(data).subscribe((res) => {
       this.adoptionAnnouncement = res;
       this.uploadFiles(this.adoptionAnnouncement.id);
-
+      this.adoptionAnnouncementForm.disable();
     });
   }
 
