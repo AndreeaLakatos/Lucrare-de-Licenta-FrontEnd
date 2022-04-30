@@ -30,11 +30,11 @@
       <mat-icon>pets</mat-icon>
       <span class="margins">{{ "animals" | translate }}</span>
     </button>
-    <button mat-list-item (click)="redirectToAdoptionAnnounces()">
+    <button mat-list-item (click)="redirectToAdoptionAnnouncements()">
       <mat-icon>announcement</mat-icon>
       <span class="margins">{{ "myAdoptionAnnounces" | translate }}</span>
     </button>
-    <button mat-list-item>
+    <button mat-list-item (click)="redirectToFosteringAnnouncements()">
       <mat-icon>watch_later</mat-icon>
       <span class="margins">{{ "myFosteringAnnounces" | translate }}</span>
     </button>
@@ -42,7 +42,7 @@
       <mat-icon>list_alt</mat-icon>
       <span class="margins">{{ "myApplications" | translate }}</span>
     </button>
-    <button mat-list-item>
+    <button mat-list-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       <span class="margins">{{ "logout" | translate }}</span>
     </button>

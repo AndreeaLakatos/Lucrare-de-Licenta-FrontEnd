@@ -150,7 +150,7 @@ export class AdoptionComponent implements OnInit {
 
   private upload(id: number, file: File): void {
     if (file) {
-      this.ngoService.upload(id, file).subscribe();
+      this.ngoService.uploadAdoptionImage(id, file).subscribe();
     }
   }
 

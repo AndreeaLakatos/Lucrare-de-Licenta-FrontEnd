@@ -1,13 +1,13 @@
 .login-card {
-  width: 45%;
+  max-width: 50%;
   margin-top: 8%;
   margin-left: 25%;
   position: fixed;
 }
 
 .login-image {
-  width: 400px;
-  height: 400px;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .login-button {

@@ -109,5 +109,11 @@
   "addAdoptionRequest": "Add adoption request",
   "showOnMap": "Show me on map",
   "sendMessage": "Send message",
-  "address": "Address"
+  "address": "Address",
+  "period": "Period",
+  "startDate": "Start date",
+  "endDate": "End date",
+  "addFosteringRequest":  "Add fostering request",
+  "editFosteringAnnouncement":  "Edit fostering application",
+  "fosteringAnnouncement":  "Fostering announcement"
 }

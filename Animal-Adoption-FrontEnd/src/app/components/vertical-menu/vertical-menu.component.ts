@@ -23,7 +23,16 @@ export class VerticalMenuComponent implements OnInit {
     this.menuItems = ROUTES;
   }
 
-  public redirectToAdoptionAnnounces() {
+  public redirectToAdoptionAnnouncements() {
     this.router.navigateByUrl(`/adoption-announcements`);
+  }
+
+  public redirectToFosteringAnnouncements() {
+    this.router.navigateByUrl(`/fostering-announcements`);
+  }
+
+  public logout() {
+    this.accountService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

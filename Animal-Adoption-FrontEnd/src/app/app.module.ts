@@ -35,6 +35,7 @@ import { FosteringAnnouncementsListComponent } from './components/fostering-anno
 import { AdoptionComponent } from './components/adoption-announces-list/adoption/adoption.component';
 import { AdoptionAnnouncementListModelComponent } from './components/adoption-announces-list/adoption-announcement-list-model/adoption-announcement-list-model.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FosteringAnnouncementListModelComponent } from './components/fostering-announcements-list/fostering-announcemnet-list-model/fostering-announcement-list-model.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FosteringComponent,
     FosteringAnnouncementsListComponent,
     AdoptionAnnouncementListModelComponent,
+    FosteringAnnouncementListModelComponent,
   ],
   imports: [
     BrowserModule,

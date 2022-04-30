@@ -1,1 +1,18 @@
-<p>fostering-announcements-list works!</p>
+<div fxLayout="row" fxLayoutAlign="center right">
+  <button mat-icon-button (click)="addAnnouncement()">
+    <mat-icon class="40px">add_circle</mat-icon>
+  </button>
+</div>
+
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column wrap"
+  fxLayoutAlign="center center"
+  class="mt-10"
+>
+  <div class="margins" *ngFor="let announcement of fosteringAnnouncements">
+    <app-fostering-announcement-list-model
+      [fosteringAnnouncementModel]="announcement"
+    ></app-fostering-announcement-list-model>
+  </div>
+</div>

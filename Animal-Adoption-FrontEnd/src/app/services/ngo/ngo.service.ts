@@ -6,9 +6,11 @@ import {
   AdoptionAnnouncementModel,
 } from 'src/app/components/adoption-announces-list/models/adoption-announcement.model';
 import { Image } from 'src/app/components/adoption-announces-list/models/image';
+import { FosteringAnnouncementListModel } from 'src/app/components/fostering-announcements-list/models/fostering-announcement-list.model';
+import { FosteringAnnouncementModel } from 'src/app/components/fostering-announcements-list/models/fostering-announcement.model';
 import { environment } from 'src/environments/environment';
 import { AccountService } from '../account/account.service';
-import { GetAdoptionAnnouncementsModel } from './models/get-adoption-announcements.model';
+import { GetAdoptionAnnouncementsModel as GetAnnouncementsModel } from './models/get-adoption-announcements.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,15 +32,37 @@ export class NgoService {
     );
   }
 
-  public upload(id: number, file: File): Observable<Image> {
+  public addFosteringAnnouncement(
+    fosteringAnnouncement: FosteringAnnouncementModel
+  ): Observable<FosteringAnnouncementModel> {
+    fosteringAnnouncement.username = this.accountService.getUserUsername();
+    return this.httpClient.post<FosteringAnnouncementModel>(
+      `${this.apiUrl}fostering-announcement`,
+      fosteringAnnouncement
+    );
+  }
+
+  public uploadAdoptionImage(id: number, file: File): Observable<Image> {
     const formData: FormData = new FormData();
     const url = `${this.apiUrl}adoption-announcement/${id}`;
     formData.append('file', file, file.name);
     return this.httpClient.post<Image>(url, formData);
   }
 
+  public uploadFosteringImage(id: number, file: File): Observable<Image> {
+    const formData: FormData = new FormData();
+    const url = `${this.apiUrl}fostering-announcement/${id}`;
+    formData.append('file', file, file.name);
+    return this.httpClient.post<Image>(url, formData);
+  }
+
   public getAdoptionAnnouncements(): Observable<AdoptionAnnouncementListModel[]> {
-    const username = new GetAdoptionAnnouncementsModel(this.accountService.getUserUsername());
+    const username = new GetAnnouncementsModel(this.accountService.getUserUsername());
     return this.httpClient.post<AdoptionAnnouncementListModel[]>(`${this.apiUrl}adoption-announcements`, username);
+  }
+
+  public getFosteringAnnouncements(): Observable<FosteringAnnouncementListModel[]> {
+    const username = new GetAnnouncementsModel(this.accountService.getUserUsername());
+    return this.httpClient.post<FosteringAnnouncementListModel[]>(`${this.apiUrl}fostering-announcements`, username);
   }
 }

@@ -10,7 +10,7 @@
   fxLayoutAlign="center center"
   class="mt-10"
 >
-  <div *ngFor="let announcement of adoptionAnnouncements">
+  <div class="margins" *ngFor="let announcement of adoptionAnnouncements">
     <app-adoption-announcement-list-model
       [adoptionAnnouncementModel]="announcement"
     ></app-adoption-announcement-list-model>

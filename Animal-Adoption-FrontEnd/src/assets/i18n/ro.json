@@ -109,5 +109,12 @@
   "addAdoptionRequest": "Adaugă cerere de adopție",
   "showOnMap": "Arată-mi pe hartă",
   "sendMessage": "Trimite mesaj",
-  "address": "Adresă"
+  "address": "Adresă",
+  "period": "Perioadă",
+  "startDate": "Data de început",
+  "endDate": "Data de sfârșit",
+  "addFosteringRequest":  "Adaugă cerere pentru stăpân temporar",
+  "editFosteringAnnouncement":  "Editează anunțul pentru stăpân temporar",
+  "fosteringAnnouncement":  "Anunț pentru stăpân temporar"
+  
 }

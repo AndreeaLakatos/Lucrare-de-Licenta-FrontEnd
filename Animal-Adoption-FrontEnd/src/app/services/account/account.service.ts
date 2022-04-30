@@ -33,6 +33,7 @@ export class AccountService {
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('token', user.token);
           localStorage.setItem('username', user.username);
+          console.log(user.token);
         }
       })
     );
