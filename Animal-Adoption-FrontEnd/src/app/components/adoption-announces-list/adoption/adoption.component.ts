@@ -84,6 +84,7 @@ export class AdoptionComponent implements OnInit {
       this.adoptionAnnouncement = res;
       this.uploadFiles(this.adoptionAnnouncement.id);
       this.adoptionAnnouncementForm.disable();
+      this.isEditing = false;
     });
   }
 

@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="center right">
+<div fxLayout="row" fxLayoutAlign="center right" *ngIf="accountService.isNgo">
   <button mat-icon-button (click)="addAnnouncement()">
     <mat-icon class="40px">add_circle</mat-icon>
   </button>
@@ -12,6 +12,7 @@
 >
   <div class="margins" *ngFor="let announcement of fosteringAnnouncements">
     <app-fostering-announcement-list-model
+      (delete)="refreshPage($event)"
       [fosteringAnnouncementModel]="announcement"
     ></app-fostering-announcement-list-model>
   </div>

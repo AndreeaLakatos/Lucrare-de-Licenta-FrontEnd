@@ -22,23 +22,23 @@
       <mat-icon>email</mat-icon>
       <span class="margins">{{ "messages" | translate }}</span>
     </button>
-    <button mat-list-item>
-      <mat-icon>notifications</mat-icon>
-      <span class="margins">{{ "notifications" | translate }}</span>
-    </button>
-    <button mat-list-item>
-      <mat-icon>pets</mat-icon>
-      <span class="margins">{{ "animals" | translate }}</span>
-    </button>
-    <button mat-list-item (click)="redirectToAdoptionAnnouncements()">
+    <button mat-list-item *ngIf="accountService.isNgo" (click)="redirectToAdoptionAnnouncements()">
       <mat-icon>announcement</mat-icon>
       <span class="margins">{{ "myAdoptionAnnounces" | translate }}</span>
     </button>
-    <button mat-list-item (click)="redirectToFosteringAnnouncements()">
+    <button mat-list-item *ngIf="accountService.isNgo" (click)="redirectToFosteringAnnouncements()">
       <mat-icon>watch_later</mat-icon>
       <span class="margins">{{ "myFosteringAnnounces" | translate }}</span>
     </button>
-    <button mat-list-item>
+    <button mat-list-item *ngIf="accountService.isBasicUser" (click)="redirectToAdoptionAnnouncements()">
+      <mat-icon>announcement</mat-icon>
+      <span class="margins">{{ "adoptionAnnouncements" | translate }}</span>
+    </button>
+    <button mat-list-item *ngIf="accountService.isBasicUser" (click)="redirectToFosteringAnnouncements()">
+      <mat-icon>watch_later</mat-icon>
+      <span class="margins">{{ "fosteringAnnouncements" | translate }}</span>
+    </button>
+    <button mat-list-item *ngIf="accountService.isBasicUser">
       <mat-icon>list_alt</mat-icon>
       <span class="margins">{{ "myApplications" | translate }}</span>
     </button>

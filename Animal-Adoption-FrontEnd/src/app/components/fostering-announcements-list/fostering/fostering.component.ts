@@ -82,6 +82,7 @@ export class FosteringComponent implements OnInit {
       this.fosteringAnnouncement = res;
       this.uploadFiles(this.fosteringAnnouncement.id);
       this.fosteringAnnouncementForm.disable();
+      this.isEditing = false;
     });
   }
 
@@ -148,7 +149,7 @@ export class FosteringComponent implements OnInit {
 
   private upload(id: number, file: File): void {
     if (file) {
-      this.ngoService.uploadAdoptionImage(id, file).subscribe();
+      this.ngoService.uploadFosteringImage(id, file).subscribe();
     }
   }
 

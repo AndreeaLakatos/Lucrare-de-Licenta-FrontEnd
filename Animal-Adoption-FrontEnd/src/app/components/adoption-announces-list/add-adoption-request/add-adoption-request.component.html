@@ -1,0 +1,101 @@
+<h1
+  *ngIf="isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "editAdoptionRequest" | translate }}
+</h1>
+<h1
+  *ngIf="!isEditing"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+>
+  {{ "adoptionRequest" | translate }}
+</h1>
+
+<form
+  [formGroup]="adoptionRequestForm"
+  (ngSubmit)="adoptionRequestForm.valid"
+  autocomplete="off"
+>
+  <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "why" | translate }}</mat-label>
+        <input type="text" matInput formControlName="title" required />
+        <mat-error
+          *ngIf="
+          adoptionRequestForm.controls['why'].hasError('required')
+          "
+          >{{ "whyRequired" | translate }}</mat-error
+        >
+      </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field class="date" appearance="outline">
+      <mat-label>{{ "availableDate" | translate }}</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="availableDate"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="
+        adoptionRequestForm.controls['availableDate'].hasError('required')
+        "
+        >{{ "availableDateRequired" | translate }}</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field class="margins" appearance="outline">
+      <mat-label>{{ "somethingElse" | translate }}</mat-label>
+      <textarea matInput formControlName="somethingElse" required></textarea>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
+    <button
+      *ngIf="isEditing"
+      mat-raised-button
+      (click)="cancel()"
+      cdkFocusInitial
+    >
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      *ngIf="!isEditing"
+      mat-raised-button
+      mat-dialog-close
+      cdkFocusInitial
+    >
+      {{ "close" | translate }}
+    </button>
+    <button
+      *ngIf="!isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="edit()"
+    >
+      {{ "edit" | translate }}
+    </button>
+    <button
+      *ngIf="isEditing"
+      class="margins"
+      mat-raised-button
+      (click)="save()"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
+</form>
+

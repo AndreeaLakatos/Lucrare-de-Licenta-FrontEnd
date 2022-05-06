@@ -115,6 +115,18 @@
   "endDate": "Data de sfârșit",
   "addFosteringRequest":  "Adaugă cerere pentru stăpân temporar",
   "editFosteringAnnouncement":  "Editează anunțul pentru stăpân temporar",
-  "fosteringAnnouncement":  "Anunț pentru stăpân temporar"
+  "fosteringAnnouncement":  "Anunț pentru stăpân temporar",
+  "editAdoptionRequest": "Editează cererea de adopție",
+  "editFosteringRequest": "Editează cererea de stăpan temporar",
+  "adoptionRequest": "Cerere de adopție",
+  "fosteringRequest": "Cerere de stăpân temporar",
+  "availableDate": "Când ești disponibil de o discuție telefonică?",
+  "availableDateRequired": "Data de disponibilitate este obligatorie",
+  "why": "De ce îți dorești această adopție?",
+  "somethingElse": "Îți dorești să ne spui și altceva despre tine?",
+  "adoptionAnnouncements": "Anunțuri adopții",
+  "fosteringAnnouncements": "Anunțuri adopții temporare",
+  "deletionSucceded": "Ștergere cu succes!",
+  "successfulSent": "Cerere trimisă cu succes!"
   
 }

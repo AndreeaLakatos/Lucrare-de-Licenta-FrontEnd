@@ -15,6 +15,8 @@ export class FosteringAnnouncementListModel {
     county: County,
     city: City,
     street: string,
+    latitude: number,
+    longitude: number,
     moreDetails: string,
     photos: Photo[]
   ) {
@@ -28,6 +30,8 @@ export class FosteringAnnouncementListModel {
     this.county = county;
     this.city = city;
     this.street = street;
+    this.latitude = latitude;
+    this.longitude = longitude;
     this.moreDetails = moreDetails;
     this.photos = photos;
   }
@@ -41,6 +45,8 @@ export class FosteringAnnouncementListModel {
   county: County;
   city: City;
   street: string;
+  latitude: number;
+  longitude: number;
   moreDetails: string;
   photos: Photo[];
 }

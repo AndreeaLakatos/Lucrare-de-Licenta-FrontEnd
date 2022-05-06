@@ -115,5 +115,17 @@
   "endDate": "End date",
   "addFosteringRequest":  "Add fostering request",
   "editFosteringAnnouncement":  "Edit fostering application",
-  "fosteringAnnouncement":  "Fostering announcement"
+  "fosteringAnnouncement":  "Fostering announcement",
+  "editAdoptionRequest": "Edit adoption request",
+  "editFosteringRequest": "Edit fostering request",
+  "adoptionRequest": "Adoption request",
+  "fosteringRequest": "Fostering request",
+  "availableDate": "When are you available for a phone call?",
+  "availableDateRequired": "The date of availability is required",
+  "why": "Why do you want this adoption?",
+  "somethingElse": "Do you want to tell us something else about yourself?",
+  "adoptionAnnouncements": "Adoption announcements",
+  "fosteringAnnouncements": "Fostering announcements",
+  "deletionSucceded": "Successfull deletion!",
+  "successfulSent": "Request successfully sent!"
 }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AdoptionComponent } from './adoption/adoption.component';
 import { AdoptionAnnouncementListModel } from './models/adoption-announcement-list.model';
 import { AdoptionAnnouncementModel } from './models/adoption-announcement.model';
@@ -15,10 +16,11 @@ import { AdoptionAnnouncementModel } from './models/adoption-announcement.model'
 export class AdoptionAnnouncesListComponent implements OnInit {
   public adoptionAnnouncements: AdoptionAnnouncementListModel[] = [];
   constructor(
-    public accounService: AccountService,
+    public accountService: AccountService,
     public ngoService: NgoService,
     public translate: TranslateService,
-    public adoptionAnnouncementDialog: MatDialog
+    public adoptionAnnouncementDialog: MatDialog,
+    public snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +43,10 @@ export class AdoptionAnnouncesListComponent implements OnInit {
     this.ngoService.getAdoptionAnnouncements().subscribe(
       (res) => this.adoptionAnnouncements = res
     )
+  }
+
+  public refreshPage(adoptionAnnouncement: AdoptionAnnouncementListModel){
+    this.adoptionAnnouncements = this.adoptionAnnouncements.filter(x => x.id !== adoptionAnnouncement.id);
+    this.snackbarService.success(this.translate.instant('deletionSucceded'))
   }
 }

@@ -36,6 +36,13 @@ import { AdoptionComponent } from './components/adoption-announces-list/adoption
 import { AdoptionAnnouncementListModelComponent } from './components/adoption-announces-list/adoption-announcement-list-model/adoption-announcement-list-model.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FosteringAnnouncementListModelComponent } from './components/fostering-announcements-list/fostering-announcemnet-list-model/fostering-announcement-list-model.component';
+import { AgmCoreModule } from '@agm/core';
+import { AddAdoptionRequestComponent } from './components/adoption-announces-list/add-adoption-request/add-adoption-request.component';
+import { AddFosteringRequestComponent } from './components/fostering-announcements-list/add-fostering-request/add-fostering-request.component';
+import { AdoptionRequestsListComponent } from './components/adoption-requests-list/adoption-requests-list.component';
+import { FosteringRequestsListComponent } from './components/fostering-requests-list/fostering-requests-list.component';
+import { AdoptionRequestListModelComponent } from './components/adoption-requests-list/adoption-request-list-model/adoption-request-list-model.component';
+import { FosteringRequestListModelComponent } from './components/fostering-requests-list/fostering-request-list-model/fostering-request-list-model.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +66,12 @@ import { FosteringAnnouncementListModelComponent } from './components/fostering-
     FosteringAnnouncementsListComponent,
     AdoptionAnnouncementListModelComponent,
     FosteringAnnouncementListModelComponent,
+    AddAdoptionRequestComponent,
+    AddFosteringRequestComponent,
+    AdoptionRequestsListComponent,
+    FosteringRequestsListComponent,
+    AdoptionRequestListModelComponent,
+    FosteringRequestListModelComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +93,10 @@ import { FosteringAnnouncementListModelComponent } from './components/fostering-
         deps: [HttpClient]
       }
     }),
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBCWr8jDROJSgAatHP5gw6s4iSlfUjk4yU'
+    })
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},

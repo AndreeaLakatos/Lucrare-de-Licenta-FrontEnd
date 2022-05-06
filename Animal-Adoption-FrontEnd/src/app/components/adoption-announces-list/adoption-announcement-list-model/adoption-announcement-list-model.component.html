@@ -1,9 +1,11 @@
 <mat-card>
   <mat-card-header>
-      <mat-card-title fxLayoutAlign="center center"> {{ adoptionAnnouncementModel.title }} </mat-card-title>
-      <mat-card-subtitle fxLayoutAlign="center center">
-        {{ adoptionAnnouncementModel.description }}
-      </mat-card-subtitle>
+    <mat-card-title fxLayoutAlign="center center">
+      {{ adoptionAnnouncementModel.title }}
+    </mat-card-title>
+    <mat-card-subtitle fxLayoutAlign="center center">
+      {{ adoptionAnnouncementModel.description }}
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div fxLayout="row">
@@ -14,7 +16,8 @@
         <div fxLayput="column" class="mr-20" fxLayoutAlign="center center">
           <span
             >{{
-              animalTranslations[adoptionAnnouncementModel.animalType] | translate
+              animalTranslations[adoptionAnnouncementModel.animalType]
+                | translate
             }}
           </span>
         </div>
@@ -38,9 +41,9 @@
       </div>
       <div fxLayput="column" fxLayoutAlign="center center">
         <span
-          >{{
-            adoptionAnnouncementModel.county.name
-          }}, {{ adoptionAnnouncementModel.city.name }}, {{ adoptionAnnouncementModel.street }}
+          >{{ adoptionAnnouncementModel.county.name }},
+          {{ adoptionAnnouncementModel.city.name }},
+          {{ adoptionAnnouncementModel.street }}
         </span>
       </div>
     </div>
@@ -49,14 +52,10 @@
         <span class="bold">{{ "moreDetails" | translate }}:</span>
       </div>
       <div fxLayput="column" fxLayoutAlign="center center">
-        <span
-          >{{
-            adoptionAnnouncementModel.moreDetails
-          }}
-        </span>
+        <span>{{ adoptionAnnouncementModel.moreDetails }} </span>
       </div>
     </div>
-    
+
     <ngb-carousel>
       <ng-template
         ngbSlide
@@ -80,22 +79,26 @@
   </mat-card-content>
   <mat-card-actions>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <div fxLayout="column">
-        <button
-          mat-raised-button
-          type="submit"
-        >
+      <div fxLayout="column"  *ngIf="accountService.isBasicUser">
+        <button (click)="addAdoptionRequest()" mat-raised-button type="submit">
           {{ "addAdoptionRequest" | translate }}
         </button>
       </div>
+      <div fxLayout="column" *ngIf="accountService.isBasicUser">
+        <button mat-icon-button matTooltip="{{ 'sendMessage' | translate }}">
+          <mat-icon>chat_bubble</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div fxLayout="row" *ngIf="accountService.isNgo" fxLayoutAlign="center center">
       <div fxLayout="column">
-        <button mat-icon-button matTooltip="{{ 'showOnMap' | translate }}">
-          <mat-icon>map</mat-icon>
+        <button (click)="deleteAnnouncement()" mat-icon-button type="submit">
+          <mat-icon>delete</mat-icon>
         </button>
       </div>
       <div fxLayout="column">
-        <button mat-icon-button matTooltip="{{ 'sendMessage' | translate }}">
-          <mat-icon>chat_bubble</mat-icon>
+        <button (click)="showAllRequests()" mat-icon-button type="submit">
+          <mat-icon>list</mat-icon>
         </button>
       </div>
     </div>
