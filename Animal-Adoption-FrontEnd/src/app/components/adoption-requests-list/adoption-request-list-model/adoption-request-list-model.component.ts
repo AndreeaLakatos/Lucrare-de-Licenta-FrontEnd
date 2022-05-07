@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AccountService } from 'src/app/services/account/account.service';
+import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { AdoptionRequestListModel } from '../models/adoption-request-list-model.model';
 
 @Component({
   selector: 'app-adoption-request-list-model',
@@ -7,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdoptionRequestListModelComponent implements OnInit {
 
-  constructor() { }
+  @Input() adoptionRequestListModel!: AdoptionRequestListModel;
+  constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService) { }
 
   ngOnInit(): void {
   }

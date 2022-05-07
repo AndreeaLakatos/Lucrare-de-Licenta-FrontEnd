@@ -10,7 +10,7 @@ import { AddFosteringRequestModel } from './models/add-fostering-request.model';
 @Component({
   selector: 'app-add-fostering-request',
   templateUrl: './add-fostering-request.component.html',
-  styleUrls: ['./add-fostering-request.component.scss']
+  styleUrls: ['./add-fostering-request.component.scss'],
 })
 export class AddFosteringRequestComponent implements OnInit {
   public fosteringRequestForm!: FormGroup;
@@ -37,26 +37,29 @@ export class AddFosteringRequestComponent implements OnInit {
 
   private initForm() {
     this.fosteringRequestForm = this.formBuilder.group({
-      why: ['', Validators.required],
-      date: ['', Validators.required],
+      reason: ['', Validators.required],
+      availableDate: ['', Validators.required],
       somethingElse: [''],
     });
 
     if (this.data) {
-      this.fosteringRequestForm.get('why')!.setValue(this.data.reason);
-      this.fosteringRequestForm.get('date')!.setValue(this.data.date);
+      this.fosteringRequestForm.get('reason')!.setValue(this.data.reason);
+      this.fosteringRequestForm
+        .get('availableDate')!
+        .setValue(this.data.availableDate);
       this.fosteringRequestForm
         .get('somethingElse')!
         .setValue(this.data.somethingElse);
-    } else {
-      this.isEditing = true;
     }
+    this.isEditing = true;
   }
 
   public cancel() {
     if (this.data) {
-      this.fosteringRequestForm.get('why')!.setValue(this.data.reason);
-      this.fosteringRequestForm.get('date')!.setValue(this.data.date);
+      this.fosteringRequestForm.get('reason')!.setValue(this.data.reason);
+      this.fosteringRequestForm
+        .get('availableDate')!
+        .setValue(this.data.availableDate);
       this.fosteringRequestForm
         .get('somethingElse')!
         .setValue(this.data.somethingElse);
@@ -68,14 +71,18 @@ export class AddFosteringRequestComponent implements OnInit {
   }
 
   public save() {
-    const addFosteringRequest = new AddFosteringRequestModel(0, this.data.adoptionAnnouncementId, this.fosteringRequestForm.get('why')!.value, this.fosteringRequestForm.get('date')!.value,
-    this.fosteringRequestForm.get('somethingElse')!.value, '');
-    this.ngoService.addFosteringRequest(addFosteringRequest).subscribe(
-      (_) => {
-        this.snackbarService.success(this.translate.instant("successfulSent"));
-        this.fosteringRequestForm.disable();
-        this.isEditing = false;
-      }
+    const addFosteringRequest = new AddFosteringRequestModel(
+      0,
+      this.data.fosteringAnnouncementId,
+      this.fosteringRequestForm.get('reason')!.value,
+      this.fosteringRequestForm.get('availableDate')!.value,
+      this.fosteringRequestForm.get('somethingElse')!.value,
+      ''
     );
+    this.ngoService.addFosteringRequest(addFosteringRequest).subscribe((_) => {
+      this.snackbarService.success(this.translate.instant('successfulSent'));
+      this.fosteringRequestForm.disable();
+      this.isEditing = false;
+    });
   }
 }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AccountService } from 'src/app/services/account/account.service';
+import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { FosteringRequestListModel } from '../models/fostering-request-list-model.model';
 
 @Component({
   selector: 'app-fostering-request-list-model',
@@ -7,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FosteringRequestListModelComponent implements OnInit {
 
-  constructor() { }
+  @Input() fosteringRequestListModel!: FosteringRequestListModel;
+  constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService) { }
 
   ngOnInit(): void {
   }

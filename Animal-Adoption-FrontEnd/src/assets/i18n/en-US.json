@@ -127,5 +127,8 @@
   "adoptionAnnouncements": "Adoption announcements",
   "fosteringAnnouncements": "Fostering announcements",
   "deletionSucceded": "Successfull deletion!",
-  "successfulSent": "Request successfully sent!"
+  "successfulSent": "Request successfully sent!",
+  "reason": "Reason",
+  "availability":"Availability for discussion",
+  "something": "Something else"
 }

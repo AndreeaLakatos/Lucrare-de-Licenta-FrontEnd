@@ -25,10 +25,10 @@
   <div fxLayout="row" fxLayoutAlign="center center">
       <mat-form-field appearance="outline">
         <mat-label>{{ "why" | translate }}</mat-label>
-        <input type="text" matInput formControlName="title" required />
+        <input type="text" matInput formControlName="reason" required />
         <mat-error
           *ngIf="
-          fosteringRequestForm.controls['why'].hasError('required')
+          fosteringRequestForm.controls['reason'].hasError('required')
           "
           >{{ "whyRequired" | translate }}</mat-error
         >
@@ -40,7 +40,7 @@
       <input
         matInput
         [matDatepicker]="picker"
-        formControlName="date"
+        formControlName="availableDate"
         required
       />
       <mat-datepicker-toggle
@@ -50,7 +50,7 @@
       <mat-datepicker #picker></mat-datepicker>
       <mat-error
         *ngIf="
-        fosteringRequestForm.controls['date'].hasError('required')
+        fosteringRequestForm.controls['availableDate'].hasError('required')
         "
         >{{ "availableDateRequired" | translate }}</mat-error
       >

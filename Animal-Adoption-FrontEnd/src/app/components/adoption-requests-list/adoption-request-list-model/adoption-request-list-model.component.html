@@ -1,1 +1,74 @@
-<p>adoption-request-list-model works!</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title fxLayoutAlign="center center">
+        {{ adoptionRequestListModel.firstName }}
+        {{ adoptionRequestListModel.lastName }}
+      </mat-card-title>
+      <mat-card-subtitle fxLayoutAlign="center center">
+        {{ adoptionRequestListModel.county.name }},
+        {{ adoptionRequestListModel.city.name }},
+        {{ adoptionRequestListModel.street }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row">
+          <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+            <span class="bold"> {{ "phoneNumber" | translate }}: </span>
+          </div>
+          <div fxLayput="column" class="mr-20" fxLayoutAlign="center center">
+            <span>{{ adoptionRequestListModel.phoneNumber }} </span>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+            <span class="bold">{{ "email" | translate }}:</span>
+          </div>
+          <div fxLayput="column" fxLayoutAlign="center center">
+            <span>{{ adoptionRequestListModel.email }} </span>
+          </div>
+        </div>
+      <div fxLayout="row">
+        <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+          <span class="bold">{{ "reason" | translate }}:</span>
+        </div>
+        <div fxLayput="column" fxLayoutAlign="center center">
+          <span>{{ adoptionRequestListModel.reason }} </span>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+          <span class="bold">{{ "availability" | translate }}:</span>
+        </div>
+        <div fxLayput="column" fxLayoutAlign="center center">
+          <span>{{ adoptionRequestListModel.availableDate }} </span>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+          <span class="bold">{{ "something" | translate }}:</span>
+        </div>
+        <div fxLayput="column" fxLayoutAlign="center center">
+          <span>{{ adoptionRequestListModel.somethingElse }} </span>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div
+        fxLayout="row"
+        *ngIf="accountService.isNgo"
+        fxLayoutAlign="center center"
+      >
+        <div fxLayout="column">
+          <button mat-icon-button type="submit">
+            <mat-icon>done</mat-icon>
+          </button>
+        </div>
+        <div fxLayout="column">
+          <button mat-icon-button type="submit">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  

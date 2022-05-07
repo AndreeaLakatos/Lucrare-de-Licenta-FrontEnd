@@ -1,1 +1,20 @@
-<p>adoption-requests-list works!</p>
+<div fxLayout="row" fxLayoutAlign="left left" *ngIf="accountService.isNgo">
+  <div fxLayout="column">
+    <button (click)="back()" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column wrap"
+  fxLayoutAlign="center center"
+  class="mt-10"
+>
+  <div class="margins" *ngFor="let request of adoptionRequests">
+    <app-adoption-request-list-model
+      [adoptionRequestListModel]="request"
+    ></app-adoption-request-list-model>
+  </div>
+</div>

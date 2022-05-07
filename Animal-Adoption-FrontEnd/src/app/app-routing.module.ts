@@ -10,6 +10,9 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
 import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
 import { FosteringAnnouncementsListComponent } from './components/fostering-announcements-list/fostering-announcements-list.component';
+import { AdoptionRequestsListComponent } from './components/adoption-requests-list/adoption-requests-list.component';
+import { AdoptionRequestListModel } from './components/adoption-requests-list/models/adoption-request-list-model.model';
+import { FosteringRequestsListComponent } from './components/fostering-requests-list/fostering-requests-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,6 +26,8 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'adoption-announcements', component: AdoptionAnnouncesListComponent},
   { path: 'fostering-announcements', component: FosteringAnnouncementsListComponent},
+  { path: 'adoption-requests/:id', component: AdoptionRequestsListComponent},
+  { path: 'fostering-requests/:id', component: FosteringRequestsListComponent},
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 
-export class AdoptionrequestListModel {
+export class AdoptionRequestListModel {
   constructor(
     id: number,
     firstName: string,

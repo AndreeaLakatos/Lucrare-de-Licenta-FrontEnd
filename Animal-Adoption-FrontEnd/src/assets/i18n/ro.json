@@ -127,6 +127,9 @@
   "adoptionAnnouncements": "Anunțuri adopții",
   "fosteringAnnouncements": "Anunțuri adopții temporare",
   "deletionSucceded": "Ștergere cu succes!",
-  "successfulSent": "Cerere trimisă cu succes!"
+  "successfulSent": "Cerere trimisă cu succes!",
+  "reason": "Motiv",
+  "availability":"Disponibilitate pentru discuție",
+  "something": "Alte detalii"
   
 }

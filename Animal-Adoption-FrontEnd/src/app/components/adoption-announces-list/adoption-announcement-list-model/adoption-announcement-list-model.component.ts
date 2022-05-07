@@ -1,9 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { AdoptionRequestListModel } from '../../adoption-requests-list/models/adoption-request-list-model.model';
 import { AddAdoptionRequestComponent } from '../add-adoption-request/add-adoption-request.component';
 import { AddAdoptionRequestModel } from '../add-adoption-request/models/add-adoption-request.model';
 import { AdoptionAnnouncementListModel, AnimalTranslations, SizeTranslations } from '../models/adoption-announcement-list.model';
@@ -17,6 +19,8 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   @Input()
   adoptionAnnouncementModel!: AdoptionAnnouncementListModel;
   @Output() delete: EventEmitter<AdoptionAnnouncementListModel> =  new EventEmitter<AdoptionAnnouncementListModel>();
+
+  public adoptionRequests: AdoptionRequestListModel[] = [];
   public animalTranslations = AnimalTranslations;
   public sizeTranslations = SizeTranslations;
   constructor(
@@ -24,7 +28,8 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
     public ngoService: NgoService,
     public translate: TranslateService,
     public config: NgbCarouselConfig,
-    public adoptionRequestDialog: MatDialog
+    public adoptionRequestDialog: MatDialog,
+    private router: Router,
   ) {
     config.interval = 10000;
     config.wrap = false;
@@ -34,9 +39,7 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
     config.interval = 100000000000000000;
   }
 
-  ngOnInit(): void {
-    console.log(this.adoptionAnnouncementModel.photos);
-  }
+  ngOnInit(): void {}
 
   public addAdoptionRequest() {
     const adoptionRequest = new AddAdoptionRequestModel(0, this.adoptionAnnouncementModel.id, '', new Date(), '', '')
@@ -53,6 +56,6 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   }
 
   public showAllRequests() {
-    this.ngoService.getAdoptionAnnouncementRequests(this.adoptionAnnouncementModel.id).subscribe((list)=>console.log(list));
+    this.router.navigateByUrl(`/adoption-requests/${this.adoptionAnnouncementModel.id}`);
   }
 }

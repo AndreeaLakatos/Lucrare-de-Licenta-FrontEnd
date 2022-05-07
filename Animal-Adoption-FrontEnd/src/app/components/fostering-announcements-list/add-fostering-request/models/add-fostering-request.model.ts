@@ -8,16 +8,16 @@ export class AddFosteringRequestModel {
     username: string
   ) {
     this.id = id;
-    this.adoptionAnnouncementId = adoptionAnnouncementId;
+    this.fosteringAnnouncementId = adoptionAnnouncementId;
     this.reason = reason;
-    this.date = date;
+    this.availableDate = date;
     this.somethingElse = somethingElse;
     this.username = username;
   }
   id: number;
-  adoptionAnnouncementId: number;
+  fosteringAnnouncementId: number;
   reason: string;
-  date: Date;
+  availableDate: Date;
   somethingElse: string;
   username: string;
 }

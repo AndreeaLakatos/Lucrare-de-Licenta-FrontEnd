@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { AccountService } from 'src/app/services/account/account.service';
+import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { AdoptionRequestListModel } from './models/adoption-request-list-model.model';
 
 @Component({
   selector: 'app-adoption-requests-list',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdoptionRequestsListComponent implements OnInit {
 
-  constructor() { }
+  @Input() adoptionRequests: AdoptionRequestListModel[] = [];
+  constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.params.id;
+    this.ngoService.getAdoptionAnnouncementRequests(id).subscribe((list) => {
+      this.adoptionRequests = list;
+    });
+  }
+
+  public back() {
+    this.router.navigateByUrl("adoption-announcements");
   }
 
 }

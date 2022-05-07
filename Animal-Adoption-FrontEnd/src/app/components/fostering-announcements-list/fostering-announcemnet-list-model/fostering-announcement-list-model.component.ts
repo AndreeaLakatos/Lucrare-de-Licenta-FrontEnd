@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -27,7 +28,8 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
     public translate: TranslateService,
     public config: NgbCarouselConfig,
     public addressCoordinatessDialog: MatDialog,
-    public fosteringRequestDialog: MatDialog
+    public fosteringRequestDialog: MatDialog,
+    private router: Router
   ) {
     config.interval = 10000;
     config.wrap = false;
@@ -39,10 +41,10 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public addAdoptionRequest() {
+  public addFosteringRequest() {
     const fosteringRequest = new AddFosteringRequestModel(0, this.fosteringAnnouncementModel.id, '', new Date(), '', '')
     this.fosteringRequestDialog.open(AddFosteringRequestComponent, {
-      height: '400px',
+      height: '500px',
       width: '400px',
       data: fosteringRequest,
     });
@@ -55,6 +57,6 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   }
 
   public showAllRequests() {
-    this.ngoService.getFosteringAnnouncementRequests(this.fosteringAnnouncementModel.id).subscribe((list)=>console.log(list));
+    this.router.navigateByUrl(`/fostering-requests/${this.fosteringAnnouncementModel.id}`);
   }
 }

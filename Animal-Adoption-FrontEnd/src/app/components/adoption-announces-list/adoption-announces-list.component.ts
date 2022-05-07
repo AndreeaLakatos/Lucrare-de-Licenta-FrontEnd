@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
@@ -20,7 +21,7 @@ export class AdoptionAnnouncesListComponent implements OnInit {
     public ngoService: NgoService,
     public translate: TranslateService,
     public adoptionAnnouncementDialog: MatDialog,
-    public snackbarService: SnackbarService
+    public snackbarService: SnackbarService,
   ) {}
 
   ngOnInit(): void {
