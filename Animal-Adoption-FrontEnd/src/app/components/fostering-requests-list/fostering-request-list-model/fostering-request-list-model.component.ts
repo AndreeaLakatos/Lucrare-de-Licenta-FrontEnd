@@ -17,4 +17,8 @@ export class FosteringRequestListModelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public get isEvaluated(): string {
+    if (!this.fosteringRequestListModel.reviewed) return this.translate.instant("notrated");
+    return this.fosteringRequestListModel.status ? this.translate.instant("accepted") : this.translate.instant("rejected");
+  }
 }

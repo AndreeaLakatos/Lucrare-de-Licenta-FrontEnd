@@ -27,6 +27,7 @@ export class FosteringAnnouncementsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("dsfsdfds");
     this.getFosteringAnnouncements();
   }
 

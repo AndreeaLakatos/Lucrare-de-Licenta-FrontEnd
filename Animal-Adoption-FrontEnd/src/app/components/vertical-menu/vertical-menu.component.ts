@@ -24,11 +24,15 @@ export class VerticalMenuComponent implements OnInit {
   }
 
   public redirectToAdoptionAnnouncements() {
-    this.router.navigateByUrl(`/adoption-announcements`);
+    this.router.navigateByUrl('/adoption-announcements').then(() => {
+      window.location.reload();
+    });;
   }
 
   public redirectToFosteringAnnouncements() {
-    this.router.navigateByUrl(`/fostering-announcements`);
+    this.router.navigateByUrl('/fostering-announcements').then(() => {
+      window.location.reload();
+    });;
   }
 
   public logout() {

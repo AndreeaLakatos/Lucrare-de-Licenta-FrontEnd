@@ -14,6 +14,7 @@ export class AdoptionAnnouncementListModel {
     city: City,
     street: string,
     moreDetails: string,
+    status: boolean,
     photos: Photo[]
   ) {
     this.id = id;
@@ -25,6 +26,7 @@ export class AdoptionAnnouncementListModel {
     this.city = city;
     this.street = street;
     this.moreDetails = moreDetails;
+    this.status = status;
     this.photos = photos;
   }
   id: number;
@@ -36,6 +38,7 @@ export class AdoptionAnnouncementListModel {
   city: City;
   street: string;
   moreDetails: string;
+  status: boolean;
   photos: Photo[];
 }
 

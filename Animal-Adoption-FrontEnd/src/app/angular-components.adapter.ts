@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from "@angular/material/tooltip";
+import {MatChipsModule} from '@angular/material/chips';
 
 const modules = {
     material: [
@@ -50,7 +51,8 @@ const modules = {
         MatDialogModule,
         DragDropModule,
         MatProgressBarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatChipsModule
     ],
     angular: [CommonModule, ReactiveFormsModule, FormsModule]
 }

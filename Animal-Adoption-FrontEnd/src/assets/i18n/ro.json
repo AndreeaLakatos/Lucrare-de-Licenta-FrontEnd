@@ -130,6 +130,12 @@
   "successfulSent": "Cerere trimisă cu succes!",
   "reason": "Motiv",
   "availability":"Disponibilitate pentru discuție",
-  "something": "Alte detalii"
+  "something": "Alte detalii",
+  "active": "Deschis",
+  "inactive": "Închis",
+  "rated": "Evaluat",
+  "notrated": "Neevaluat",
+  "accepted": "Acceptat",
+  "rejected": "Respins"
   
 }

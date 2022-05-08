@@ -7,7 +7,6 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AddFosteringRequestComponent } from '../add-fostering-request/add-fostering-request.component';
 import { AddFosteringRequestModel } from '../add-fostering-request/models/add-fostering-request.model';
-import { Coordinates } from '../models/coordinates.model';
 import { AnimalTranslations, FosteringAnnouncementListModel, SizeTranslations } from '../models/fostering-announcement-list.model';
 
 @Component({
@@ -58,5 +57,9 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
 
   public showAllRequests() {
     this.router.navigateByUrl(`/fostering-requests/${this.fosteringAnnouncementModel.id}`);
+  }
+
+  public get isActive(): string {
+    return !this.fosteringAnnouncementModel.status ? this.translate.instant("active") : this.translate.instant("inactive");
   }
 }

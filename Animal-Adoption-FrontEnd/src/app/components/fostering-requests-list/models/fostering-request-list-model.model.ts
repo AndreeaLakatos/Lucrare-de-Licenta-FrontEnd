@@ -15,6 +15,7 @@ export class FosteringRequestListModel {
     availableDate: Date,
     somethingElse: string,
     status: boolean,
+    reviewed: boolean,
     fosteringAnnouncementId: number
   ) {
     this.id = id;
@@ -29,6 +30,7 @@ export class FosteringRequestListModel {
     this.availableDate = availableDate;
     this.somethingElse = somethingElse;
     this.status = status;
+    this.reviewed = reviewed;
     this.fosteringAnnouncementId = fosteringAnnouncementId;
   }
 
@@ -44,5 +46,6 @@ export class FosteringRequestListModel {
   availableDate: Date;
   somethingElse: string;
   status: boolean;
+  reviewed: boolean;
   fosteringAnnouncementId: number;
 }

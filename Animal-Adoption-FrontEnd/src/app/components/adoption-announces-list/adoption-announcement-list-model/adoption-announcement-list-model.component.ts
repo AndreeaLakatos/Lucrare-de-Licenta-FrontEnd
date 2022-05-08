@@ -58,4 +58,8 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   public showAllRequests() {
     this.router.navigateByUrl(`/adoption-requests/${this.adoptionAnnouncementModel.id}`);
   }
+
+  public get isActive(): string {
+    return !this.adoptionAnnouncementModel.status ? this.translate.instant("active") : this.translate.instant("inactive");
+  }
 }

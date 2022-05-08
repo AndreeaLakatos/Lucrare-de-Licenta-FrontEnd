@@ -15,6 +15,7 @@ export class AdoptionRequestListModel {
     availableDate: Date,
     somethingElse: string,
     status: boolean,
+    reviewed: boolean,
     adoptionAnnouncementId: number
   ) {
     this.id = id;
@@ -29,6 +30,7 @@ export class AdoptionRequestListModel {
     this.availableDate = availableDate;
     this.somethingElse = somethingElse;
     this.status = status;
+    this.reviewed = reviewed;
     this.adoptionAnnouncementId = adoptionAnnouncementId;
   }
 
@@ -44,5 +46,6 @@ export class AdoptionRequestListModel {
   availableDate: Date;
   somethingElse: string;
   status: boolean;
+  reviewed: boolean;
   adoptionAnnouncementId: number;
 }

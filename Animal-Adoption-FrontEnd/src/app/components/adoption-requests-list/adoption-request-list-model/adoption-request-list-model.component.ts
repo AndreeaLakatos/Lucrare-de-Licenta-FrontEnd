@@ -17,4 +17,9 @@ export class AdoptionRequestListModelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public get isEvaluated(): string {
+    if (!this.adoptionRequestListModel.reviewed) return this.translate.instant("notrated");
+    return this.adoptionRequestListModel.status ? this.translate.instant("accepted") : this.translate.instant("rejected");
+  }
+
 }

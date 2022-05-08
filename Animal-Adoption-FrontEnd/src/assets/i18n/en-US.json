@@ -130,5 +130,11 @@
   "successfulSent": "Request successfully sent!",
   "reason": "Reason",
   "availability":"Availability for discussion",
-  "something": "Something else"
+  "something": "Something else",
+  "active": "Open",
+  "inactive": "Close",
+  "rated": "Rated",
+  "notrated": "Unrated",
+  "accepted": "Accepted",
+  "rejected": "Rejected"
 }
