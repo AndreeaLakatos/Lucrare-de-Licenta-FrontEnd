@@ -136,5 +136,7 @@
   "rated": "Rated",
   "notrated": "Unrated",
   "accepted": "Accepted",
-  "rejected": "Rejected"
+  "rejected": "Rejected",
+  "alreadyAcceptedThis": "This request is already accepted",
+  "alreadyAccepted": "There is already a request accepted for this announcement"
 }

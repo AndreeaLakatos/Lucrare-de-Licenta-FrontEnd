@@ -136,6 +136,12 @@
   "rated": "Evaluat",
   "notrated": "Neevaluat",
   "accepted": "Acceptat",
-  "rejected": "Respins"
-  
+  "rejected": "Respins",
+  "alreadyAcceptedThis": "Această cerere a fost deja acceptată",
+  "alreadyAccepted": "A fost deja acceptată o cerere pentru acest anunț",
+  "type": "Rasă",
+  "filterBySize": "Filtrare după mărime",
+  "filterByType": "Filtrare după rasă",
+  "filterByOpen": "Filtrare după status",
+  "filterByLocation": "Filtrare după locație"
 }

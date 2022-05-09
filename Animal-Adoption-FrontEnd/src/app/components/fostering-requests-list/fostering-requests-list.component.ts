@@ -16,7 +16,10 @@ export class FosteringRequestsListComponent implements OnInit {
   constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    console.log("ssss");
+    this.getFosteringAnnouncementRequests();
+  }
+
+  public getFosteringAnnouncementRequests() {
     const id = this.route.snapshot.params.id;
     this.ngoService.getFosteringAnnouncementRequests(id).subscribe((list) => {
       this.fosteringRequests = list;

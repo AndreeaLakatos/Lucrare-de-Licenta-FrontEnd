@@ -36,11 +36,12 @@ export class FosteringAnnouncementsListComponent implements OnInit {
   }
 
   public editAnnouncement(adoptionAnnouncement: FosteringAnnouncementModel | undefined) {
-    this.fosteringAnnouncementDialog.open(FosteringComponent, {
-      height: '300px;',
+    const dialogRef = this.fosteringAnnouncementDialog.open(FosteringComponent, {
       width: '600px',
       data: adoptionAnnouncement,
     });
+
+    dialogRef.afterClosed().subscribe((_) => this.getFosteringAnnouncements());
   }
 
   public getFosteringAnnouncements() {

@@ -14,6 +14,7 @@
 >
   <div class="margins" *ngFor="let request of adoptionRequests">
     <app-adoption-request-list-model
+      (update)="getAdoptionAnnouncementRequests()"
       [adoptionRequestListModel]="request"
     ></app-adoption-request-list-model>
   </div>

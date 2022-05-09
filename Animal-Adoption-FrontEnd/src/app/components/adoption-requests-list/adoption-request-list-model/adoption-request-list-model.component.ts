@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
@@ -12,6 +12,7 @@ import { AdoptionRequestListModel } from '../models/adoption-request-list-model.
 export class AdoptionRequestListModelComponent implements OnInit {
 
   @Input() adoptionRequestListModel!: AdoptionRequestListModel;
+  @Output() update = new EventEmitter<AdoptionRequestListModel>();
   constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService) { }
 
   ngOnInit(): void {
@@ -22,4 +23,22 @@ export class AdoptionRequestListModelComponent implements OnInit {
     return this.adoptionRequestListModel.status ? this.translate.instant("accepted") : this.translate.instant("rejected");
   }
 
+  public acceptRequest() {
+    this.updateRequest(true);
+  }
+
+  public rejectRequest() {
+    this.updateRequest(false);
+  }
+
+  public updateRequest(status: boolean) {
+    this.adoptionRequestListModel.status = status;
+    this.ngoService.updateAdoptionRequest(this.adoptionRequestListModel).subscribe((_) => this.update.emit());;
+  }
+
+  public get getTooltip(): string {
+    if (this.adoptionRequestListModel.reviewed && this.adoptionRequestListModel.status) return this.translate.instant("alreadyAcceptedThis");
+    if (this.adoptionRequestListModel.reviewed && !this.adoptionRequestListModel.status) return this.translate.instant("alreadyAccepted");
+    return "";
+  }
 }

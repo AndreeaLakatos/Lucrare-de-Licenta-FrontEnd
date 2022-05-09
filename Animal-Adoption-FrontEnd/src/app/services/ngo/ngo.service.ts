@@ -101,4 +101,12 @@ export class NgoService {
   public getFosteringAnnouncementRequests(fosteringAnnouncementId: number) {
     return this.httpClient.get<FosteringRequestListModel[]>(`${this.apiUrl}fostering-requests/${fosteringAnnouncementId}`)
   }
+
+  public updateAdoptionRequest(adoptionRequestListModel: AdoptionRequestListModel) {
+    return this.httpClient.post(`${this.apiUrl}adoption-requests`, adoptionRequestListModel);
+  }
+
+  public updateFosteringRequest(fosteringRequestListModel: FosteringRequestListModel) {
+    return this.httpClient.post(`${this.apiUrl}fostering-requests`, fosteringRequestListModel);
+  }
 }

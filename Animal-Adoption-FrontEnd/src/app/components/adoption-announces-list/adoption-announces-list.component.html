@@ -1,7 +1,35 @@
-<div fxLayout="row" fxLayoutAlign="center right" *ngIf="accountService.isNgo">
-  <button mat-icon-button (click)="addAnnouncement()">
-    <mat-icon>add_circle</mat-icon>
-  </button>
+<div fxLayout="row" *ngIf="accountService.isNgo">
+  <div fxLayout="column">
+    <mat-form-field>
+      <mat-label>{{"filterBySize" | translate}}</mat-label>
+      <mat-select multiple>
+        <mat-option
+            *ngFor="let size of sizes; let ind=index"
+            [value]="size"
+          >
+            {{ sizeTranslations[ind] | translate}}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="column" class="margin">
+    <mat-form-field>
+      <mat-label>{{"filterByType" | translate}}</mat-label>
+      <mat-select multiple>
+        <mat-option
+            *ngFor="let animal of animals; let ind=index"
+            [value]="animal"
+          >
+            {{ animalTranslations[ind] | translate }}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxLayout="column" class="margin">
+    <button mat-icon-button (click)="addAnnouncement()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
 </div>
 
 <div

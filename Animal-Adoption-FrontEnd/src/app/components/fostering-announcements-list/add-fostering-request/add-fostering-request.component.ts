@@ -1,10 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { FosteringAnnouncementListModel } from '../models/fostering-announcement-list.model';
+import { FosteringAnnouncementModel } from '../models/fostering-announcement.model';
 import { AddFosteringRequestModel } from './models/add-fostering-request.model';
 
 @Component({

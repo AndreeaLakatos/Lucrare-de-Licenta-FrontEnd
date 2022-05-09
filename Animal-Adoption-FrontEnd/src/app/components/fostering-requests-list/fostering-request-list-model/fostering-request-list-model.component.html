@@ -63,13 +63,13 @@
         *ngIf="accountService.isNgo"
         fxLayoutAlign="center center"
       >
-        <div fxLayout="column">
-          <button mat-icon-button type="submit">
+        <div fxLayout="column" matTooltip="{{getTooltip}}">
+          <button mat-icon-button type="submit" (click)="acceptRequest()" [disabled]="fosteringRequestListModel.reviewed">
             <mat-icon>done</mat-icon>
           </button>
         </div>
         <div fxLayout="column">
-          <button mat-icon-button type="submit">
+          <button mat-icon-button type="submit" (click)="rejectRequest()" [disabled]="fosteringRequestListModel.reviewed">
             <mat-icon>clear</mat-icon>
           </button>
         </div>

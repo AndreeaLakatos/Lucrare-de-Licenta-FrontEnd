@@ -13,6 +13,7 @@
   >
     <div class="margins" *ngFor="let request of fosteringRequests">
       <app-fostering-request-list-model
+        (update)="getFosteringAnnouncementRequests()"
         [fosteringRequestListModel]="request"
       ></app-fostering-request-list-model>
     </div>

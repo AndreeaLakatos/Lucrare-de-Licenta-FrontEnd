@@ -16,6 +16,10 @@ export class AdoptionRequestsListComponent implements OnInit {
   constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.getAdoptionAnnouncementRequests();
+  }
+
+  public getAdoptionAnnouncementRequests() {
     const id = this.route.snapshot.params.id;
     this.ngoService.getAdoptionAnnouncementRequests(id).subscribe((list) => {
       this.adoptionRequests = list;
