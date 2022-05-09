@@ -43,10 +43,10 @@ import { AdoptionRequestsListComponent } from './components/adoption-requests-li
 import { FosteringRequestsListComponent } from './components/fostering-requests-list/fostering-requests-list.component';
 import { AdoptionRequestListModelComponent } from './components/adoption-requests-list/adoption-request-list-model/adoption-request-list-model.component';
 import { FosteringRequestListModelComponent } from './components/fostering-requests-list/fostering-request-list-model/fostering-request-list-model.component';
-import { UserAdoptionRequestListComponent } from './user-adoption-request-list/user-adoption-request-list.component';
-import { UserAdoptionRequestModelComponent } from './user-adoption-request-model/user-adoption-request-model.component';
-import { UserFosteringRequestListComponent } from './user-fostering-request-list/user-fostering-request-list.component';
-import { UserFosteringRequestModelComponent } from './user-fostering-request-model/user-fostering-request-model.component';
+import { UserAdoptionRequestListComponent } from './components/user-adoption-request-list/user-adoption-request-list.component';
+import { UserAdoptionRequestModelComponent } from './components/user-adoption-request-list/user-adoption-request-model/user-adoption-request-model.component';
+import { UserFosteringRequestModelComponent } from './components/user-fostering-request-list/user-fostering-request-model/user-fostering-request-model.component';
+import { UserFosteringRequestListComponent } from './components/user-fostering-request-list/user-fostering-request-list.component';
 
 @NgModule({
   declarations: [
