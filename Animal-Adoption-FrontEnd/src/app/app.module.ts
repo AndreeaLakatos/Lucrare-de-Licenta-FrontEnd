@@ -104,6 +104,9 @@ import { UserFosteringRequestListComponent } from './components/user-fostering-r
     NgbModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBCWr8jDROJSgAatHP5gw6s4iSlfUjk4yU'
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
     })
   ],
   providers: [
