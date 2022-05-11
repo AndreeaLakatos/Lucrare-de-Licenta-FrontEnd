@@ -14,11 +14,11 @@
     </span>
   </button>
   <mat-menu #menuCountries="matMenu">
-    <button mat-menu-item (click)="switchLang('ro')">
-      <img class="image" src="assets/images/flags/ro.png" /><span>RO</span>
+    <button mat-menu-item>
+      <img class="image" src="assets/images/flags/ro.png" /><a href="/ro/{{currentUrl()}}"><span>{{locales[0].label}}</span></a>
     </button>
-    <button mat-menu-item (click)="switchLang('en-US')">
-      <img class="image" src="assets/images/flags/gb.png" /><span>EN</span>
+    <button mat-menu-item>
+      <img class="image" src="assets/images/flags/gb.png" /><a href="/en-US/{{currentUrl()}}"><span>{{locales[1].label}}</span></a>
     </button>
   </mat-menu>
   <div *ngIf="accountService.isUserLoggedIn()">

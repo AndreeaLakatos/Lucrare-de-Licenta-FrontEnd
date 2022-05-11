@@ -1,7 +1,7 @@
 <div fxLayout="row" *ngIf="accountService.isNgo">
   <div fxLayout="column">
     <mat-form-field>
-      <mat-label>{{"filterBySize" | translate}}</mat-label>
+      <mat-label i18n="@@filterBySize">Filter by size</mat-label>
       <mat-select multiple>
         <mat-option
             *ngFor="let size of sizes; let ind=index"

@@ -32,7 +32,7 @@ export class VerticalMenuComponent implements OnInit {
   public redirectToFosteringAnnouncements() {
     this.router.navigateByUrl('/fostering-announcements').then(() => {
       window.location.reload();
-    });;
+    });
   }
 
   public logout() {

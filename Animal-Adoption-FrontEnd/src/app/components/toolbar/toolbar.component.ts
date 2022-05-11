@@ -15,6 +15,12 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 import { UserPreferencesModel } from '../user-preferences/models/user-preferences.model';
 import { UserPreferencesComponent } from '../user-preferences/user-preferences.component';
 
+interface Locale {
+  localeCode: string;
+  label: string;
+  image: string;
+}
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -22,10 +28,15 @@ import { UserPreferencesComponent } from '../user-preferences/user-preferences.c
 })
 export class ToolbarComponent implements OnInit {
   public languageImage: string = 'assets/images/flags/ro.png';
-  public languageSpan: string = 'RO';
+  public languageSpan: string = 'Română';
   public userPreferencesModel!: UserPreferencesModel;
   public userDetailsModel!: UserDetailsModel;
   public ngoDetailsModel!: NgoDetailsModel;
+  locales: Locale[] = [
+    { localeCode: 'ro', label: 'Română', image: 'assets/images/flags/ro.png' },
+    { localeCode: 'en-US', label: 'English', image: 'assets/images/flags/gb.png' },
+  ];
+  siteLocale!: string;
 
   @Output() toggleSidenav = new EventEmitter();
 
@@ -37,26 +48,18 @@ export class ToolbarComponent implements OnInit {
     public accountDetailsDialog: MatDialog,
     public ngoDetailsDialog: MatDialog
   ) {
-    translate.addLangs(['en-US', 'ro']);
-    translate.setDefaultLang('ro');
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.siteLocale = window.location.pathname.split('/')[1];
+    this.languageSpan = this.locales.find(f => f.localeCode === this.siteLocale)!.label;
+    this.languageImage = this.locales.find(f => f.localeCode === this.siteLocale)!.image;
+  }
+  
 
   public logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/login');
-  }
-
-  public switchLang(lang: string) {
-    this.translate.use(lang);
-    if (lang === 'ro') {
-      this.languageImage = 'assets/images/flags/ro.png';
-      this.languageSpan = 'RO';
-    } else {
-      this.languageImage = 'assets/images/flags/gb.png';
-      this.languageSpan = 'EN';
-    }
   }
 
   public onToggleSidenav() {
@@ -115,5 +118,14 @@ export class ToolbarComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+  }
+
+  public currentUrl() {
+    const url = window.location.pathname.split('/');
+    let currentPath = '';
+    for (let i=2; i<url.length;i++){
+      currentPath =  `${currentPath}/${url[i]}`;
+    }
+    return currentPath;
   }
 }
