@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
@@ -21,13 +20,11 @@ export class FosteringAnnouncementsListComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
-    public translate: TranslateService,
     public fosteringAnnouncementDialog: MatDialog,
     public snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
-    console.log("dsfsdfds");
     this.getFosteringAnnouncements();
   }
 
@@ -52,7 +49,7 @@ export class FosteringAnnouncementsListComponent implements OnInit {
 
   public refreshPage(fosteringAnnouncementModel: FosteringAnnouncementListModel) {
     this.fosteringAnnouncements = this.fosteringAnnouncements.filter(x => x.id !== fosteringAnnouncementModel.id);
-    this.snackbarService.success(this.translate.instant('deletionSucceded'))
+    this.snackbarService.success($localize`:@@deletionSucceded: Successfull deletion!`);
   }
 
 }

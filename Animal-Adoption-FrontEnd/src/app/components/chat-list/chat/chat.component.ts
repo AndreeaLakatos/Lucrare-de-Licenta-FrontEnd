@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { ChatService } from 'src/app/services/chat/chat.service';
 
@@ -10,7 +9,7 @@ import { ChatService } from 'src/app/services/chat/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(public accounService: AccountService, public chatService: ChatService, public translate: TranslateService) { }
+  constructor(public accounService: AccountService, public chatService: ChatService) { }
 
   ngOnInit(): void {
   }

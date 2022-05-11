@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
@@ -31,29 +29,27 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   ];
 
   public animalTranslations = [
-    this.translate.instant('cat'),
-    this.translate.instant('dog'),
-    this.translate.instant('rabbit'),
+    $localize`:@@cat: Cat`,
+    $localize`:@@dog: Dog`,
+    $localize`:@@rabbit: Rabbit`,
   ];
 
   public sizeTranslations = [
-    this.translate.instant('extraSmall'),
-    this.translate.instant('small'),
-    this.translate.instant('medium'),
-    this.translate.instant('large'),
-    this.translate.instant('extraLarge'),
+    $localize`:@@extraSmall: Extra small`,
+    $localize`:@@small: Small`,
+    $localize`:@@medium: Medium`,
+    $localize`:@@large: Large`,
+    $localize`:@@extraLarge: Extra large`,
   ];
   
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
-    public translate: TranslateService,
     public adoptionAnnouncementDialog: MatDialog,
     public snackbarService: SnackbarService,
   ) {}
 
   ngOnInit(): void {
-    console.log(this.translate.instant('extraSmall'));
     this.getAdoptionAnnounces();
   }
 
@@ -77,6 +73,6 @@ export class AdoptionAnnouncesListComponent implements OnInit {
 
   public refreshPage(adoptionAnnouncement: AdoptionAnnouncementListModel){
     this.adoptionAnnouncements = this.adoptionAnnouncements.filter(x => x.id !== adoptionAnnouncement.id);
-    this.snackbarService.success(this.translate.instant('deletionSucceded'))
+    this.snackbarService.success($localize`:@@deletionSucceded: Successfull deletion!`);
   }
 }

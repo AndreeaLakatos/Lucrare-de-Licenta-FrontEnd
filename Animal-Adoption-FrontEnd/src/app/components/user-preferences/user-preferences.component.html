@@ -4,8 +4,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@editUserPreferences"
 >
-  {{ "editUserPreferences" | translate }}
+  Edit user preferences
 </h1>
 <h1
   *ngIf="!isEditing"
@@ -13,8 +14,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@userPreferences"
 >
-  {{ "userPreferences" | translate }}
+  User prefrences
 </h1>
 <form
   [formGroup]="userPreferencesForm"
@@ -24,7 +26,9 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "favoriteAnimal" | translate }}</mat-label>
+        <mat-label i18n="@@favoriteAnimal"
+          >What's your favorite animal?</mat-label
+        >
         <mat-select formControlName="animalType">
           <mat-option
             *ngFor="let animal of animals; let ind = index"
@@ -37,7 +41,9 @@
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "animalType" | translate }}</mat-label>
+        <mat-label i18n="@@animalType"
+          >What kind of animal do you prefer?</mat-label
+        >
         <mat-select formControlName="animalSize">
           <mat-option
             *ngFor="let size of sizes; let ind = index"
@@ -52,57 +58,71 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "forWho" | translate }}</mat-label>
+        <mat-label i18n="@@forWho"
+          >Who do you want to adopt an animal for?</mat-label
+        >
         <mat-select formControlName="hasFamily">
-          <mat-option [value]="false"> {{ "forMe" | translate }}</mat-option>
-          <mat-option [value]="true"> {{ "forFamily" | translate }}</mat-option>
+          <mat-option [value]="false" i18n="@@forMe"> For me</mat-option>
+          <mat-option [value]="true" i18n="@@forMe"> For family</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "haveChildren" | translate }}</mat-label>
+        <mat-label i18n="@@haveChildren">Do you have kids?</mat-label>
         <mat-select formControlName="haveChildren">
-          <mat-option [value]="true"> {{ "yes" | translate }}</mat-option>
-          <mat-option [value]="false"> {{ "no" | translate }}</mat-option>
+          <mat-option [value]="true" i18n="@@yes"> Yes</mat-option>
+          <mat-option [value]="false" i18n="@@no"> No</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
     <mat-form-field class="margins" appearance="outline">
-      <mat-label>{{ "whereLeave" | translate }}</mat-label>
+      <mat-label i18n="@@whereLeave">Where do you leave?</mat-label>
       <mat-select formControlName="livingPlace">
-        <mat-option [value]="'house'"> {{ "house" | translate }}</mat-option>
-        <mat-option [value]="'apartment'">
-          {{ "apartment" | translate }}</mat-option
+        <mat-option [value]="'house'" i18n="@@house"> House</mat-option>
+        <mat-option [value]="'apartment'" i18n="@@apartment">
+          Apartment</mat-option
         >
       </mat-select>
     </mat-form-field>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <button *ngIf="isEditing" mat-raised-button (click)="cancel()">
-      {{ "cancel" | translate }}
+    <button
+      *ngIf="isEditing"
+      mat-raised-button
+      (click)="cancel()"
+      i18n="@@cancel"
+    >
+      Cancel
     </button>
-    <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
-      {{ "close" | translate }}
+    <button
+      *ngIf="!isEditing"
+      mat-raised-button
+      mat-dialog-close
+      i18n="@@close"
+    >
+      Close
     </button>
     <button
       *ngIf="!isEditing"
       class="margins"
       mat-raised-button
       (click)="edit()"
+      i18n="@@edit"
     >
-      {{ "edit" | translate }}
+      Edit
     </button>
     <button
       *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"
+      i18n="@@save"
     >
-      {{ "save" | translate }}
+      Save
     </button>
   </div>
 </form>

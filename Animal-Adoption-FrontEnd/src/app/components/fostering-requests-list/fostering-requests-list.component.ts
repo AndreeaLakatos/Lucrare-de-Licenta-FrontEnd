@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { FosteringRequestListModel } from './models/fostering-request-list-model.model';
@@ -13,7 +12,7 @@ import { FosteringRequestListModel } from './models/fostering-request-list-model
 export class FosteringRequestsListComponent implements OnInit {
 
   @Input() fosteringRequests: FosteringRequestListModel[] = [];
-  constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public accountService: AccountService,  public ngoService: NgoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getFosteringAnnouncementRequests();

@@ -1,12 +1,9 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-import { FosteringAnnouncementListModel } from '../models/fostering-announcement-list.model';
-import { FosteringAnnouncementModel } from '../models/fostering-announcement.model';
 import { AddFosteringRequestModel } from './models/add-fostering-request.model';
 
 @Component({
@@ -21,7 +18,6 @@ export class AddFosteringRequestComponent implements OnInit {
   constructor(
     public accounService: AccountService,
     public ngoService: NgoService,
-    public translate: TranslateService,
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddFosteringRequestComponent>,
     private snackbarService: SnackbarService,
@@ -82,7 +78,7 @@ export class AddFosteringRequestComponent implements OnInit {
       ''
     );
     this.ngoService.addFosteringRequest(addFosteringRequest).subscribe((_) => {
-      this.snackbarService.success(this.translate.instant('successfulSent'));
+      this.snackbarService.success($localize`:@@successfullSent: Request successfully sent!`);
       this.fosteringRequestForm.disable();
       this.isEditing = false;
     });

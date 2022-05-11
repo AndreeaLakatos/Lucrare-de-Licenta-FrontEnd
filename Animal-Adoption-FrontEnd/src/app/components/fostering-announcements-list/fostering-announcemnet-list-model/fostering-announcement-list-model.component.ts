@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AddFosteringRequestComponent } from '../add-fostering-request/add-fostering-request.component';
@@ -24,7 +23,6 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
-    public translate: TranslateService,
     public config: NgbCarouselConfig,
     public addressCoordinatessDialog: MatDialog,
     public fosteringRequestDialog: MatDialog,
@@ -60,6 +58,6 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   }
 
   public get isActive(): string {
-    return !this.fosteringAnnouncementModel.status ? this.translate.instant("active") : this.translate.instant("inactive");
+    return !this.fosteringAnnouncementModel.status ? $localize`:@@active: Active` : $localize`:@@inactive: Inactive`;
   }
 }

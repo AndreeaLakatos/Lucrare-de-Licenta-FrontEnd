@@ -4,8 +4,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@editFosteringRequest"
 >
-  {{ "editFosteringRequest" | translate }}
+  Edit fostering request
 </h1>
 <h1
   *ngIf="!isEditing"
@@ -13,8 +14,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@fosteringRequest"
 >
-  {{ "fosteringRequest" | translate }}
+Fostering request
 </h1>
 
 <form
@@ -24,19 +26,19 @@
 >
   <div fxLayout="row" fxLayoutAlign="center center">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "why" | translate }}</mat-label>
+        <mat-label i18n="@@why">Why do you want this adoption?</mat-label>
         <input type="text" matInput formControlName="reason" required />
-        <mat-error
+        <mat-error i18n="@@whyRequired"
           *ngIf="
           fosteringRequestForm.controls['reason'].hasError('required')
           "
-          >{{ "whyRequired" | translate }}</mat-error
+          >The reason is required</mat-error
         >
       </mat-form-field>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="date" appearance="outline">
-      <mat-label>{{ "availableDate" | translate }}</mat-label>
+      <mat-label i18n="@@availableDate">When are you available for a phone call?</mat-label>
       <input
         matInput
         [matDatepicker]="picker"
@@ -48,18 +50,18 @@
         [for]="picker"
       ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error
+      <mat-error i18n="@@availableDateRequired"
         *ngIf="
         fosteringRequestForm.controls['availableDate'].hasError('required')
         "
-        >{{ "availableDateRequired" | translate }}</mat-error
+        >The date of availability is required</mat-error
       >
     </mat-form-field>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="margins" appearance="outline">
-      <mat-label>{{ "somethingElse" | translate }}</mat-label>
+      <mat-label i18n="@@somethingElse">Do you want to tell us something else about yourself?</mat-label>
       <textarea matInput formControlName="somethingElse" required></textarea>
     </mat-form-field>
   </div>
@@ -69,32 +71,36 @@
       mat-raised-button
       (click)="cancel()"
       cdkFocusInitial
+      i18n="@@cancel"
     >
-      {{ "cancel" | translate }}
+      Cancel
     </button>
     <button
       *ngIf="!isEditing"
       mat-raised-button
       mat-dialog-close
       cdkFocusInitial
+      i18n="@@close"
     >
-      {{ "close" | translate }}
+      Close
     </button>
     <button
       *ngIf="!isEditing"
       class="margins"
       mat-raised-button
       (click)="edit()"
+      i18n="@@edit"
     >
-      {{ "edit" | translate }}
+      Edit
     </button>
     <button
       *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"
+      i18n="@@save"
     >
-      {{ "save" | translate }}
+      Save
     </button>
   </div>
 </form>

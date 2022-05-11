@@ -3,7 +3,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DomSanitizer } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from './services/account/account.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { AccountService } from './services/account/account.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = this.translate.instant('animalAdoption');
+  title = $localize`:@@animalAdoption: Animal Adoption`;
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   constructor(
@@ -20,7 +19,6 @@ export class AppComponent {
     private domSanitzer: DomSanitizer,
     public accountService: AccountService,
     private observer: BreakpointObserver,
-    public translate: TranslateService
   ){
     this.matIconRegistry.addSvgIcon(
       'animal',

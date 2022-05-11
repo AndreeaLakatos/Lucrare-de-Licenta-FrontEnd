@@ -4,7 +4,6 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
@@ -22,7 +21,6 @@ export class AddAdoptionRequestComponent implements OnInit {
   constructor(
     public accounService: AccountService,
     public ngoService: NgoService,
-    public translate: TranslateService,
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddAdoptionRequestComponent>,
     private snackbarService: SnackbarService,
@@ -74,7 +72,7 @@ export class AddAdoptionRequestComponent implements OnInit {
     this.adoptionRequestForm.get('somethingElse')!.value, '');
     this.ngoService.addAdoptionRequest(addAdoptionRequest).subscribe(
       (_) => {
-        this.snackbarService.success(this.translate.instant("successfulSent"));
+        this.snackbarService.success($localize`:@@successfullSent: Request successfully sent!`);
         this.adoptionRequestForm.disable();
         this.isEditing = false;
       }

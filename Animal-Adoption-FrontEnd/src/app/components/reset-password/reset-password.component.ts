@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
@@ -24,7 +23,6 @@ export class ResetPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
     private route: ActivatedRoute,
-    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +42,7 @@ export class ResetPasswordComponent implements OnInit {
   public changePassword(): void {
     this.accountService.resetPassword(this.changePasswordForm.value).subscribe(
       (_) => {
-        const message = this.translate.instant('passwordSuccessfullyChanged');
+        const message = $localize`:@@passwordSuccessfullyChanged: Password successfully changed!`;
         this.snackbarService.success(message);
         this.successfullyChanged = true;
         this.unsuccessfullyChanged = false;

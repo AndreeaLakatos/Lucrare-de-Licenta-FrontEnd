@@ -4,7 +4,7 @@
   </button>
   <div fxLayout="row">
     <img class="logo-image" src="assets/images/logo.png" />
-    <span color="black">{{'animalAdoption' | translate }}</span>
+    <span color="black" i18n="@@animalAdoption">Animal Adoption</span>
   </div>
 
   <span class="spacer"></span>
@@ -39,7 +39,7 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="getAccountDetails()">
           <mat-icon>account_box</mat-icon>
-          <span>{{ "accountDetails" | translate }}</span>
+          <span i18n="@@accountDetails">Account Details</span>
         </button>
         <button
           *ngIf="accountService.isBasicUser"
@@ -47,7 +47,7 @@
           (click)="getUserPreferences()"
         >
           <mat-icon>favorite</mat-icon>
-          <span>{{ "userPreferences" | translate }}</span>
+          <span i18n="@@userPreferences">User preferences</span>
         </button>
         <button
           *ngIf="accountService.isNgo"
@@ -55,11 +55,11 @@
           (click)="getNgoDetails()"
         >
           <mat-icon>group_work</mat-icon>
-          <span>{{ "ngoDetails" | translate }}</span>
+          <span i18n="@@ngoDetails">Edit NGO details</span>
         </button>
         <button mat-menu-item type="submit" (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
-          <span>{{ "logout" | translate }}</span>
+          <span i18n="@@logout">Logout</span>
         </button>
       </mat-menu>
     </div>

@@ -2,7 +2,6 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AdoptionRequestListModel } from '../../adoption-requests-list/models/adoption-request-list-model.model';
@@ -26,7 +25,6 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
-    public translate: TranslateService,
     public config: NgbCarouselConfig,
     public adoptionRequestDialog: MatDialog,
     private router: Router,
@@ -60,6 +58,6 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   }
 
   public get isActive(): string {
-    return !this.adoptionAnnouncementModel.status ? this.translate.instant("active") : this.translate.instant("inactive");
+    return !this.adoptionAnnouncementModel.status ? $localize`:@@active: Active` : $localize`:@@inactive: Inactive`;
   }
 }

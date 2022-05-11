@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -20,7 +19,6 @@ export class UserDetailsComponent implements OnInit {
   public isEditing: boolean = false;
 
   constructor(
-    public translate: TranslateService,
     private formBuilder: FormBuilder,
     public accountService: AccountService,
     private utilsService: UtilsService,

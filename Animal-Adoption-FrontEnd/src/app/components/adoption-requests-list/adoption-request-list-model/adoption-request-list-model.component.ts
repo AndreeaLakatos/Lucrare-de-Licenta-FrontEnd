@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AdoptionRequestListModel } from '../models/adoption-request-list-model.model';
@@ -13,14 +12,14 @@ export class AdoptionRequestListModelComponent implements OnInit {
 
   @Input() adoptionRequestListModel!: AdoptionRequestListModel;
   @Output() update = new EventEmitter<AdoptionRequestListModel>();
-  constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService) { }
+  constructor(public accountService: AccountService, public ngoService: NgoService) { }
 
   ngOnInit(): void {
   }
 
   public get isEvaluated(): string {
-    if (!this.adoptionRequestListModel.reviewed) return this.translate.instant("notrated");
-    return this.adoptionRequestListModel.status ? this.translate.instant("accepted") : this.translate.instant("rejected");
+    if (!this.adoptionRequestListModel.reviewed) return $localize`:@@notrated: Unrated`;
+    return this.adoptionRequestListModel.status ? $localize`:@@accepted: Accepted` : $localize`:@@rejected: Rejected`;
   }
 
   public acceptRequest() {
@@ -36,9 +35,9 @@ export class AdoptionRequestListModelComponent implements OnInit {
     this.ngoService.updateAdoptionRequest(this.adoptionRequestListModel).subscribe((_) => this.update.emit());;
   }
 
-  public get getTooltip(): string {
-    if (this.adoptionRequestListModel.reviewed && this.adoptionRequestListModel.status) return this.translate.instant("alreadyAcceptedThis");
-    if (this.adoptionRequestListModel.reviewed && !this.adoptionRequestListModel.status) return this.translate.instant("alreadyAccepted");
+  public get getTooltip(): string { 
+    if (this.adoptionRequestListModel.reviewed && this.adoptionRequestListModel.status) return $localize`:@@alreadyAcceptedThis: This request is already accepted`;
+    if (this.adoptionRequestListModel.reviewed && !this.adoptionRequestListModel.status) return $localize`:@@alreadyAccepted: There is already a request accepted for this announcement`;
     return "";
   }
 }

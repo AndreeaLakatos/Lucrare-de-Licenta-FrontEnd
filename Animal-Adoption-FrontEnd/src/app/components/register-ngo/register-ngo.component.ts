@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { RegisterNgo } from 'src/app/models/authentication/register-ngo';
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -28,7 +26,6 @@ export class RegisterNgoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
     private snackbarService: SnackbarService,
-    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +56,7 @@ export class RegisterNgoComponent implements OnInit {
   public register(): void {
     this.accountService.registerNgo(this.registerForm.value).subscribe(
       () => {
-        const message = this.translate.instant('successfullyRegister');
+        const message = $localize`:@@successfullyRegister: Registration succeded!`;
         this.snackbarService.success(message);
         this.successfullyRegister = true;
       },

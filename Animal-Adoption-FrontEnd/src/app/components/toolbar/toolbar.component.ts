@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoDetailsModel } from '../ngo-details/models/ngo-details.model';
 import { NgoDetailsComponent } from '../ngo-details/ngo-details.component';
@@ -43,7 +42,6 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private router: Router,
     public accountService: AccountService,
-    public translate: TranslateService,
     public userPreferencesDialog: MatDialog,
     public accountDetailsDialog: MatDialog,
     public ngoDetailsDialog: MatDialog

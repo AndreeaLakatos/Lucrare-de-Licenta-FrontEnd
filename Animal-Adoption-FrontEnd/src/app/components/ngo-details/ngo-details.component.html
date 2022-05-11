@@ -4,8 +4,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@editNgoDetails"
 >
-  {{ "editNgoDetails" | translate }}
+Edit NGO details
 </h1>
 <h1
   *ngIf="!isEditing"
@@ -13,8 +14,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@ngoDetails"
 >
-  {{ "ngoDetails" | translate }}
+NGO details
 </h1>
 <form
   [formGroup]="ngoDetailsForm"
@@ -24,21 +26,21 @@
   <div fxLayout="row">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "ngoName" | translate }}</mat-label>
+        <mat-label i18n="@@ngoName">Ngo name</mat-label>
         <input type="text" matInput formControlName="ngoName" reguired />
-        <mat-error
+        <mat-error i18n="@@ngoNameRequired"
           *ngIf="ngoDetailsForm.controls['ngoName'].hasError('required')"
-          >{{ "ngoNameRequired" | translate }}</mat-error
+          >Ngo name is required</mat-error
         >
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "code" | translate }}</mat-label>
+        <mat-label i18n="@@code">Code</mat-label>
         <input type="text" matInput formControlName="code" required />
-        <mat-error
+        <mat-error i18n="@@codeRequired"
           *ngIf="ngoDetailsForm.controls['code'].hasError('required')"
-          >{{ "code" | translate }}</mat-error
+          >Code is required</mat-error
         >
       </mat-form-field>
     </div>
@@ -47,7 +49,7 @@
   <div fxLayout="row">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "county" | translate }}</mat-label>
+        <mat-label i18n="@@county">County</mat-label>
         <mat-select
           formControlName="ngoCounty"
           (selectionChange)="getCities(ngoDetailsForm.get('ngoCounty')!.value)"
@@ -57,60 +59,62 @@
             {{ county.name }}
           </mat-option>
         </mat-select>
-        <mat-error
+        <mat-error i18n="@@countyRequired"
           *ngIf="ngoDetailsForm.controls['ngoCounty'].hasError('required')"
-          >{{ "countyRequired" | translate }}</mat-error
+          >County is required</mat-error
         >
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "city" | translate }}</mat-label>
+        <mat-label i18n="@@city">City</mat-label>
         <mat-select formControlName="ngoCity" required>
           <mat-option *ngFor="let city of cities" [value]="city">
             {{ city.name }}
           </mat-option>
         </mat-select>
-        <mat-error
+        <mat-error i18n="@@cityRequired"
           *ngIf="ngoDetailsForm.controls['ngoCity'].hasError('required')"
-          >{{ "cityRequired" | translate }}</mat-error
+          >City is required</mat-error
         >
       </mat-form-field>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
     <mat-form-field class="street" appearance="outline">
-      <mat-label>{{ "street" | translate }}</mat-label>
+      <mat-label i18n="@@street">Street</mat-label>
       <input type="text" matInput formControlName="ngoStreet" required />
-      <mat-error
+      <mat-error i18n="@@streetRequired"
         *ngIf="ngoDetailsForm.controls['ngoStreet'].hasError('required')"
-        >{{ "streetRequired" | translate }}</mat-error
+        >Street is required</mat-error
       >
     </mat-form-field>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <button *ngIf="isEditing" mat-raised-button (click)="cancel()">
-      {{ "cancel" | translate }}
+    <button i18n="@@cancel" *ngIf="isEditing" mat-raised-button (click)="cancel()">
+      Cancel
     </button>
-    <button *ngIf="!isEditing" mat-raised-button mat-dialog-close>
-      {{ "close" | translate }}
+    <button i18n="@@close" *ngIf="!isEditing" mat-raised-button mat-dialog-close>
+      Close
     </button>
     <button
       *ngIf="!isEditing"
       class="margins"
       mat-raised-button
       (click)="edit()"
+      i18n="@@edit"
     >
-      {{ "edit" | translate }}
+      Edit
     </button>
     <button
       *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"
+      i18n="@@save"
     >
-      {{ "save" | translate }}
+      Save
     </button>
   </div>
 </form>

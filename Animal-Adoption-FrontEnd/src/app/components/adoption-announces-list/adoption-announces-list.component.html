@@ -7,20 +7,20 @@
             *ngFor="let size of sizes; let ind=index"
             [value]="size"
           >
-            {{ sizeTranslations[ind] | translate}}
+            {{sizeTranslations[ind]}}
           </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
   <div fxLayout="column" class="margin">
     <mat-form-field>
-      <mat-label>{{"filterByType" | translate}}</mat-label>
+      <mat-label i18n="@@filterByType">Filter by type</mat-label>
       <mat-select multiple>
         <mat-option
             *ngFor="let animal of animals; let ind=index"
             [value]="animal"
           >
-            {{ animalTranslations[ind] | translate }}
+            {{ animalTranslations[ind] }}
           </mat-option>
       </mat-select>
     </mat-form-field>

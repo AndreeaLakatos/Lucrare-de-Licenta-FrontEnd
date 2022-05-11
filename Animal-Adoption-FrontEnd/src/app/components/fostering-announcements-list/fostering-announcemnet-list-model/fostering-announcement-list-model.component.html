@@ -22,20 +22,18 @@
           <span
             >{{
               animalTranslations[fosteringAnnouncementModel.animalType]
-                | translate
             }}
           </span>
         </div>
       </div>
       <div fxLayout="row">
         <div fxLayput="column" class="margins" fxLayoutAlign="center center">
-          <span class="bold">{{ "size" | translate }}:</span>
+          <span class="bold" i18n="@@size">Size:</span>
         </div>
         <div fxLayput="column" fxLayoutAlign="center center">
           <span
             >{{
               sizeTranslations[fosteringAnnouncementModel.animalSize]
-                | translate
             }}
           </span>
         </div>
@@ -43,7 +41,7 @@
     </div>
     <div fxLayout="row">
       <div fxLayput="column" class="margins" fxLayoutAlign="center center">
-        <span class="bold">{{ "address" | translate }}:</span>
+        <span class="bold" i18n="@@address">Address:</span>
       </div>
       <div fxLayput="column" fxLayoutAlign="center center">
         <span
@@ -55,7 +53,7 @@
     </div>
     <div fxLayout="row">
       <div fxLayput="column" class="margins" fxLayoutAlign="center center">
-        <span class="bold">{{ "moreDetails" | translate }}:</span>
+        <span class="bold" i18n="@@moreDetails">More details:</span>
       </div>
       <div fxLayput="column" fxLayoutAlign="center center">
         <span>{{ fosteringAnnouncementModel.moreDetails }} </span>
@@ -86,12 +84,12 @@
   <mat-card-actions>
     <div fxLayout="row" fxLayoutAlign="center center">
       <div fxLayout="column"  *ngIf="accountService.isBasicUser">
-        <button (click)="addFosteringRequest()" mat-raised-button type="submit">
-          {{ "addFosteringRequest" | translate }}
+        <button i18n="@@addFosteringRequest" (click)="addFosteringRequest()" mat-raised-button type="submit">
+          Add fostering request
         </button>
       </div>
       <div fxLayout="column" *ngIf="accountService.isBasicUser">
-        <button mat-icon-button matTooltip="{{ 'sendMessage' | translate }}">
+        <button i18n-matTooltip="@@sendMessage" mat-icon-button matTooltip="Send message">
           <mat-icon>chat_bubble</mat-icon>
         </button>
       </div>

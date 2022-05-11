@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { FosteringRequestListModel } from '../models/fostering-request-list-model.model';
@@ -13,14 +12,14 @@ export class FosteringRequestListModelComponent implements OnInit {
 
   @Input() fosteringRequestListModel!: FosteringRequestListModel;
   @Output() update = new EventEmitter<FosteringRequestListModel>();
-  constructor(public accountService: AccountService, public translate: TranslateService, public ngoService: NgoService) { }
+  constructor(public accountService: AccountService,  public ngoService: NgoService) { }
 
   ngOnInit(): void {
   }
 
   public get isEvaluated(): string {
-    if (!this.fosteringRequestListModel.reviewed) return this.translate.instant("notrated");
-    return this.fosteringRequestListModel.status ? this.translate.instant("accepted") : this.translate.instant("rejected");
+    if (!this.fosteringRequestListModel.reviewed) return $localize`:@@notrated: Unrated`;
+    return this.fosteringRequestListModel.status ? $localize`:@@accepted: Accepted` : $localize`:@@rejected: Rejected`;
   }
 
   public acceptRequest() {
@@ -37,8 +36,8 @@ export class FosteringRequestListModelComponent implements OnInit {
   }
 
   public get getTooltip(): string {
-    if (this.fosteringRequestListModel.reviewed && this.fosteringRequestListModel.status) return this.translate.instant("alreadyAcceptedThis");
-    if (this.fosteringRequestListModel.reviewed && !this.fosteringRequestListModel.status) return this.translate.instant("alreadyAccepted");
+    if (this.fosteringRequestListModel.reviewed && this.fosteringRequestListModel.status) return $localize`:@@alreadyAcceptedThis: This request is already accepted`;
+    if (this.fosteringRequestListModel.reviewed && !this.fosteringRequestListModel.status) return $localize`:@@alreadyAccepted: There is already a request accepted for this announcement`;
     return "";
   }
 }

@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from 'src/app/services/account/account.service';
 import { AnimalSize } from './models/animal-size.enum';
 import { AnimalType } from './models/animal-type.enum';
@@ -25,22 +24,21 @@ export class UserPreferencesComponent implements OnInit {
   public isEditing: boolean = false;
 
   public animalTranslations = [
-    this.translate.instant('cat'),
-    this.translate.instant('dog'),
-    this.translate.instant('rabbit'),
+    $localize`:@@cat: Cat`,
+    $localize`:@@dog: Dog`,
+    $localize`:@@rabbit: Rabbit`,
   ];
 
   public sizeTranslations = [
-    this.translate.instant('extraSmall'),
-    this.translate.instant('small'),
-    this.translate.instant('medium'),
-    this.translate.instant('large'),
-    this.translate.instant('extraLarge'),
+    $localize`:@@extraSmall: Extra small`,
+    $localize`:@@small: Small`,
+    $localize`:@@medium: Medium`,
+    $localize`:@@large: Large`,
+    $localize`:@@extraLarge: Extra large`,
   ];
 
   public userPreferencesForm!: FormGroup;
   constructor(
-    public translate: TranslateService,
     private formBuilder: FormBuilder,
     public accountService: AccountService,
     public dialogRef: MatDialogRef<UserPreferencesComponent>,

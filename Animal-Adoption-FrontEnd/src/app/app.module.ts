@@ -21,8 +21,6 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { RegisterNgoComponent } from './components/register-ngo/register-ngo.component';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AdoptionAnnouncesListComponent } from './components/adoption-announces-list/adoption-announces-list.component';
 import { UserPreferencesComponent } from './components/user-preferences/user-preferences.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
@@ -94,13 +92,6 @@ import { UserFosteringRequestListComponent } from './components/user-fostering-r
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
     NgbModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBCWr8jDROJSgAatHP5gw6s4iSlfUjk4yU'
@@ -118,6 +109,3 @@ import { UserFosteringRequestListComponent } from './components/user-fostering-r
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export function httpTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}

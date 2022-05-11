@@ -1,7 +1,7 @@
 <div class="margins">
   <div class="align-center" fxLayout="row" fxLayputAlign="center center">
     <div class="gray font-weight-500">
-      <h1>{{ "welcome" | translate }},</h1>
+      <h1 i18n="@@welcome">Welcome,</h1>
     </div>
   </div>
 </div>
@@ -10,8 +10,8 @@
 </div>
 <div class="align-center" fxLayout="row" fxLayputAlign="center center">
   <div class="gray font-weight-500">
-    <h1>
-      {{ "gladtoSeeYouBack" | translate }}
+    <h1 i18n="@@gladtoSeeYouBack">
+      We're glad to see you're back!
     </h1>
   </div>
 </div>
@@ -19,24 +19,24 @@
     <img src="assets/images/main-page.jpg" />
 </div>
 <div fxLayout="row" fxLayoutAlign="center center">
-    <h2> {{'usefulLinks' | translate }}:</h2>
+    <h2 i18n="@@usefulLinks"> Useful links:</h2>
 </div>
 <div class="mt-10" fxLayout="row" fxLayoutAlign="center center">
     <button mat-raised-button>
         <mat-icon>add_circle_outline</mat-icon>
-        <span>{{'addAdoptionAnnounce' | translate }}</span>
+        <span i18n="@@addAdoptionAnnounce">Add adoption announcement</span>
     </button>
     <button class="ml-10" mat-raised-button>
         <mat-icon>add_circle</mat-icon>
-        <span>{{'addFosteringAnnounce' | translate }}</span>
+        <span i18n="@@addFosteringAnnounce">Add fostering announcement</span>
     </button>
     <button class="ml-10" mat-raised-button>
         <mat-icon>format_list_bulleted</mat-icon>
-        <span>{{'myAdoptionAnnounces' | translate }}</span>
+        <span i18n="@@myAdoptionAnnounces">My adoption announcements</span>
     </button>
     <button class="ml-10" mat-raised-button>
         <mat-icon>format_list_numbered</mat-icon>
-        <span>{{'myFosteringAnnounces' | translate }}</span>
+        <span i18n="@@myFosteringAnnounces">My fostering announcements</span>
     </button>
 </div>
 

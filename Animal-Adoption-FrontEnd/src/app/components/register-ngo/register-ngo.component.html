@@ -6,11 +6,11 @@
       </div>
       <div fxLayout="column">
         <mat-card-content>
-          <mat-card-title>{{ "register" | translate }}</mat-card-title>
-          <mat-card-subtitle>{{
-            "completeForm" | translate
-          }}</mat-card-subtitle>
-          <h3>{{ "representantDetails" | translate }}</h3>
+          <mat-card-title i18n="@@register">Register</mat-card-title>
+          <mat-card-subtitle i18n="@@completeForm"
+            >Fill the below form to create a new account.</mat-card-subtitle
+          >
+          <h3 i18n="@@representantDetails">Representant details</h3>
           <form
             [formGroup]="registerForm"
             (ngSubmit)="registerForm.valid && register()"
@@ -19,7 +19,7 @@
             <div fxLayout="row">
               <div fxLayout="column">
                 <mat-form-field appearance="outline">
-                  <mat-label>{{ "firstName" | translate }}</mat-label>
+                  <mat-label i18n="@@firstName">First Name</mat-label>
                   <input
                     type="text"
                     matInput
@@ -30,13 +30,14 @@
                     *ngIf="
                       registerForm.controls['firstName'].hasError('required')
                     "
-                    >{{ "firstNameRequired" | translate }}</mat-error
+                    i18n="@@firstNameRequired"
+                    >First Name is required</mat-error
                   >
                 </mat-form-field>
               </div>
               <div fxLayout="column">
                 <mat-form-field class="margins" appearance="outline">
-                  <mat-label>{{ "lastName" | translate }}</mat-label>
+                  <mat-label i18n="@@lastName">Last Name</mat-label>
                   <input
                     type="text"
                     matInput
@@ -47,7 +48,8 @@
                     *ngIf="
                       registerForm.controls['lastName'].hasError('required')
                     "
-                    >{{ "lastNameRequired" | translate }}</mat-error
+                    i18n="@@lastNameRequired"
+                    >Last Name is required</mat-error
                   >
                 </mat-form-field>
               </div>
@@ -56,7 +58,7 @@
             <div fxLayout="row">
               <div fxLayout="column">
                 <mat-form-field appearance="outline">
-                  <mat-label>{{ "email" | translate }}</mat-label>
+                  <mat-label i18n="@@email">Email</mat-label>
                   <input
                     type="email"
                     matInput
@@ -65,17 +67,19 @@
                   />
                   <mat-error
                     *ngIf="registerForm.controls['email'].hasError('required')"
-                    >{{ "emailRequired" | translate }}</mat-error
+                    i18n="@@emailRequired"
+                    >Email is required</mat-error
                   >
                   <mat-error
                     *ngIf="registerForm.controls['email'].hasError('email')"
-                    >{{ "emailError" | translate }}</mat-error
+                    i18n="@@emailError"
+                    >This is not a valid email</mat-error
                   >
                 </mat-form-field>
               </div>
               <div fxLayout="column">
                 <mat-form-field class="margins" appearance="outline">
-                  <mat-label>{{ "phoneNumber" | translate }}</mat-label>
+                  <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
                   <input
                     type="text"
                     matInput
@@ -86,7 +90,8 @@
                     *ngIf="
                       registerForm.controls['phoneNumber'].hasError('required')
                     "
-                    >{{ "phoneNumberRequired" | translate }}</mat-error
+                    i18n="@@phoneNumberRequired"
+                    >Phone number is required</mat-error
                   >
                 </mat-form-field>
               </div>
@@ -95,7 +100,7 @@
             <div fxLayout="row">
               <div fxLayout="column">
                 <mat-form-field appearance="outline">
-                  <mat-label>{{ "county" | translate }}</mat-label>
+                  <mat-label i18n="@@county">County</mat-label>
                   <mat-select
                     formControlName="county"
                     name="county"
@@ -111,13 +116,14 @@
                   </mat-select>
                   <mat-error
                     *ngIf="registerForm.controls['county'].hasError('required')"
-                    >{{ "countyRequired" | translate }}</mat-error
+                    i18n="@@countyRequired"
+                    >County is required</mat-error
                   >
                 </mat-form-field>
               </div>
               <div fxLayout="column">
                 <mat-form-field class="margins" appearance="outline">
-                  <mat-label>{{ "city" | translate }}</mat-label>
+                  <mat-label i18n="@@city">City</mat-label>
                   <mat-select formControlName="city" name="city" required>
                     <mat-option *ngFor="let city of cities" [value]="city">
                       {{ city.name }}
@@ -125,7 +131,8 @@
                   </mat-select>
                   <mat-error
                     *ngIf="registerForm.controls['city'].hasError('required')"
-                    >{{ "cityRequired" | translate }}</mat-error
+                    i18n="@@cityRequired"
+                    >City is required</mat-error
                   >
                 </mat-form-field>
               </div>
@@ -133,11 +140,12 @@
 
             <div fxLayout="row">
               <mat-form-field class="street" appearance="outline">
-                <mat-label>{{ "street" | translate }}</mat-label>
+                <mat-label i18n="@@street">Street</mat-label>
                 <input type="text" matInput formControlName="street" required />
                 <mat-error
                   *ngIf="registerForm.controls['street'].hasError('required')"
-                  >{{ "streetRequired" | translate }}</mat-error
+                  i18n="@@streetRequired"
+                  >Street is required</mat-error
                 >
               </mat-form-field>
             </div>
@@ -145,20 +153,21 @@
             <div fxLayout="row">
               <div fxLayout="column">
                 <mat-form-field appearance="outline">
-                  <mat-label>{{ "username" | translate }}</mat-label>
+                  <mat-label i18n="@@username">Username</mat-label>
                   <input type="text" matInput formControlName="username" />
                   <mat-error
                     *ngIf="
                       registerForm.controls['username'].hasError('required')
                     "
-                    >{{ "usernameRequired" | translate }}</mat-error
+                    i18n="@@usernameRequired"
+                    >Username is required</mat-error
                   >
                 </mat-form-field>
               </div>
 
               <div fxLayout="column">
                 <mat-form-field class="password" appearance="outline">
-                  <mat-label>{{ "password" | translate }}</mat-label>
+                  <mat-label i18n="@@password">Password</mat-label>
                   <input
                     [type]="hide ? 'password' : 'text'"
                     matInput
@@ -171,23 +180,23 @@
                     *ngIf="
                       registerForm.controls['password'].hasError('required')
                     "
-                    >{{ "passwordRequired" | translate }}</mat-error
+                    i18n="@@passwordRequired"
+                    >Password is required</mat-error
                   >
                   <mat-error
-                    *ngIf="
-                      registerForm.controls['password'].hasError('minlength')
-                    "
-                    >{{ "passwordMinError" | translate }}</mat-error
+                    *ngIf="registerForm.controls['password'].hasError('minlength')"
+                    i18n="@@passwordMinError"
+                    >Password must have at least 10 characters</mat-error
                   >
                 </mat-form-field>
               </div>
             </div>
 
-            <h3 class="margins">{{ "ngoDetails" | translate }}</h3>
+            <h3 class="margins" i18n="@@ngoDetails">NGO details</h3>
             <div fxLayout="row">
               <div fxLayout="column">
                 <mat-form-field appearance="outline">
-                  <mat-label>{{ "ngoName" | translate }}</mat-label>
+                  <mat-label i18n="@@ngoName">Ngo Name</mat-label>
                   <input
                     type="text"
                     matInput
@@ -198,17 +207,19 @@
                     *ngIf="
                       registerForm.controls['ngoName'].hasError('required')
                     "
-                    >{{ "ngoNameRequired" | translate }}</mat-error
+                    i18n="@@ngoNameRequired"
+                    >Ngo Name is required</mat-error
                   >
                 </mat-form-field>
               </div>
               <div fxLayout="column">
                 <mat-form-field class="margins" appearance="outline">
-                  <mat-label>{{ "code" | translate }}</mat-label>
+                  <mat-label i18n="@@code">Code</mat-label>
                   <input type="text" matInput formControlName="code" required />
                   <mat-error
                     *ngIf="registerForm.controls['code'].hasError('required')"
-                    >{{ "codeRequired" | translate }}</mat-error
+                    i18n="@@codeRequired"
+                    >Code is required</mat-error
                   >
                 </mat-form-field>
               </div>
@@ -216,13 +227,8 @@
 
             <div fxLayout="row">
               <mat-form-field class="date" appearance="outline">
-                <mat-label>{{ "foundedDate" | translate }}</mat-label>
-                <input
-                  matInput
-                  [matDatepicker]="picker"
-                  formControlName="foundedDate"
-                  required
-                />
+                <mat-label i18n="@@foundedDate">Founded date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="foundedDate" required/>
                 <mat-datepicker-toggle
                   matSuffix
                   [for]="picker"
@@ -232,7 +238,8 @@
                   *ngIf="
                     registerForm.controls['foundedDate'].hasError('required')
                   "
-                  >{{ "foundedDateRequired" | translate }}</mat-error
+                  i18n="@@foundedDateRequired"
+                  >Founded date is required</mat-error
                 >
               </mat-form-field>
             </div>
@@ -240,7 +247,7 @@
             <div fxLayout="row">
               <div fxLayout="column">
                 <mat-form-field appearance="outline">
-                  <mat-label>{{ "county" | translate }}</mat-label>
+                  <mat-label i18n="@@county">County</mat-label>
                   <mat-select
                     formControlName="ngoCounty"
                     name="county"
@@ -255,26 +262,24 @@
                     </mat-option>
                   </mat-select>
                   <mat-error
-                    *ngIf="
-                      registerForm.controls['ngoCounty'].hasError('required')
-                    "
-                    >{{ "countyRequired" | translate }}</mat-error
+                    *ngIf="registerForm.controls['ngoCounty'].hasError('required')"
+                    i18n="@@countyRequired"
+                    >County is required</mat-error
                   >
                 </mat-form-field>
               </div>
               <div fxLayout="column">
                 <mat-form-field class="margins" appearance="outline">
-                  <mat-label>{{ "city" | translate }}</mat-label>
+                  <mat-label i18n="@@city">City</mat-label>
                   <mat-select formControlName="ngoCity" name="city" required>
                     <mat-option *ngFor="let city of citiesNgo" [value]="city">
                       {{ city.name }}
                     </mat-option>
                   </mat-select>
                   <mat-error
-                    *ngIf="
-                      registerForm.controls['ngoCity'].hasError('required')
-                    "
-                    >{{ "cityRequired" | translate }}</mat-error
+                    *ngIf="registerForm.controls['ngoCity'].hasError('required')"
+                    i18n="@@cityRequired"
+                    >City is required</mat-error
                   >
                 </mat-form-field>
               </div>
@@ -282,18 +287,12 @@
 
             <div fxLayout="row">
               <mat-form-field class="street" appearance="outline">
-                <mat-label>{{ "street" | translate }}</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="ngoStreet"
-                  required
-                />
+                <mat-label i18n="@@street">Street</mat-label>
+                <input type="text" matInput formControlName="ngoStreet" required />
                 <mat-error
-                  *ngIf="
-                    registerForm.controls['ngoStreet'].hasError('required')
-                  "
-                  >{{ "streetRequired" | translate }}</mat-error
+                  *ngIf="registerForm.controls['ngoStreet'].hasError('required')"
+                  i18n="@@streetRequired"
+                  >Street is required</mat-error
                 >
               </mat-form-field>
             </div>
@@ -307,8 +306,9 @@
                 mat-raised-button
                 (click)="backToLogin()"
                 type="submit"
+                i18n="@@backToLogin"
               >
-                {{ "backToLogin" | translate }}
+                Back to login
               </button>
             </div>
 
@@ -319,8 +319,9 @@
                 mat-raised-button
                 (click)="register()"
                 type="submit"
+                i18n="@@register"
               >
-                {{ "register" | translate }}
+                Register
               </button>
             </div>
           </div>

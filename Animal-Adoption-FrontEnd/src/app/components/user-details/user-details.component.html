@@ -4,8 +4,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@editUserDetails"
 >
-  {{ "editUserDetails" | translate }}
+Edit user details
 </h1>
 <h1
   *ngIf="!isEditing"
@@ -13,8 +14,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@userDetails"
 >
-  {{ "userDetails" | translate }}
+User details
 </h1>
 <form
   [formGroup]="userDetailsForm"
@@ -24,21 +26,21 @@
   <div fxLayout="row">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "firstName" | translate }}</mat-label>
+        <mat-label i18n="@@firstName">First Name</mat-label>
         <input type="text" matInput formControlName="firstName" reguired />
-        <mat-error
+        <mat-error i18n="@@firstNameRequired"
           *ngIf="userDetailsForm.controls['firstName'].hasError('required')"
-          >{{ "firstNameRequired" | translate }}</mat-error
+          >First Name is required</mat-error
         >
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "lastName" | translate }}</mat-label>
+        <mat-label i18n="@@lastName">Last Name</mat-label>
         <input type="text" matInput formControlName="lastName" required />
-        <mat-error
+        <mat-error i18n="@@lastNameRequired"
           *ngIf="userDetailsForm.controls['lastName'].hasError('required')"
-          >{{ "lastNameRequired" | translate }}</mat-error
+          >Last Name is required</mat-error
         >
       </mat-form-field>
     </div>
@@ -47,7 +49,7 @@
   <div fxLayout="row">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "email" | translate }}</mat-label>
+        <mat-label i18n="@@email">Email</mat-label>
         <input
           type="email"
           matInput
@@ -55,23 +57,23 @@
           required
           readonly
         />
-        <mat-error
+        <mat-error i18n="@@emailRequired"
           *ngIf="userDetailsForm.controls['email'].hasError('required')"
-          >{{ "emailRequired" | translate }}</mat-error
+          >Email is required</mat-error
         >
-        <mat-error
+        <mat-error i18n="@@emailError"
           *ngIf="userDetailsForm.controls['email'].hasError('email')"
-          >{{ "emailError" | translate }}</mat-error
+          >This is not a valid email</mat-error
         >
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "phoneNumber" | translate }}</mat-label>
+        <mat-label i18n="@@phoneNumber">Phone Number</mat-label>
         <input type="text" matInput formControlName="phoneNumber" required />
-        <mat-error
+        <mat-error i18n="@@phoneNumberRequired"
           *ngIf="userDetailsForm.controls['phoneNumber'].hasError('required')"
-          >{{ "phoneNumberRequired" | translate }}</mat-error
+          >Phone number is required</mat-error
         >
       </mat-form-field>
     </div>
@@ -80,7 +82,7 @@
   <div fxLayout="row">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "county" | translate }}</mat-label>
+        <mat-label i18n="@@county">County</mat-label>
         <mat-select
           formControlName="county"
           (selectionChange)="getCities(userDetailsForm.get('county')!.value)"
@@ -90,44 +92,44 @@
             {{ county.name }}
           </mat-option>
         </mat-select>
-        <mat-error
+        <mat-error i18n="@@countyRequired"
           *ngIf="userDetailsForm.controls['county'].hasError('required')"
-          >{{ "countyRequired" | translate }}</mat-error
+          >County is required</mat-error
         >
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "city" | translate }}</mat-label>
+        <mat-label i18n="@@city">City</mat-label>
         <mat-select formControlName="city" required>
           <mat-option *ngFor="let city of cities" [value]="city">
             {{ city.name }}
           </mat-option>
         </mat-select>
-        <mat-error
+        <mat-error i18n="@@cityRequired"
           *ngIf="userDetailsForm.controls['city'].hasError('required')"
-          >{{ "cityRequired" | translate }}</mat-error
+          >City is required</mat-error
         >
       </mat-form-field>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
     <mat-form-field class="street" appearance="outline">
-      <mat-label>{{ "street" | translate }}</mat-label>
+      <mat-label i18n="@@street">Street</mat-label>
       <input type="text" matInput formControlName="street" required />
-      <mat-error
+      <mat-error i18n="@@streetRequired"
         *ngIf="userDetailsForm.controls['street'].hasError('required')"
-        >{{ "streetRequired" | translate }}</mat-error
+        >Street is required</mat-error
       >
     </mat-form-field>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
     <mat-form-field appearance="outline">
-      <mat-label>{{ "username" | translate }}</mat-label>
+      <mat-label i18n="@@phoneNumber">Username</mat-label>
       <input type="text" matInput formControlName="userName" readonly />
-      <mat-error
+      <mat-error i18n="@@usernameRequired"
         *ngIf="userDetailsForm.controls['userName'].hasError('required')"
-        >{{ "usernameRequired" | translate }}</mat-error
+        >Username is required</mat-error
       >
     </mat-form-field>
   </div>
@@ -138,32 +140,36 @@
       mat-raised-button
       (click)="cancel()"
       cdkFocusInitial
+      i18n="@@cancel"
     >
-      {{ "cancel" | translate }}
+      Cancel
     </button>
     <button
       *ngIf="!isEditing"
       mat-raised-button
       mat-dialog-close
       cdkFocusInitial
+      i18n="@@close"
     >
-      {{ "close" | translate }}
+      Close
     </button>
     <button
       *ngIf="!isEditing"
       class="margins"
       mat-raised-button
       (click)="edit()"
+      i18n="@@edit"
     >
-      {{ "edit" | translate }}
+      Edit
     </button>
     <button
       *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"
+      i18n="@@save"
     >
-      {{ "save" | translate }}
+      Save
     </button>
   </div>
 </form>

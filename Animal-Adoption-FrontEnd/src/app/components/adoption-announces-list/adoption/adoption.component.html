@@ -4,8 +4,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@editAdoptionAnnouncement"
 >
-  {{ "editAdoptionAnnouncement" | translate }}
+  Edit adoption announcement
 </h1>
 <h1
   *ngIf="!isEditing"
@@ -13,8 +14,9 @@
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragHandle
+  i18n="@@adoptionAnnouncement"
 >
-  {{ "adoptionAnnouncement" | translate }}
+Adoption announcement
 </h1>
 
 <form
@@ -25,27 +27,27 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "title" | translate }}</mat-label>
+        <mat-label i18n="@@title">Title</mat-label>
         <input type="text" matInput formControlName="title" required />
-        <mat-error
+        <mat-error i18n="@@titleRequired"
           *ngIf="
             adoptionAnnouncementForm.controls['title'].hasError('required')
           "
-          >{{ "titleRequired" | translate }}</mat-error
+          >Title is required</mat-error
         >
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "description" | translate }}</mat-label>
+        <mat-label i18n="@@description">Description</mat-label>
         <textarea matInput formControlName="description" required></textarea>
-        <mat-error
+        <mat-error i18n="@@descriptionRequired"
           *ngIf="
             adoptionAnnouncementForm.controls['description'].hasError(
               'required'
             )
           "
-          >{{ "descriptionRequired" | translate }}</mat-error
+          >Description is required</mat-error
         >
       </mat-form-field>
     </div>
@@ -54,7 +56,7 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>{{ "favoriteAnimal" | translate }}</mat-label>
+        <mat-label i18n="@@type">Animal type</mat-label>
         <mat-select formControlName="animalType">
           <mat-option
             *ngFor="let animal of animals; let ind = index"
@@ -67,7 +69,7 @@
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label>{{ "animalType" | translate }}</mat-label>
+        <mat-label i18n="@@size">Size</mat-label>
         <mat-select formControlName="animalSize">
           <mat-option
             *ngFor="let size of sizes; let ind = index"
@@ -81,7 +83,7 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="margins" appearance="outline">
-      <mat-label>{{ "moreDetails" | translate }}</mat-label>
+      <mat-label i18n="@@moreDetails">More details</mat-label>
       <textarea matInput formControlName="moreDetails" required></textarea>
     </mat-form-field>
   </div>
@@ -104,32 +106,36 @@
       mat-raised-button
       (click)="cancel()"
       cdkFocusInitial
+      i18n="@@cancel"
     >
-      {{ "cancel" | translate }}
+      Cancel
     </button>
     <button
       *ngIf="!isEditing"
       mat-raised-button
       mat-dialog-close
       cdkFocusInitial
+      i18n="@@close"
     >
-      {{ "close" | translate }}
+      Close
     </button>
     <button
       *ngIf="!isEditing"
       class="margins"
       mat-raised-button
       (click)="edit()"
+      i18n="@@edit"
     >
-      {{ "edit" | translate }}
+      Edit
     </button>
     <button
       *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"
+      i18n="@@save"
     >
-      {{ "save" | translate }}
+      Save
     </button>
   </div>
 </form>

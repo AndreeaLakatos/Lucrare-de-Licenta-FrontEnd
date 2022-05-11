@@ -145,6 +145,7 @@
     "filterBySize": "Filtrare după mărime",
     "filterByType": "Filtrare după rasă",
     "filterByOpen": "Filtrare după status",
-    "filterByLocation": "Filtrare după locație"
+    "filterByLocation": "Filtrare după locație",
+    "whyRequired": "Motivul est obligatoriu"
   }
 }

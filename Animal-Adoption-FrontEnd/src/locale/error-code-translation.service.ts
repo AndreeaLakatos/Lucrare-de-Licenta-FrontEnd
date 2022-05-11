@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { ErrorCode } from 'src/app/models/enums/error-code';
 import { LocalizedError } from 'src/app/models/error/localized-error';
 import { Error } from '../app/models/error/error'
@@ -8,7 +7,7 @@ import { Error } from '../app/models/error/error'
   providedIn: 'root'
 })
 export class ErrorCodeTranslationService {
-  constructor(private translateService: TranslateService) { }
+  constructor() { }
 
   public translate(error: Error){
     const {errorCode, message} = { ...error };
@@ -16,7 +15,7 @@ export class ErrorCodeTranslationService {
     const localizedMessages: LocalizedError[] = [
       {
         errorCode: ErrorCode.UserAlreadyExist,
-        localizedMessage: this.translateService.instant('userAlreadyExist')
+        localizedMessage: $localize`:@@userAlreadyExist: The user with this username already exist!`
       }
     ];
 
@@ -24,7 +23,7 @@ export class ErrorCodeTranslationService {
     if(newMessage) {
       return newMessage.localizedMessage;
     } else {
-      return this.translateService.instant('undefinedError');
+      return $localize`:@@undefinedError: Something wrong happened!`;
     }
   }
 }
