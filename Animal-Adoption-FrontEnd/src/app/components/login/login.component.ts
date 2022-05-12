@@ -19,6 +19,11 @@ export class LoginComponent implements OnInit {
     this.hide = true;
   }
 
+  public get forgotPasswordLink(): string {
+    const lang = window.location.pathname.split('/')[1];
+    return `/${lang}/forgot-password`
+  }
+
   ngOnInit(): void {
     this.initForm();
   }
