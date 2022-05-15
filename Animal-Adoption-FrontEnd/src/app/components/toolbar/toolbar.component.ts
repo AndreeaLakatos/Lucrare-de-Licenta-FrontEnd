@@ -11,6 +11,7 @@ import { NgoDetailsModel } from '../ngo-details/models/ngo-details.model';
 import { NgoDetailsComponent } from '../ngo-details/ngo-details.component';
 import { UserDetailsModel } from '../user-details/models/user-details.model';
 import { UserDetailsComponent } from '../user-details/user-details.component';
+import { UserNotificationsComponent } from '../user-notifications/user-notifications.component';
 import { UserPreferencesModel } from '../user-preferences/models/user-preferences.model';
 import { UserPreferencesComponent } from '../user-preferences/user-preferences.component';
 
@@ -44,7 +45,8 @@ export class ToolbarComponent implements OnInit {
     public accountService: AccountService,
     public userPreferencesDialog: MatDialog,
     public accountDetailsDialog: MatDialog,
-    public ngoDetailsDialog: MatDialog
+    public ngoDetailsDialog: MatDialog,
+    public notificationsDialog: MatDialog
   ) {
     this.isOnline = false;
   }
@@ -138,5 +140,15 @@ export class ToolbarComponent implements OnInit {
       currentPath =  `${currentPath}/${url[i]}`;
     }
     return currentPath;
+  }
+
+  public openNotifications() {
+    this.notificationsDialog.open(UserNotificationsComponent, {
+      width: '500px',
+      position: {
+        top: '60px',
+        right: '10px'
+      }
+    });
   }
 }

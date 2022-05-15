@@ -46,6 +46,8 @@ import { UserFosteringRequestModelComponent } from './components/user-fostering-
 import { UserFosteringRequestListComponent } from './components/user-fostering-request-list/user-fostering-request-list.component';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { NgoStatisticsComponent } from './components/ngo-statistics/ngo-statistics.component';
+import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
+import { UserNotificationsDialogComponent } from './components/user-notifications/user-notifications-dialog/user-notifications-dialog.component';
 
 const dbConfig: DBConfig = {
   name: 'offlineDB',
@@ -155,6 +157,8 @@ const dbConfig: DBConfig = {
     UserFosteringRequestListComponent,
     UserFosteringRequestModelComponent,
     NgoStatisticsComponent,
+    UserNotificationsComponent,
+    UserNotificationsDialogComponent,
   ],
   imports: [
     BrowserModule,

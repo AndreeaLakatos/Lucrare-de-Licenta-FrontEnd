@@ -146,6 +146,7 @@
     "filterByOpen": "Filter by status",
     "filterByLocation": "Filter by location",
     "whyRequired": "The reason is required",
-    "type": "Animal type"
+    "type": "Animal type",
+    "statistics": "Statistics"
   }
 }

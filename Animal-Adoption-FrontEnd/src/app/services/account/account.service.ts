@@ -13,6 +13,7 @@ import { RegisterUser } from 'src/app/models/authentication/register-user';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
+import { Notification } from 'src/app/components/user-notifications/models/notification.model';
 
 @Injectable({
   providedIn: 'root',
@@ -114,6 +115,10 @@ export class AccountService {
 
   public saveNgoDetails(ngoDetails: NgoDetailsModel): Observable<NgoDetailsModel> {
     return this.httpClient.post<NgoDetailsModel>(`${this.apiUrl}ngo-details/${this.getUserUsername()}`, ngoDetails);
+  }
+
+  public getUserNotifications(): Observable<Notification[]> {
+    return this.httpClient.get<Notification[]>(`${this.apiUrl}notifications/${this.getUserUsername()}`);
   }
 
   private setCurrentUser(user: User): void {

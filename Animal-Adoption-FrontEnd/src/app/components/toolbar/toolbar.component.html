@@ -35,10 +35,7 @@
   </mat-menu>
   <div *ngIf="accountService.isUserLoggedIn()">
     <div class="div-user">
-      <button class="margins" mat-icon-button>
-        <mat-icon>email</mat-icon>
-      </button>
-      <button class="margins" mat-icon-button>
+      <button class="margins" mat-icon-button (click)="openNotifications()">
         <mat-icon>notifications</mat-icon>
       </button>
       <div class="username-margins">

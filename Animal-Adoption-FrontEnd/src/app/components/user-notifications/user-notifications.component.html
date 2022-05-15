@@ -1,0 +1,28 @@
+<h1
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  i18n="@@notifications"
+  class="mb-20"
+>
+  Notifications
+</h1>
+<mat-list *ngFor="let notification of notifications">
+    <div fxLayout="row">
+        <div fxLayout="column">
+            <mat-list-item>{{notification.text}}</mat-list-item>
+        </div>
+        <div fxLayout="column">
+            <div fxLayout="row">{{notification.date}}</div>
+            <div fxLayout="row">{{notification.hour}}</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</mat-list>
+
+<div fxLayout="row" class="mt-20">
+  <button mat-raised-button mat-dialog-close cdkFocusInitial i18n="@@close">
+    Close
+  </button>
+</div>

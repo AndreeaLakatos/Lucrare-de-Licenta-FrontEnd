@@ -146,6 +146,7 @@
     "filterByType": "Filtrare după rasă",
     "filterByOpen": "Filtrare după status",
     "filterByLocation": "Filtrare după locație",
-    "whyRequired": "Motivul est obligatoriu"
+    "whyRequired": "Motivul est obligatoriu",
+    "statistics": "Statistici"
   }
 }
