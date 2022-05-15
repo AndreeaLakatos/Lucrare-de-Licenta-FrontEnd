@@ -8,6 +8,18 @@
   </div>
 
   <span class="spacer"></span>
+  <div class="margins connectionOn" *ngIf="isOnline">
+    <button mat-button>
+      <mat-icon>network_wifi</mat-icon>
+      <span class="ml-10">Online</span>
+    </button>
+  </div>
+  <div class="margins connectionOff" *ngIf="!isOnline">
+    <button mat-button>
+      <mat-icon>signal_wifi_off</mat-icon>
+      <span class="ml-10">Offline</span>
+    </button>
+  </div>
   <button class="margins" mat-button [matMenuTriggerFor]="menuCountries">
     <img class="image" [src]="languageImage" /><span>
       {{ languageSpan }}

@@ -1,6 +1,7 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { fromEvent, map, merge, Observable, of, Subject, Subscription } from 'rxjs';
 import { AddAdoptionRequestModel } from 'src/app/components/adoption-announces-list/add-adoption-request/models/add-adoption-request.model';
 import { AdoptionAnnouncementListModel } from 'src/app/components/adoption-announces-list/models/adoption-announcement-list.model';
 import {
@@ -14,6 +15,8 @@ import { FosteringAnnouncementModel } from 'src/app/components/fostering-announc
 import { FosteringRequestListModel } from 'src/app/components/fostering-requests-list/models/fostering-request-list-model.model';
 import { environment } from 'src/environments/environment';
 import { AccountService } from '../account/account.service';
+import { OfflineService } from '../offline/offline.service';
+import { SnackbarService } from '../snackbar/snackbar.service';
 import { GetAdoptionAnnouncementsModel as GetAnnouncementsModel } from './models/get-adoption-announcements.model';
 
 @Injectable({
@@ -23,8 +26,34 @@ export class NgoService {
   private apiUrl = `${environment.apiUrl}ngo/`;
   constructor(
     public accountService: AccountService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private offlineService: OfflineService
   ) {}
+
+  public networkStatus: boolean = false;
+  networkStatus$: Subscription = Subscription.EMPTY;
+
+  ngOnInit(): void {
+    this.checkNetworkStatus();
+  }
+
+  ngOnDestroy(): void {
+    this.networkStatus$.unsubscribe();
+  }
+
+  private checkNetworkStatus() {
+    this.networkStatus = navigator.onLine;
+    this.networkStatus$ = merge(
+      of(null),
+      fromEvent(window, 'online'),
+      fromEvent(window, 'offline')
+    )
+      .pipe(map(() => navigator.onLine))
+      .subscribe(status => {
+        console.log('status', status);
+        this.networkStatus = status;
+      });
+  }
 
   public addAdoptionAnnouncement(
     adoptionAnnouncement: AdoptionAnnouncementModel
@@ -61,13 +90,14 @@ export class NgoService {
   }
 
   public getAdoptionAnnouncements(): Observable<AdoptionAnnouncementListModel[]> {
-    const username = new GetAnnouncementsModel(this.accountService.getUserUsername());
-    return this.httpClient.post<AdoptionAnnouncementListModel[]>(`${this.apiUrl}adoption-announcements`, username);
+    if (window.navigator.onLine) return this.httpClient.get<AdoptionAnnouncementListModel[]>(`${this.apiUrl}adoption-announcements/${this.accountService.getUserUsername()}`);
+    return this.offlineService.getAdoptionAnnouncementsOffline();
   }
 
   public getFosteringAnnouncements(): Observable<FosteringAnnouncementListModel[]> {
     const username = new GetAnnouncementsModel(this.accountService.getUserUsername());
-    return this.httpClient.post<FosteringAnnouncementListModel[]>(`${this.apiUrl}fostering-announcements`, username);
+    if (window.navigator.onLine) return this.httpClient.post<FosteringAnnouncementListModel[]>(`${this.apiUrl}fostering-announcements`, username);
+    return this.offlineService.getFosteringAnnouncementsOffline();
   }
 
   public addAdoptionRequest(addAdoptionRequest: AddAdoptionRequestModel): Observable<AddAdoptionRequestModel> {
@@ -94,12 +124,14 @@ export class NgoService {
     return this.httpClient.delete(`${this.apiUrl}fostering-announcement/${fosteringAnnouncementId}/${this.accountService.getUserUsername()}`);
   }
 
-  public getAdoptionAnnouncementRequests(adoptionAnnouncementId: number) {
-    return this.httpClient.get<AdoptionRequestListModel[]>(`${this.apiUrl}adoption-requests/${adoptionAnnouncementId}`)
+  public getAdoptionAnnouncementRequests(adoptionAnnouncementId: number): Observable<AdoptionRequestListModel[]> {
+    if (window.navigator.onLine) return this.httpClient.get<AdoptionRequestListModel[]>(`${this.apiUrl}adoption-requests/${adoptionAnnouncementId}`)
+    return this.offlineService.getAdoptionRequestsAnnouncementsOffline(adoptionAnnouncementId);
   }
 
-  public getFosteringAnnouncementRequests(fosteringAnnouncementId: number) {
-    return this.httpClient.get<FosteringRequestListModel[]>(`${this.apiUrl}fostering-requests/${fosteringAnnouncementId}`)
+  public getFosteringAnnouncementRequests(fosteringAnnouncementId: number): Observable<FosteringRequestListModel[]> {
+    if (window.navigator.onLine) return this.httpClient.get<FosteringRequestListModel[]>(`${this.apiUrl}fostering-requests/${fosteringAnnouncementId}`)
+    return this.offlineService.getFosteringRequestsAnnouncementsOffline(fosteringAnnouncementId);
   }
 
   public updateAdoptionRequest(adoptionRequestListModel: AdoptionRequestListModel) {

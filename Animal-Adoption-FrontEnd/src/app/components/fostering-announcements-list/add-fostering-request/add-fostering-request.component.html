@@ -1,58 +1,66 @@
-<h1
-  *ngIf="isEditing"
-  mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
-  i18n="@@editFosteringRequest"
->
-  Edit fostering request
-</h1>
-<h1
-  *ngIf="!isEditing"
-  mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
-  i18n="@@fosteringRequest"
->
-Fostering request
-</h1>
+<div fxLayout="row">
+  <div fxLayou="column">
+    <h1>#{{data.fosteringAnnouncementId}}: </h1>
+  </div>
+  <div fxLayout="column">
+    <h1
+      *ngIf="isEditing"
+      mat-dialog-title
+      cdkDrag
+      cdkDragRootElement=".cdk-overlay-pane"
+      cdkDragHandle
+      i18n="@@editFosteringRequest"
+    >
+      Edit fostering request
+    </h1>
+  </div>
+  <div fxLayout="column">
+    <h1
+      *ngIf="!isEditing"
+      mat-dialog-title
+      cdkDrag
+      cdkDragRootElement=".cdk-overlay-pane"
+      cdkDragHandle
+      i18n="@@fosteringRequest"
+    >
+      Fostering request
+    </h1>
+  </div>
+</div>
 
 <form
   [formGroup]="fosteringRequestForm"
-  (ngSubmit)="fosteringRequestForm.valid"
+  (ngSubmit)="(fosteringRequestForm.valid)"
   autocomplete="off"
 >
   <div fxLayout="row" fxLayoutAlign="center center">
-      <mat-form-field appearance="outline">
-        <mat-label i18n="@@why">Why do you want this adoption?</mat-label>
-        <input type="text" matInput formControlName="reason" required />
-        <mat-error i18n="@@whyRequired"
-          *ngIf="
-          fosteringRequestForm.controls['reason'].hasError('required')
-          "
-          >The reason is required</mat-error
-        >
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label i18n="@@why">Why do you want this adoption?</mat-label>
+      <input type="text" matInput formControlName="reason" required />
+      <mat-error
+        i18n="@@whyRequired"
+        *ngIf="fosteringRequestForm.controls['reason'].hasError('required')"
+        >The reason is required</mat-error
+      >
+    </mat-form-field>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="date" appearance="outline">
-      <mat-label i18n="@@availableDate">When are you available for a phone call?</mat-label>
+      <mat-label i18n="@@availableDate"
+        >When are you available for a phone call?</mat-label
+      >
       <input
         matInput
         [matDatepicker]="picker"
         formControlName="availableDate"
         required
       />
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error i18n="@@availableDateRequired"
+      <mat-error
+        i18n="@@availableDateRequired"
         *ngIf="
-        fosteringRequestForm.controls['availableDate'].hasError('required')
+          fosteringRequestForm.controls['availableDate'].hasError('required')
         "
         >The date of availability is required</mat-error
       >
@@ -61,7 +69,9 @@ Fostering request
 
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="margins" appearance="outline">
-      <mat-label i18n="@@somethingElse">Do you want to tell us something else about yourself?</mat-label>
+      <mat-label i18n="@@somethingElse"
+        >Do you want to tell us something else about yourself?</mat-label
+      >
       <textarea matInput formControlName="somethingElse" required></textarea>
     </mat-form-field>
   </div>
@@ -104,5 +114,3 @@ Fostering request
     </button>
   </div>
 </form>
-
-

@@ -46,14 +46,27 @@ export class ToolbarComponent implements OnInit {
     public accountDetailsDialog: MatDialog,
     public ngoDetailsDialog: MatDialog
   ) {
+    this.isOnline = false;
   }
 
+
+  public isOnline: boolean;
   ngOnInit(): void { 
     this.siteLocale = window.location.pathname.split('/')[1];
     this.languageSpan = this.locales.find(f => f.localeCode === this.siteLocale)!.label;
     this.languageImage = this.locales.find(f => f.localeCode === this.siteLocale)!.image;
+
+    this.updateOnlineStatus();
+
+    window.addEventListener('online',  this.updateOnlineStatus.bind(this));
+    window.addEventListener('offline', this.updateOnlineStatus.bind(this));
   }
   
+
+  private updateOnlineStatus(): void {
+    this.isOnline = window.navigator.onLine;
+    console.info(`isOnline=[${this.isOnline}]`);
+  }
 
   public logout() {
     this.accountService.logout();

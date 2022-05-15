@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { FosteringComponent } from './fostering/fostering.component';
 import { FosteringAnnouncementListModel } from './models/fostering-announcement-list.model';
@@ -21,7 +22,8 @@ export class FosteringAnnouncementsListComponent implements OnInit {
     public accountService: AccountService,
     public ngoService: NgoService,
     public fosteringAnnouncementDialog: MatDialog,
-    public snackbarService: SnackbarService
+    public snackbarService: SnackbarService,
+    private offlineService: OfflineService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +45,11 @@ export class FosteringAnnouncementsListComponent implements OnInit {
 
   public getFosteringAnnouncements() {
     this.ngoService.getFosteringAnnouncements().subscribe(
-      (res) => this.fosteringAnnouncements = res
+      (res) => {
+        this.fosteringAnnouncements = res;
+        if (window.navigator.onLine)
+          this.offlineService.updateFosteringAnnouncements(this.fosteringAnnouncements);
+      } 
     )
   }
 
@@ -51,5 +57,4 @@ export class FosteringAnnouncementsListComponent implements OnInit {
     this.fosteringAnnouncements = this.fosteringAnnouncements.filter(x => x.id !== fosteringAnnouncementModel.id);
     this.snackbarService.success($localize`:@@deletionSucceded: Successfull deletion!`);
   }
-
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AnimalSize } from '../user-preferences/models/animal-size.enum';
 import { AnimalType } from '../user-preferences/models/animal-type.enum';
@@ -47,6 +49,7 @@ export class AdoptionAnnouncesListComponent implements OnInit {
     public ngoService: NgoService,
     public adoptionAnnouncementDialog: MatDialog,
     public snackbarService: SnackbarService,
+    private offlineService: OfflineService
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +70,12 @@ export class AdoptionAnnouncesListComponent implements OnInit {
 
   public getAdoptionAnnounces() {
     this.ngoService.getAdoptionAnnouncements().subscribe(
-      (res) => this.adoptionAnnouncements = res
+      (res) => {
+        this.adoptionAnnouncements = res;
+        if (window.navigator.onLine)
+          this.offlineService.updateAdoptionAnnouncements(this.adoptionAnnouncements);
+      },
+      (err) => console.log(err)
     )
   }
 

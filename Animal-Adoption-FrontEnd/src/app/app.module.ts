@@ -1,6 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +34,6 @@ import { AdoptionComponent } from './components/adoption-announces-list/adoption
 import { AdoptionAnnouncementListModelComponent } from './components/adoption-announces-list/adoption-announcement-list-model/adoption-announcement-list-model.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FosteringAnnouncementListModelComponent } from './components/fostering-announcements-list/fostering-announcemnet-list-model/fostering-announcement-list-model.component';
-import { AgmCoreModule } from '@agm/core';
 import { AddAdoptionRequestComponent } from './components/adoption-announces-list/add-adoption-request/add-adoption-request.component';
 import { AddFosteringRequestComponent } from './components/fostering-announcements-list/add-fostering-request/add-fostering-request.component';
 import { AdoptionRequestsListComponent } from './components/adoption-requests-list/adoption-requests-list.component';
@@ -45,6 +44,83 @@ import { UserAdoptionRequestListComponent } from './components/user-adoption-req
 import { UserAdoptionRequestModelComponent } from './components/user-adoption-request-list/user-adoption-request-model/user-adoption-request-model.component';
 import { UserFosteringRequestModelComponent } from './components/user-fostering-request-list/user-fostering-request-model/user-fostering-request-model.component';
 import { UserFosteringRequestListComponent } from './components/user-fostering-request-list/user-fostering-request-list.component';
+import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
+import { NgoStatisticsComponent } from './components/ngo-statistics/ngo-statistics.component';
+
+const dbConfig: DBConfig = {
+  name: 'offlineDB',
+  version: 1,
+  objectStoresMeta: [{
+    store: 'adoptionAnnouncements',
+    storeConfig: {keyPath: 'id', autoIncrement: false},
+    storeSchema: [
+      {name: 'title', keypath: 'title', options: { unique: false}},
+      {name: 'description', keypath: 'description', options: { unique: false}},
+      {name: 'animalType', keypath: 'animalType', options: { unique: false}},
+      {name: 'animalSize', keypath: 'animalSize', options: { unique: false}},
+      {name: 'county', keypath: 'county', options: { unique: false}},
+      {name: 'city', keypath: 'city', options: { unique: false}},
+      {name: 'street', keypath: 'street', options: { unique: false}},
+      {name: 'moreDetails', keypath: 'moreDetails', options: { unique: false}},
+      {name: 'status', keypath: 'status', options: { unique: false}},
+      {name: 'photos', keypath: 'photos', options: { unique: false}}
+    ]
+  },
+  {
+    store: 'fosteringAnnouncements',
+    storeConfig: {keyPath: 'id', autoIncrement: false},
+    storeSchema: [
+      {name: 'title', keypath: 'title', options: { unique: false}},
+      {name: 'description', keypath: 'description', options: { unique: false}},
+      {name: 'animalType', keypath: 'animalType', options: { unique: false}},
+      {name: 'animalSize', keypath: 'animalSize', options: { unique: false}},
+      {name: 'county', keypath: 'county', options: { unique: false}},
+      {name: 'city', keypath: 'city', options: { unique: false}},
+      {name: 'street', keypath: 'street', options: { unique: false}},
+      {name: 'moreDetails', keypath: 'moreDetails', options: { unique: false}},
+      {name: 'status', keypath: 'status', options: { unique: false}},
+      {name: 'photos', keypath: 'photos', options: { unique: false}}
+    ]
+  },
+  {
+    store: 'adoptionRequests',
+    storeConfig: {keyPath: 'id', autoIncrement: false},
+    storeSchema: [
+      {name: 'firstName', keypath: 'firstName', options: { unique: false}},
+      {name: 'lastName', keypath: 'lastName', options: { unique: false}},
+      {name: 'phoneNumber', keypath: 'phoneNumber', options: { unique: false}},
+      {name: 'email', keypath: 'email', options: { unique: false}},
+      {name: 'county', keypath: 'county', options: { unique: false}},
+      {name: 'city', keypath: 'city', options: { unique: false}},
+      {name: 'street', keypath: 'street', options: { unique: false}},
+      {name: 'reason', keypath: 'reason', options: { unique: false}},
+      {name: 'availableDate', keypath: 'availableDate', options: { unique: false}},
+      {name: 'somethingElse', keypath: 'somethingElse', options: { unique: false}},
+      {name: 'status', keypath: 'status', options: { unique: false}},
+      {name: 'reviewed', keypath: 'reviewed', options: { unique: false}},
+      {name: 'adoptionAnnouncementId', keypath: 'adoptionAnnouncementId', options: { unique: false}}
+    ]
+  },
+  {
+    store: 'fosteringRequests',
+    storeConfig: {keyPath: 'id', autoIncrement: false},
+    storeSchema: [
+      {name: 'firstName', keypath: 'firstName', options: { unique: false}},
+      {name: 'lastName', keypath: 'lastName', options: { unique: false}},
+      {name: 'phoneNumber', keypath: 'phoneNumber', options: { unique: false}},
+      {name: 'email', keypath: 'email', options: { unique: false}},
+      {name: 'county', keypath: 'county', options: { unique: false}},
+      {name: 'city', keypath: 'city', options: { unique: false}},
+      {name: 'street', keypath: 'street', options: { unique: false}},
+      {name: 'reason', keypath: 'reason', options: { unique: false}},
+      {name: 'availableDate', keypath: 'availableDate', options: { unique: false}},
+      {name: 'somethingElse', keypath: 'somethingElse', options: { unique: false}},
+      {name: 'status', keypath: 'status', options: { unique: false}},
+      {name: 'reviewed', keypath: 'reviewed', options: { unique: false}},
+      {name: 'fosteringAnnouncementId', keypath: 'adoptionAnnouncementId', options: { unique: false}}
+    ]
+  }]
+};
 
 @NgModule({
   declarations: [
@@ -78,6 +154,7 @@ import { UserFosteringRequestListComponent } from './components/user-fostering-r
     UserAdoptionRequestModelComponent,
     UserFosteringRequestListComponent,
     UserFosteringRequestModelComponent,
+    NgoStatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,18 +164,10 @@ import { UserFosteringRequestListComponent } from './components/user-fostering-r
     SharedModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      enabled: environment.production
     }),
     NgbModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBCWr8jDROJSgAatHP5gw6s4iSlfUjk4yU'
-    }),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
-    })
+    NgxIndexedDBModule.forRoot(dbConfig),
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useClass: DynamicLocaleService},
