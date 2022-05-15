@@ -147,6 +147,8 @@
     "filterByLocation": "Filter by location",
     "whyRequired": "The reason is required",
     "type": "Animal type",
-    "statistics": "Statistics"
+    "statistics": "Statistics",
+    "invalidStartDate": "Invalid start date",
+    "invalidEndDate": "Invalid end date"
   }
 }

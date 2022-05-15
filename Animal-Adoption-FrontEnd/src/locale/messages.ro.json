@@ -147,6 +147,9 @@
     "filterByOpen": "Filtrare după status",
     "filterByLocation": "Filtrare după locație",
     "whyRequired": "Motivul est obligatoriu",
-    "statistics": "Statistici"
+    "statistics": "Statistici",
+    "successfullSent": "Cererea a fost trimisă cu succes!",
+    "invalidStartDate": "Dată de început invalidă",
+    "invalidEndDate": "Dată de sfârșit invalidă"
   }
 }
