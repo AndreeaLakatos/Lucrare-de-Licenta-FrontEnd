@@ -17,3 +17,13 @@
     ></app-fostering-announcement-list-model>
   </div>
 </div>
+
+<mat-paginator
+  [length]="pagination?.TotalCount"
+  [pageSize]="pagination?.PageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="currentPage"
+  (page)="onPaginateChange($event)"
+>
+  aria-label="Select page">
+</mat-paginator>

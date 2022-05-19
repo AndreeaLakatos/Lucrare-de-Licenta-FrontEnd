@@ -10,13 +10,12 @@ export class FosteringAnnouncementListModel {
     description: string,
     animalType: AnimalType,
     animalSize: AnimalSize,
-    startDate: Date,
-    endDate: Date,
     county: County,
     city: City,
     street: string,
     moreDetails: string,
     status: boolean,
+    hasRequest: boolean,
     photos: Photo[]
   ) {
     this.id = id;
@@ -24,13 +23,12 @@ export class FosteringAnnouncementListModel {
     this.description = description;
     this.animalType = animalType;
     this.animalSize = animalSize;
-    this.startDate = startDate;
-    this.endDate = endDate;
     this.county = county;
     this.city = city;
     this.street = street;
     this.moreDetails = moreDetails;
     this.status = status;
+    this.hasRequest = hasRequest;
     this.photos = photos;
   }
   id: number;
@@ -38,13 +36,12 @@ export class FosteringAnnouncementListModel {
   description: string;
   animalType: AnimalType;
   animalSize: AnimalSize;
-  startDate: Date;
-  endDate: Date;
   county: County;
   city: City;
   street: string;
   moreDetails: string;
   status: boolean;
+  hasRequest: boolean;
   photos: Photo[];
 }
 

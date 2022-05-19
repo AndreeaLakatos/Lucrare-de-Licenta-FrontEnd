@@ -48,6 +48,12 @@ import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { NgoStatisticsComponent } from './components/ngo-statistics/ngo-statistics.component';
 import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
 import { UserNotificationsDialogComponent } from './components/user-notifications/user-notifications-dialog/user-notifications-dialog.component';
+import { AdoptionUserRequestsComponent } from './components/adoption-user-requests/adoption-user-requests.component';
+import { AdoptionUserAnnouncementComponent } from './components/adoption-user-requests/adoption-user-announcement/adoption-user-announcement.component';
+import { FosteringUserRequestsComponent } from './components/fostering-user-requests/fostering-user-requests.component';
+import { FosteringUserAnnouncementComponent } from './components/fostering-user-requests/fostering-user-announcement/fostering-user-announcement.component';
+import { AdoptionUserRequestComponent } from './components/adoption-user-requests/adoption-user-request/adoption-user-request.component';
+import { FosteringUserRequestComponent } from './components/fostering-user-requests/fostering-user-request/fostering-user-request.component';
 
 const dbConfig: DBConfig = {
   name: 'offlineDB',
@@ -159,6 +165,12 @@ const dbConfig: DBConfig = {
     NgoStatisticsComponent,
     UserNotificationsComponent,
     UserNotificationsDialogComponent,
+    AdoptionUserRequestComponent,
+    FosteringUserRequestComponent,
+    AdoptionUserRequestsComponent,
+    AdoptionUserAnnouncementComponent,
+    FosteringUserRequestsComponent,
+    FosteringUserAnnouncementComponent,
   ],
   imports: [
     BrowserModule,

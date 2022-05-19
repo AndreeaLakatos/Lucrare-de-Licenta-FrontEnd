@@ -3,12 +3,9 @@
     <mat-form-field>
       <mat-label i18n="@@filterBySize">Filter by size</mat-label>
       <mat-select multiple>
-        <mat-option
-            *ngFor="let size of sizes; let ind=index"
-            [value]="size"
-          >
-            {{sizeTranslations[ind]}}
-          </mat-option>
+        <mat-option *ngFor="let size of sizes; let ind = index" [value]="size">
+          {{ sizeTranslations[ind] }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -17,11 +14,11 @@
       <mat-label i18n="@@filterByType">Filter by type</mat-label>
       <mat-select multiple>
         <mat-option
-            *ngFor="let animal of animals; let ind=index"
-            [value]="animal"
-          >
-            {{ animalTranslations[ind] }}
-          </mat-option>
+          *ngFor="let animal of animals; let ind = index"
+          [value]="animal"
+        >
+          {{ animalTranslations[ind] }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -45,3 +42,13 @@
     ></app-adoption-announcement-list-model>
   </div>
 </div>
+
+<mat-paginator
+  [length]="pagination?.TotalCount"
+  [pageSize]="pagination?.PageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="currentPage"
+  (page)="onPaginateChange($event)"
+>
+  aria-label="Select page">
+</mat-paginator>

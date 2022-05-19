@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { PaginationMetaData } from 'src/app/utils/models/pagination.model';
 import { AnimalSize } from '../user-preferences/models/animal-size.enum';
 import { AnimalType } from '../user-preferences/models/animal-type.enum';
 import { AdoptionComponent } from './adoption/adoption.component';
@@ -18,7 +20,11 @@ import { AdoptionAnnouncementModel } from './models/adoption-announcement.model'
   styleUrls: ['./adoption-announces-list.component.scss'],
 })
 export class AdoptionAnnouncesListComponent implements OnInit {
-  public adoptionAnnouncements: AdoptionAnnouncementListModel[] = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  public pagination?: PaginationMetaData;
+  public pageSizeOptions: number[] = [3];
+  public currentPage = 0;
+  public adoptionAnnouncements?: AdoptionAnnouncementListModel[] = [];
 
   sizesControl = new FormControl([]);
   public animals = [AnimalType.CAT, AnimalType.DOG, AnimalType.RABBIT];
@@ -71,16 +77,22 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   public getAdoptionAnnounces() {
     this.ngoService.getAdoptionAnnouncements().subscribe(
       (res) => {
-        this.adoptionAnnouncements = res;
-        if (window.navigator.onLine)
-          this.offlineService.updateAdoptionAnnouncements(this.adoptionAnnouncements);
+        this.adoptionAnnouncements = res.result;
+        this.pagination = res.paginationMetaData;
+        // if (window.navigator.onLine)
+        //   this.offlineService.updateAdoptionAnnouncements(this.adoptionAnnouncements);
       },
       (err) => console.log(err)
     )
   }
 
   public refreshPage(adoptionAnnouncement: AdoptionAnnouncementListModel){
-    this.adoptionAnnouncements = this.adoptionAnnouncements.filter(x => x.id !== adoptionAnnouncement.id);
+    this.adoptionAnnouncements = this.adoptionAnnouncements?.filter(x => x.id !== adoptionAnnouncement.id);
     this.snackbarService.success($localize`:@@deletionSucceded: Successfull deletion!`);
+  }
+
+  public onPaginateChange ($event: PageEvent): void {
+    this.ngoService.setAdoptionAnnouncementsParams($event.pageIndex + 1, $event.pageSize);
+    this.getAdoptionAnnounces();
   }
 }

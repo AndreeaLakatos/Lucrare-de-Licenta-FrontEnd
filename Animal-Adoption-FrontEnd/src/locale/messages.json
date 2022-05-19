@@ -149,6 +149,7 @@
     "type": "Animal type",
     "statistics": "Statistics",
     "invalidStartDate": "Invalid start date",
-    "invalidEndDate": "Invalid end date"
+    "invalidEndDate": "Invalid end date",
+    "showMyRequest": "Show my request"
   }
 }

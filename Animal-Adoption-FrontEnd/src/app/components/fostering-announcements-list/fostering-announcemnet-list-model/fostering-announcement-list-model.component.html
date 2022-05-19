@@ -83,14 +83,14 @@
   </mat-card-content>
   <mat-card-actions>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <div fxLayout="column"  *ngIf="accountService.isBasicUser">
+      <div fxLayout="column"  *ngIf="accountService.isBasicUser && !fosteringAnnouncementModel.hasRequest">
         <button i18n="@@addFosteringRequest" (click)="addFosteringRequest()" mat-raised-button type="submit">
           Add fostering request
         </button>
       </div>
-      <div fxLayout="column" *ngIf="accountService.isBasicUser">
-        <button i18n-matTooltip="@@sendMessage" mat-icon-button matTooltip="Send message">
-          <mat-icon>chat_bubble</mat-icon>
+      <div fxLayout="column"  *ngIf="fosteringAnnouncementModel.hasRequest">
+        <button  i18n="@@showMyRequest" (click)="showMyRequest()" mat-raised-button type="submit">
+          Show my request
         </button>
       </div>
     </div>

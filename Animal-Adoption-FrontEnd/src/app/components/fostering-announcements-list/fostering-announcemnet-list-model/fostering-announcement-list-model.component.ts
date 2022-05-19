@@ -6,18 +6,22 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AddFosteringRequestComponent } from '../add-fostering-request/add-fostering-request.component';
 import { AddFosteringRequestModel } from '../add-fostering-request/models/add-fostering-request.model';
-import { AnimalTranslations, FosteringAnnouncementListModel, SizeTranslations } from '../models/fostering-announcement-list.model';
+import {
+  AnimalTranslations,
+  FosteringAnnouncementListModel,
+  SizeTranslations,
+} from '../models/fostering-announcement-list.model';
 
 @Component({
   selector: 'app-fostering-announcement-list-model',
   templateUrl: './fostering-announcement-list-model.component.html',
-  styleUrls: ['./fostering-announcement-list-model.component.scss']
+  styleUrls: ['./fostering-announcement-list-model.component.scss'],
 })
 export class FosteringAnnouncementListModelComponent implements OnInit {
-
   @Input()
   fosteringAnnouncementModel!: FosteringAnnouncementListModel;
-  @Output() delete: EventEmitter<FosteringAnnouncementListModel> =  new EventEmitter<FosteringAnnouncementListModel>();
+  @Output() delete: EventEmitter<FosteringAnnouncementListModel> =
+    new EventEmitter<FosteringAnnouncementListModel>();
   public animalTranslations = AnimalTranslations;
   public sizeTranslations = SizeTranslations;
   constructor(
@@ -39,7 +43,14 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   ngOnInit(): void {}
 
   public addFosteringRequest() {
-    const fosteringRequest = new AddFosteringRequestModel(0, this.fosteringAnnouncementModel.id, '', new Date(), '', '')
+    const fosteringRequest = new AddFosteringRequestModel(
+      0,
+      this.fosteringAnnouncementModel.id,
+      '',
+      new Date(),
+      '',
+      ''
+    );
     this.fosteringRequestDialog.open(AddFosteringRequestComponent, {
       height: '500px',
       width: '400px',
@@ -48,16 +59,22 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   }
 
   public deleteAnnouncement() {
-    this.ngoService.deleteFosteringAnnouncement(this.fosteringAnnouncementModel.id).subscribe(
-      (_) => this.delete.emit(this.fosteringAnnouncementModel)
-    );
+    this.ngoService
+      .deleteFosteringAnnouncement(this.fosteringAnnouncementModel.id)
+      .subscribe((_) => this.delete.emit(this.fosteringAnnouncementModel));
   }
 
   public showAllRequests() {
-    this.router.navigateByUrl(`/fostering-requests/${this.fosteringAnnouncementModel.id}`);
+    this.router.navigateByUrl(
+      `/fostering-requests/${this.fosteringAnnouncementModel.id}`
+    );
   }
 
+  public showMyRequest() {}
+
   public get isActive(): string {
-    return !this.fosteringAnnouncementModel.status ? $localize`:@@active: Active` : $localize`:@@inactive: Inactive`;
+    return !this.fosteringAnnouncementModel.status
+      ? $localize`:@@active: Active`
+      : $localize`:@@inactive: Inactive`;
   }
 }

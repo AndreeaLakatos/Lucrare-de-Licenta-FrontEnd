@@ -150,6 +150,7 @@
     "statistics": "Statistici",
     "successfullSent": "Cererea a fost trimisă cu succes!",
     "invalidStartDate": "Dată de început invalidă",
-    "invalidEndDate": "Dată de sfârșit invalidă"
+    "invalidEndDate": "Dată de sfârșit invalidă",
+    "showMyRequest": "Arată-mi cererea"
   }
 }
