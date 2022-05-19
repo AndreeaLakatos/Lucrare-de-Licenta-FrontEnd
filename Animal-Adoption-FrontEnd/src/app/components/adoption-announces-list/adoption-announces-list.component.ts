@@ -49,7 +49,7 @@ export class AdoptionAnnouncesListComponent implements OnInit {
     $localize`:@@large: Large`,
     $localize`:@@extraLarge: Extra large`,
   ];
-  
+
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
@@ -66,7 +66,9 @@ export class AdoptionAnnouncesListComponent implements OnInit {
     this.editAnnouncement(undefined);
   }
 
-  public editAnnouncement(adoptionAnnouncement: AdoptionAnnouncementModel | undefined) {
+  public editAnnouncement(
+    adoptionAnnouncement: AdoptionAnnouncementModel | undefined
+  ) {
     const dialogRef = this.adoptionAnnouncementDialog.open(AdoptionComponent, {
       width: '600px',
       data: adoptionAnnouncement,
@@ -75,24 +77,42 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   }
 
   public getAdoptionAnnounces() {
-    this.ngoService.getAdoptionAnnouncements().subscribe(
-      (res) => {
-        this.adoptionAnnouncements = res.result;
-        this.pagination = res.paginationMetaData;
-        // if (window.navigator.onLine)
-        //   this.offlineService.updateAdoptionAnnouncements(this.adoptionAnnouncements);
-      },
-      (err) => console.log(err)
-    )
+    if (window.navigator.onLine) {
+      this.ngoService.getAdoptionAnnouncements().subscribe(
+        (res) => {
+          this.offlineService.updateAdoptionAnnouncements(
+            res.result!,
+            this.adoptionAnnouncements!.map((x) => x.id)
+          );
+          this.adoptionAnnouncements = res.result;
+          this.pagination = res.paginationMetaData;
+        },
+        (err) => console.log(err)
+      );
+    } else {
+      this.offlineService.getAdoptionAnnouncementsOffline().subscribe((res) => {
+        this.adoptionAnnouncements = res;
+        this.snackbarService.error(
+          $localize`:@@offlinePaginationOff: You are offline, we will display you only last page accessed!`
+        );
+      });
+    }
   }
 
-  public refreshPage(adoptionAnnouncement: AdoptionAnnouncementListModel){
-    this.adoptionAnnouncements = this.adoptionAnnouncements?.filter(x => x.id !== adoptionAnnouncement.id);
-    this.snackbarService.success($localize`:@@deletionSucceded: Successfull deletion!`);
+  public refreshPage(adoptionAnnouncement: AdoptionAnnouncementListModel) {
+    this.adoptionAnnouncements = this.adoptionAnnouncements?.filter(
+      (x) => x.id !== adoptionAnnouncement.id
+    );
+    this.snackbarService.success(
+      $localize`:@@deletionSucceded: Successfull deletion!`
+    );
   }
 
-  public onPaginateChange ($event: PageEvent): void {
-    this.ngoService.setAdoptionAnnouncementsParams($event.pageIndex + 1, $event.pageSize);
+  public onPaginateChange($event: PageEvent): void {
+    this.ngoService.setAdoptionAnnouncementsParams(
+      $event.pageIndex + 1,
+      $event.pageSize
+    );
     this.getAdoptionAnnounces();
   }
 }

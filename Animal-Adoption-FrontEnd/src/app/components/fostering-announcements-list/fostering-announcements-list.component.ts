@@ -13,7 +13,7 @@ import { FosteringAnnouncementModel } from './models/fostering-announcement.mode
 @Component({
   selector: 'app-fostering-announcements-list',
   templateUrl: './fostering-announcements-list.component.html',
-  styleUrls: ['./fostering-announcements-list.component.scss']
+  styleUrls: ['./fostering-announcements-list.component.scss'],
 })
 export class FosteringAnnouncementsListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,36 +37,55 @@ export class FosteringAnnouncementsListComponent implements OnInit {
     this.editAnnouncement(undefined);
   }
 
-  public editAnnouncement(adoptionAnnouncement: FosteringAnnouncementModel | undefined) {
-    const dialogRef = this.fosteringAnnouncementDialog.open(FosteringComponent, {
-      width: '600px',
-      data: adoptionAnnouncement,
-    });
+  public editAnnouncement(
+    adoptionAnnouncement: FosteringAnnouncementModel | undefined
+  ) {
+    const dialogRef = this.fosteringAnnouncementDialog.open(
+      FosteringComponent,
+      {
+        width: '600px',
+        data: adoptionAnnouncement,
+      }
+    );
 
     dialogRef.afterClosed().subscribe((_) => this.getFosteringAnnouncements());
   }
 
   public getFosteringAnnouncements() {
-    this.ngoService.getFosteringAnnouncements().subscribe(
-      (res) => {
+    if (window.navigator.onLine) {
+      this.ngoService.getFosteringAnnouncements().subscribe((res) => {
+        this.offlineService.updateFosteringAnnouncements(
+          res.result!,
+          this.fosteringAnnouncements!.map((x) => x.id)
+        );
         this.fosteringAnnouncements = res.result;
-        console.log(res);
-        console.log(this.fosteringAnnouncements);
         this.pagination = res.paginationMetaData;
-        console.log(this.pagination);
-        // if (window.navigator.onLine)
-        //   this.offlineService.updateFosteringAnnouncements(this.fosteringAnnouncements);
-      } 
-    )
+      });
+    } else {
+      this.offlineService.getFosteringAnnouncementsOffline().subscribe((res) => {
+        this.fosteringAnnouncements = res;
+        const message = $localize`:@@offlinePaginationOff: You are offline, we will display you only last page accessed!`;
+        this.snackbarService.error(message);
+      })
+    }
   }
 
-  public refreshPage(fosteringAnnouncementModel: FosteringAnnouncementListModel) {
-    this.fosteringAnnouncements = this.fosteringAnnouncements?.filter(x => x.id !== fosteringAnnouncementModel.id);
-    this.snackbarService.success($localize`:@@deletionSucceded: Successfull deletion!`);
+  public refreshPage(
+    fosteringAnnouncementModel: FosteringAnnouncementListModel
+  ) {
+    this.fosteringAnnouncements = this.fosteringAnnouncements?.filter(
+      (x) => x.id !== fosteringAnnouncementModel.id
+    );
+    this.snackbarService.success(
+      $localize`:@@deletionSucceded: Successfull deletion!`
+    );
   }
 
-  public onPaginateChange ($event: PageEvent): void {
-    this.ngoService.setFosteringAnnouncementsParams($event.pageIndex + 1, $event.pageSize);
+  public onPaginateChange($event: PageEvent): void {
+    this.ngoService.setFosteringAnnouncementsParams(
+      $event.pageIndex + 1,
+      $event.pageSize
+    );
     this.getFosteringAnnouncements();
   }
 }

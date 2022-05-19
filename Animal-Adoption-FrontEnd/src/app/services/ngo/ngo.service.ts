@@ -108,13 +108,11 @@ export class NgoService {
     const baseUrl = `${
       this.apiUrl
     }adoption-announcements/${this.accountService.getUserUsername()}`;
-    // if (window.navigator.onLine)
     return getPaginatedResult<AdoptionAnnouncementListModel[]>(
       baseUrl,
       this.getAdoptionAnnouncementsParams,
       this.httpClient
     );
-    // return this.offlineService.getAdoptionAnnouncementsOffline();
   }
 
   private get getAdoptionAnnouncementsParams(): HttpParams {
@@ -145,13 +143,11 @@ export class NgoService {
     const baseUrl = `${
       this.apiUrl
     }fostering-announcements/${this.accountService.getUserUsername()}`;
-    // if (window.navigator.onLine)
     return getPaginatedResult<FosteringAnnouncementListModel[]>(
       baseUrl,
       this.getFosteringAnnouncementsParams,
       this.httpClient
     );
-    // return this.offlineService.getFosteringAnnouncementsOffline();
   }
 
   private get getFosteringAnnouncementsParams(): HttpParams {

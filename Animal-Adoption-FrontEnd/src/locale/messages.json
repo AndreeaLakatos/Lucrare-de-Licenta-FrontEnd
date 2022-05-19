@@ -150,6 +150,7 @@
     "statistics": "Statistics",
     "invalidStartDate": "Invalid start date",
     "invalidEndDate": "Invalid end date",
-    "showMyRequest": "Show my request"
+    "showMyRequest": "Show my request",
+    "offlinePaginationOff": "You are offline, we will display you only last page accessed!"
   }
 }

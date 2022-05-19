@@ -151,6 +151,7 @@
     "successfullSent": "Cererea a fost trimisă cu succes!",
     "invalidStartDate": "Dată de început invalidă",
     "invalidEndDate": "Dată de sfârșit invalidă",
-    "showMyRequest": "Arată-mi cererea"
+    "showMyRequest": "Arată-mi cererea",
+    "offlinePaginationOff": "Ești offline, îți vom încărca doar ultima pagina accesată!"
   }
 }

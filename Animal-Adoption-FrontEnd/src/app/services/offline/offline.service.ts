@@ -19,9 +19,9 @@ export class OfflineService {
     return this.dbService.getAll('adoptionAnnouncements');
   }
 
-  public updateAdoptionAnnouncements(adoptionAnnouncements: AdoptionAnnouncementListModel[]) {
+  public updateAdoptionAnnouncements(adoptionAnnouncements: AdoptionAnnouncementListModel[], elementsToDelete: number[]) {
+    this.dbService.bulkDelete('adoptionAnnouncements', elementsToDelete);
     for(const ad of adoptionAnnouncements){
-      this.dbService.clear('adoptionAnnouncements');
       this.dbService.add('adoptionAnnouncements', {
         id: ad.id,
         title: ad.title,
@@ -43,8 +43,8 @@ export class OfflineService {
     return this.dbService.getAll('fosteringAnnouncements');
   }
 
-  public updateFosteringAnnouncements(fosteringAnnouncements: FosteringAnnouncementListModel[]) {
-    this.dbService.clear('fosteringAnnouncements');
+  public updateFosteringAnnouncements(fosteringAnnouncements: FosteringAnnouncementListModel[], elementsToDelete: number[]) {
+    this.dbService.bulkDelete('fosteringAnnouncements', elementsToDelete);
     for(const ad of fosteringAnnouncements){
       this.dbService.add('fosteringAnnouncements', {
         id: ad.id,
