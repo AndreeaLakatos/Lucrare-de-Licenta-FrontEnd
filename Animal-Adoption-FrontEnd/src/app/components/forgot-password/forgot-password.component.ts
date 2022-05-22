@@ -26,9 +26,10 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   private initForm(): void {
+    const lang = window.location.pathname.split('/')[1];
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      clientURI: 'http://localhost:4200/reset-password',
+      clientURI: `http://localhost:4200/${lang}/reset-password`,
     });
   }
 
@@ -49,6 +50,6 @@ export class ForgotPasswordComponent implements OnInit {
   public recover(): void {}
 
   public backToLogin() {
-    this.router.navigateByUrl(`/login`);
+    this.router.navigateByUrl('login');
   }
 }

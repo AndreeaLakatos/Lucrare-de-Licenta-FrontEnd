@@ -33,10 +33,6 @@
     <button mat-list-item *ngIf="accountService.isBasicUser" (click)="redirectToFosteringAnnouncements()">
       <mat-icon>watch_later</mat-icon>
       <span class="margins" i18n="@@fosteringAnnouncements">Fostering announcements</span>
-    </button>
-    <button mat-list-item *ngIf="accountService.isBasicUser">
-      <mat-icon>list_alt</mat-icon>
-      <span class="margins" i18n="@@fosteringAnnouncements">My Applications</span>
     </button>  
     <button mat-list-item *ngIf="accountService.isNgo">
       <mat-icon>timeline</mat-icon>
