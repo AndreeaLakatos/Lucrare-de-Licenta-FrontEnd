@@ -155,6 +155,8 @@
     "preferences": "Preferences",
     "others": "Others",
     "requestSent": "With request sent",
-    "requestNotSent": "Without request sent"
+    "requestNotSent": "Without request sent",
+    "myRequest": "My request for announcement no. ",
+    "status": "Status"
   }
 }

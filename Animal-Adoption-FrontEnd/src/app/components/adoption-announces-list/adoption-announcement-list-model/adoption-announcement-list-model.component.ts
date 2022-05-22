@@ -5,9 +5,14 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { AdoptionRequestListModel } from '../../adoption-requests-list/models/adoption-request-list-model.model';
+import { AdoptionUserRequestComponent } from '../../adoption-user-request/adoption-user-request.component';
 import { AddAdoptionRequestComponent } from '../add-adoption-request/add-adoption-request.component';
 import { AddAdoptionRequestModel } from '../add-adoption-request/models/add-adoption-request.model';
-import { AdoptionAnnouncementListModel, AnimalTranslations, SizeTranslations } from '../models/adoption-announcement-list.model';
+import {
+  AdoptionAnnouncementListModel,
+  AnimalTranslations,
+  SizeTranslations,
+} from '../models/adoption-announcement-list.model';
 
 @Component({
   selector: 'app-adoption-announcement-list-model',
@@ -17,7 +22,8 @@ import { AdoptionAnnouncementListModel, AnimalTranslations, SizeTranslations } f
 export class AdoptionAnnouncementListModelComponent implements OnInit {
   @Input()
   adoptionAnnouncementModel!: AdoptionAnnouncementListModel;
-  @Output() delete: EventEmitter<AdoptionAnnouncementListModel> =  new EventEmitter<AdoptionAnnouncementListModel>();
+  @Output() delete: EventEmitter<AdoptionAnnouncementListModel> =
+    new EventEmitter<AdoptionAnnouncementListModel>();
 
   public adoptionRequests: AdoptionRequestListModel[] = [];
   public animalTranslations = AnimalTranslations;
@@ -27,7 +33,8 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
     public ngoService: NgoService,
     public config: NgbCarouselConfig,
     public adoptionRequestDialog: MatDialog,
-    private router: Router,
+    public myRequestDialog: MatDialog,
+    private router: Router
   ) {
     config.interval = 10000;
     config.wrap = false;
@@ -40,7 +47,14 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   ngOnInit(): void {}
 
   public addAdoptionRequest() {
-    const adoptionRequest = new AddAdoptionRequestModel(0, this.adoptionAnnouncementModel.id, '', new Date(), '', '')
+    const adoptionRequest = new AddAdoptionRequestModel(
+      0,
+      this.adoptionAnnouncementModel.id,
+      '',
+      new Date(),
+      '',
+      ''
+    );
     this.adoptionRequestDialog.open(AddAdoptionRequestComponent, {
       height: '400px',
       width: '400px',
@@ -49,20 +63,27 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   }
 
   public deleteAnnouncement() {
-    this.ngoService.deleteAdoptionAnnouncement(this.adoptionAnnouncementModel.id).subscribe();
+    this.ngoService
+      .deleteAdoptionAnnouncement(this.adoptionAnnouncementModel.id)
+      .subscribe();
     this.delete.emit(this.adoptionAnnouncementModel);
   }
 
   public showAllRequests() {
-    this.router.navigateByUrl(`/adoption-requests/${this.adoptionAnnouncementModel.id}`);
+    this.router.navigateByUrl(
+      `/adoption-requests/${this.adoptionAnnouncementModel.id}`
+    );
   }
 
   public showMyRequest() {
-    //this.router.navigateByUrl(`/user-adoption-requests/${this.adoptionAnnouncementModel.id}`);
+    this.myRequestDialog.open(AdoptionUserRequestComponent, {
+      data: { announcementId: this.adoptionAnnouncementModel.id },
+    });
   }
 
-
   public get isActive(): string {
-    return !this.adoptionAnnouncementModel.status ? $localize`:@@active: Active` : $localize`:@@inactive: Inactive`;
+    return !this.adoptionAnnouncementModel.status
+      ? $localize`:@@active: Active`
+      : $localize`:@@inactive: Inactive`;
   }
 }

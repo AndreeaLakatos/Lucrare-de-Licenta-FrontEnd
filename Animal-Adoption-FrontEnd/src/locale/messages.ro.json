@@ -156,6 +156,8 @@
     "preferences": "Preferințe",
     "others": "Altele",
     "requestSent": "Cu cerere trimisă",
-    "requestNotSent": "Fără cerere trimisă"
+    "requestNotSent": "Fără cerere trimisă",
+    "myRequest": "Cererea mea pentru anunțul cu nr. ",
+    "status": "Status"
   }
 }

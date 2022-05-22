@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { FosteringUserRequestComponent } from '../../fostering-user-request/fostering-user-request.component';
 import { AddFosteringRequestComponent } from '../add-fostering-request/add-fostering-request.component';
 import { AddFosteringRequestModel } from '../add-fostering-request/models/add-fostering-request.model';
 import {
@@ -30,6 +31,7 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
     public config: NgbCarouselConfig,
     public addressCoordinatessDialog: MatDialog,
     public fosteringRequestDialog: MatDialog,
+    public myRequestDialog: MatDialog,
     private router: Router
   ) {
     config.interval = 10000;
@@ -70,7 +72,11 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
     );
   }
 
-  public showMyRequest() {}
+  public showMyRequest() {
+    this.myRequestDialog.open(FosteringUserRequestComponent, {
+      data: { announcementId: this.fosteringAnnouncementModel.id },
+    });
+  }
 
   public get isActive(): string {
     return !this.fosteringAnnouncementModel.status

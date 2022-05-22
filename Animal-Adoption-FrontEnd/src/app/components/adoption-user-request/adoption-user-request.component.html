@@ -1,0 +1,49 @@
+<h1
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle
+  class="mb-20"
+>
+  {{title}}
+</h1>
+
+<div fxLayout="row">
+  <div fxLayout="column">{{ userAdoptionRequest.fromDate }}</div>
+  <div fxLayout="column">
+    <mat-chip-list class="margin">
+      <mat-chip>
+        {{ isEvaluated }}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<div fxLayout="row" i18n="@@reason" class="bold">Reason</div>
+<div fxLayout="row" class="mt-20">{{ userAdoptionRequest.reason }}</div>
+
+<mat-divider></mat-divider>
+
+<div fxLayout="row" i18n="@@availableDate" class="bold">
+  When are you available for a phone call?
+</div>
+<div fxLayout="row" class="mt-20">{{ userAdoptionRequest.availableDate }}</div>
+<mat-divider></mat-divider>
+
+<div fxLayout="row" i18n="@@somethingElse" class="bold">
+  Do you want to tell us something else about yourself?
+</div>
+<div fxLayout="row" class="mt-20">{{ userAdoptionRequest.somethingElse }}</div>
+<mat-divider></mat-divider>
+
+
+<button
+      class="mt-20"
+      mat-raised-button
+      mat-dialog-close
+      cdkFocusInitial
+      i18n="@@close"
+    >
+      Close
+</button>

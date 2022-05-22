@@ -16,11 +16,13 @@ import { AdoptionAnnouncementsParams } from 'src/app/components/adoption-announc
 import { AdoptionAnnouncementModel } from 'src/app/components/adoption-announces-list/models/adoption-announcement.model';
 import { Image } from 'src/app/components/adoption-announces-list/models/image';
 import { AdoptionRequestListModel as AdoptionRequestListModel } from 'src/app/components/adoption-requests-list/models/adoption-request-list-model.model';
+import { UserAdoptionRequest } from 'src/app/components/adoption-user-request/models/user-adoption-request.model';
 import { AddFosteringRequestModel } from 'src/app/components/fostering-announcements-list/add-fostering-request/models/add-fostering-request.model';
 import { FosteringAnnouncementListModel } from 'src/app/components/fostering-announcements-list/models/fostering-announcement-list.model';
 import { FosteringAnnouncementModel } from 'src/app/components/fostering-announcements-list/models/fostering-announcement.model';
 import { FosteringAnnouncementsParams } from 'src/app/components/fostering-announcements-list/models/fostering-announcements-params.model';
 import { FosteringRequestListModel } from 'src/app/components/fostering-requests-list/models/fostering-request-list-model.model';
+import { UserFosteringRequest } from 'src/app/components/fostering-user-request/models/user-fostering-request.model';
 import { getPaginatedResult } from 'src/app/utils/helpers/pagination-helper';
 import { PaginatedResult } from 'src/app/utils/models/pagination.model';
 import { environment } from 'src/environments/environment';
@@ -191,7 +193,7 @@ export class NgoService {
       'Status',
       this.fosteringAnnouncementsParams.status.join(',')
     );
-    
+
     return params;
   }
 
@@ -278,6 +280,22 @@ export class NgoService {
     return this.httpClient.post(
       `${this.apiUrl}fostering-requests`,
       fosteringRequestListModel
+    );
+  }
+
+  public getUserAdoptionRequest(
+    announcementId: number
+  ): Observable<UserAdoptionRequest> {
+    return this.httpClient.get<UserAdoptionRequest>(
+      `${this.apiUrl}user-adoption-request/${this.accountService.getUserUsername}/${announcementId}`
+    );
+  }
+
+  public getUserFosteringRequest(
+    announcementId: number
+  ): Observable<UserFosteringRequest> {
+    return this.httpClient.get<UserFosteringRequest>(
+      `${this.apiUrl}user-fostering-request/${this.accountService.getUserUsername}/${announcementId}`
     );
   }
 }
