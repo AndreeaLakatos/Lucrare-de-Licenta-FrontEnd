@@ -1,18 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { PaginationMetaData } from 'src/app/utils/models/pagination.model';
-import { AnimalSize } from '../user-preferences/models/animal-size.enum';
-import { AnimalType } from '../user-preferences/models/animal-type.enum';
 import { AdoptionComponent } from './adoption/adoption.component';
 import { AdoptionAnnouncementListModel } from './models/adoption-announcement-list.model';
 import { AdoptionAnnouncementModel } from './models/adoption-announcement.model';
+import { FilterAdoptionAnnouncement, MenuItem } from './models/filter-adoption-announcements.model';
 
 @Component({
   selector: 'app-adoption-announces-list',
@@ -26,30 +23,41 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   public currentPage = 0;
   public adoptionAnnouncements?: AdoptionAnnouncementListModel[] = [];
 
-  sizesControl = new FormControl([]);
-  public animals = [AnimalType.CAT, AnimalType.DOG, AnimalType.RABBIT];
-  public sizes = [
-    AnimalSize.EXTRA_SMALL,
-    AnimalSize.SMALL,
-    AnimalSize.MEDIUM,
-    AnimalSize.LARGE,
-    AnimalSize.EXTRA_LARGE,
+  public sizeFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@extraSmall: Extra small`, false, "EXTRA_SMALL"),
+    new MenuItem( $localize`:@@small: Small`, false, "SMALL"),
+    new MenuItem( $localize`:@@medium: Medium`, false, "MEDIUM"),
+    new MenuItem( $localize`:@@large: Large`, false, "LARGE"),
+    new MenuItem( $localize`:@@extraLarge: Extra large`, false, "EXTRA_LARGE"),
+  ]
+
+   public animalFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@cat: Cat`, false, "CAT"),
+    new MenuItem( $localize`:@@dog: Dog`, false, "DOG"),
+    new MenuItem( $localize`:@@rabbit: Rabbit`, false, "RABBIT")
+   ]
+
+   public othersFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@preferences: Preferences`, false, "preferences"),
+    new MenuItem( $localize`:@@requestSent: With request sent`, false, "request"),
+    new MenuItem( $localize`:@@requestNotSent: Without request sent`, false, "notRequest")
+   ]
+
+   public statusFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@active: Active`, false, "active"),
+    new MenuItem( $localize`:@@inactive: Inactive`, false, "inactive"),
+   ]
+
+  public filters: FilterAdoptionAnnouncement[] = [
+    new FilterAdoptionAnnouncement($localize`:@@size: Size`, this.sizeFilters, "Sizes"),
+    new FilterAdoptionAnnouncement($localize`:@@type: Type`, this.animalFilters,  "Types"),
+    // new FilterAdoptionAnnouncement($localize`:@@city: City`, []),
+    new FilterAdoptionAnnouncement($localize`:@@others: Others`, this.othersFilters, "Others"),
+    new FilterAdoptionAnnouncement($localize`:@@status: Status`, this.statusFilters, "Status")
   ];
 
-  public animalTranslations = [
-    $localize`:@@cat: Cat`,
-    $localize`:@@dog: Dog`,
-    $localize`:@@rabbit: Rabbit`,
-  ];
-
-  public sizeTranslations = [
-    $localize`:@@extraSmall: Extra small`,
-    $localize`:@@small: Small`,
-    $localize`:@@medium: Medium`,
-    $localize`:@@large: Large`,
-    $localize`:@@extraLarge: Extra large`,
-  ];
-
+  public appliedFilters = [[], [], [], []];
+  
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
@@ -113,6 +121,14 @@ export class AdoptionAnnouncesListComponent implements OnInit {
       $event.pageIndex + 1,
       $event.pageSize
     );
+    this.getAdoptionAnnounces();
+  }
+  
+  public computeFilters() {
+    this.ngoService.adoptionAnnouncementsParams.sizes = this.filters[0].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.types = this.filters[1].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.others = this.filters[2].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.status = this.filters[3].menuItems.filter(x => x.checked).map(x => x.value) as string[];
     this.getAdoptionAnnounces();
   }
 }

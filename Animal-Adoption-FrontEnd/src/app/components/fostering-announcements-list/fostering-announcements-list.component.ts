@@ -7,7 +7,8 @@ import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { PaginationMetaData } from 'src/app/utils/models/pagination.model';
 import { FosteringComponent } from './fostering/fostering.component';
-import { FosteringAnnouncementListModel } from './models/fostering-announcement-list.model';
+import { FilterFosteringAnnouncement, MenuItem } from './models/filter-fostering-announcements.model';
+import { AnimalTranslations, FosteringAnnouncementListModel, SizeTranslations } from './models/fostering-announcement-list.model';
 import { FosteringAnnouncementModel } from './models/fostering-announcement.model';
 
 @Component({
@@ -21,6 +22,39 @@ export class FosteringAnnouncementsListComponent implements OnInit {
   public fosteringAnnouncements?: FosteringAnnouncementListModel[] = [];
   public pageSizeOptions: number[] = [3];
   public currentPage = 0;
+
+  public sizeFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@extraSmall: Extra small`, false, "EXTRA_SMALL"),
+    new MenuItem( $localize`:@@small: Small`, false, "SMALL"),
+    new MenuItem( $localize`:@@medium: Medium`, false, "MEDIUM"),
+    new MenuItem( $localize`:@@large: Large`, false, "LARGE"),
+    new MenuItem( $localize`:@@extraLarge: Extra large`, false, "EXTRA_LARGE"),
+  ]
+
+   public animalFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@cat: Cat`, false, "CAT"),
+    new MenuItem( $localize`:@@dog: Dog`, false, "DOG"),
+    new MenuItem( $localize`:@@rabbit: Rabbit`, false, "RABBIT")
+   ]
+
+   public othersFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@preferences: Preferences`, false, "preferences"),
+    new MenuItem( $localize`:@@requestSent: With request sent`, false, "request"),
+    new MenuItem( $localize`:@@requestNotSent: Without request sent`, false, "notRequest")
+   ]
+
+   public statusFilters: MenuItem[] = [
+    new MenuItem( $localize`:@@active: Active`, false, "active"),
+    new MenuItem( $localize`:@@inactive: Inactive`, false, "inactive"),
+   ]
+
+  public filters: FilterFosteringAnnouncement[] = [
+    new FilterFosteringAnnouncement($localize`:@@size: Size`, this.sizeFilters, "Sizes"),
+    new FilterFosteringAnnouncement($localize`:@@type: Type`, this.animalFilters,  "Types"),
+    // new FilterFosteringAnnouncement($localize`:@@city: City`, []),
+    new FilterFosteringAnnouncement($localize`:@@others: Others`, this.othersFilters, "Others"),
+    new FilterFosteringAnnouncement($localize`:@@status: Status`, this.statusFilters, "Status")
+  ];
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
@@ -86,6 +120,14 @@ export class FosteringAnnouncementsListComponent implements OnInit {
       $event.pageIndex + 1,
       $event.pageSize
     );
+    this.getFosteringAnnouncements();
+  }
+
+  public computeFilters() {
+    this.ngoService.fosteringAnnouncementsParams.sizes = this.filters[0].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.fosteringAnnouncementsParams.types = this.filters[1].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.fosteringAnnouncementsParams.others = this.filters[2].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.fosteringAnnouncementsParams.status = this.filters[3].menuItems.filter(x => x.checked).map(x => x.value) as string[];
     this.getFosteringAnnouncements();
   }
 }

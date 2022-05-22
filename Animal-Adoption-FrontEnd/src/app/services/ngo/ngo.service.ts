@@ -26,16 +26,15 @@ import { PaginatedResult } from 'src/app/utils/models/pagination.model';
 import { environment } from 'src/environments/environment';
 import { AccountService } from '../account/account.service';
 import { OfflineService } from '../offline/offline.service';
-import { GetAdoptionAnnouncementsModel as GetAnnouncementsModel } from './models/get-adoption-announcements.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NgoService {
   private apiUrl = `${environment.apiUrl}ngo/`;
-  private fosteringAnnouncementsParams: FosteringAnnouncementsParams =
+  public fosteringAnnouncementsParams: FosteringAnnouncementsParams =
     new FosteringAnnouncementsParams();
-  private adoptionAnnouncementsParams: AdoptionAnnouncementsParams =
+  public adoptionAnnouncementsParams: AdoptionAnnouncementsParams =
     new AdoptionAnnouncementsParams();
   constructor(
     public accountService: AccountService,
@@ -125,6 +124,22 @@ export class NgoService {
       'PageSize',
       this.adoptionAnnouncementsParams.pageSize
     );
+    params = params.append(
+      'Sizes',
+      this.adoptionAnnouncementsParams.sizes.join(',')
+    );
+    params = params.append(
+      'Types',
+      this.adoptionAnnouncementsParams.types.join(',')
+    );
+    params = params.append(
+      'Others',
+      this.adoptionAnnouncementsParams.others.join(',')
+    );
+    params = params.append(
+      'Status',
+      this.adoptionAnnouncementsParams.status.join(',')
+    );
 
     return params;
   }
@@ -160,7 +175,23 @@ export class NgoService {
       'PageSize',
       this.fosteringAnnouncementsParams.pageSize
     );
-
+    params = params.append(
+      'Sizes',
+      this.fosteringAnnouncementsParams.sizes.join(',')
+    );
+    params = params.append(
+      'Types',
+      this.fosteringAnnouncementsParams.types.join(',')
+    );
+    params = params.append(
+      'Others',
+      this.fosteringAnnouncementsParams.others.join(',')
+    );
+    params = params.append(
+      'Status',
+      this.fosteringAnnouncementsParams.status.join(',')
+    );
+    
     return params;
   }
 

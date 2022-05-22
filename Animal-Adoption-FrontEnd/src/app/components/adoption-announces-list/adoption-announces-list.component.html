@@ -1,27 +1,4 @@
-<div fxLayout="row" *ngIf="accountService.isNgo">
-  <div fxLayout="column">
-    <mat-form-field>
-      <mat-label i18n="@@filterBySize">Filter by size</mat-label>
-      <mat-select multiple>
-        <mat-option *ngFor="let size of sizes; let ind = index" [value]="size">
-          {{ sizeTranslations[ind] }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div fxLayout="column" class="margin">
-    <mat-form-field>
-      <mat-label i18n="@@filterByType">Filter by type</mat-label>
-      <mat-select multiple>
-        <mat-option
-          *ngFor="let animal of animals; let ind = index"
-          [value]="animal"
-        >
-          {{ animalTranslations[ind] }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+<div fxLayout="row" *ngIf="accountService.isNgo" fxLayoutAlign="center center">
   <div fxLayout="column" class="margin">
     <button mat-icon-button (click)="addAnnouncement()">
       <mat-icon>add_circle</mat-icon>
@@ -29,6 +6,19 @@
   </div>
 </div>
 
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="accountService.isBasicUser">
+  <mat-chip-list>
+    <mat-chip *ngFor="let item of filters; let ind = index" class="cursor-pointer" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+      <span>{{item.text}}</span>
+      <mat-icon>{{menuTrigger.menuOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+      <mat-menu #menu="matMenu" multiple>
+        <div *ngFor="let menuItem of item.menuItems" class="mat-checkbox-container">
+          <mat-checkbox [(ngModel)]="menuItem.checked" (change)="computeFilters()" >{{menuItem.text}}</mat-checkbox>
+        </div>
+      </mat-menu>
+    </mat-chip>
+  </mat-chip-list>
+</div>
 <div
   fxLayout="row wrap"
   fxLayout.xs="column wrap"

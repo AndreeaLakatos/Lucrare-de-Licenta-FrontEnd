@@ -4,6 +4,20 @@
   </button>
 </div>
 
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="accountService.isBasicUser">
+  <mat-chip-list>
+    <mat-chip *ngFor="let item of filters" class="cursor-pointer" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+      <span>{{item.text}}</span>
+      <mat-icon>{{menuTrigger.menuOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+      <mat-menu #menu="matMenu">
+        <div *ngFor="let menuItem of item.menuItems" class="mat-checkbox-container">
+          <mat-checkbox [(ngModel)]="menuItem.checked" (change)="computeFilters()" >{{menuItem.text}}</mat-checkbox>
+        </div>
+      </mat-menu>
+    </mat-chip>
+  </mat-chip-list>
+</div>
+
 <div
   fxLayout="row wrap"
   fxLayout.xs="column wrap"

@@ -152,6 +152,10 @@
     "invalidStartDate": "Dată de început invalidă",
     "invalidEndDate": "Dată de sfârșit invalidă",
     "showMyRequest": "Arată-mi cererea",
-    "offlinePaginationOff": "Ești offline, îți vom încărca doar ultima pagina accesată!"
+    "offlinePaginationOff": "Ești offline, îți vom încărca doar ultima pagina accesată!",
+    "preferences": "Preferințe",
+    "others": "Altele",
+    "requestSent": "Cu cerere trimisă",
+    "requestNotSent": "Fără cerere trimisă"
   }
 }

@@ -55,15 +55,15 @@ export class Photo {
 }
 
 export const AnimalTranslations: { [key in AnimalType]: string } = {
-  [AnimalType.CAT]: 'cat',
-  [AnimalType.DOG]: 'dog',
-  [AnimalType.RABBIT]: 'rabbit',
+  [AnimalType.CAT]: $localize`:@@cat: Cat`,
+  [AnimalType.DOG]: $localize`:@@dog: Dog`,
+  [AnimalType.RABBIT]: $localize`:@@rabbit: Rabbit`,
 };
 
 export const SizeTranslations: { [key in AnimalSize]: string } = {
-  [AnimalSize.EXTRA_SMALL]: 'extraSmall',
-  [AnimalSize.SMALL]: 'small',
-  [AnimalSize.MEDIUM]: 'medium',
-  [AnimalSize.LARGE]: 'large',
-  [AnimalSize.EXTRA_LARGE]: 'extraLarge',
+  [AnimalSize.EXTRA_SMALL]: $localize`:@@extraSmall: Extra small`,
+  [AnimalSize.SMALL]: $localize`:@@small: Small`,
+  [AnimalSize.MEDIUM]: $localize`:@@medium: Medium`,
+  [AnimalSize.LARGE]: $localize`:@@large: Large`,
+  [AnimalSize.EXTRA_LARGE]: $localize`:@@extraLarge: Extra large`,
 };

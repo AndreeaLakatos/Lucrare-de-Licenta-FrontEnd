@@ -9,6 +9,23 @@
   margin-bottom: 20px;
 }
 
-agm-map {
-  height: 300px;
+.mat-chip {
+  background-color: antiquewhite;
+}
+
+.mat-checkbox-container {
+  padding: 10px;
+}
+
+mat-chip-list {
+  margin-left: 10px;
+  margin-top: 10px;
+
+  mat-chip:first-child {
+      margin-left: 16px;
+  }
+}
+
+.cursor-pointer, mat-chip.cursor-pointer {
+  cursor: pointer;
 }

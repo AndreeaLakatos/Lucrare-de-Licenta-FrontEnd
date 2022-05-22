@@ -151,6 +151,10 @@
     "invalidStartDate": "Invalid start date",
     "invalidEndDate": "Invalid end date",
     "showMyRequest": "Show my request",
-    "offlinePaginationOff": "You are offline, we will display you only last page accessed!"
+    "offlinePaginationOff": "You are offline, we will display you only last page accessed!",
+    "preferences": "Preferences",
+    "others": "Others",
+    "requestSent": "With request sent",
+    "requestNotSent": "Without request sent"
   }
 }
