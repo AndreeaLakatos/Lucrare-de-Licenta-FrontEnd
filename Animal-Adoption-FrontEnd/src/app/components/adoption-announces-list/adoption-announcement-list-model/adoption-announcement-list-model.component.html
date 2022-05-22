@@ -6,11 +6,15 @@
     <mat-card-subtitle fxLayoutAlign="center center">
       {{ adoptionAnnouncementModel.description }}
     </mat-card-subtitle>
-    <mat-chip-list class="margin">
-      <mat-chip>
-        {{ isActive }}
-      </mat-chip>
-    </mat-chip-list>
+      <div fxLayout="row">{{ adoptionAnnouncementModel.fromDate }}</div>
+      <div fxLayout="row">
+        <mat-chip-list class="margin">
+          <mat-chip>
+            {{ isActive }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+
   </mat-card-header>
   <mat-card-content>
     <div fxLayout="row">

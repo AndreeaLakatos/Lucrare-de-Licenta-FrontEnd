@@ -16,6 +16,7 @@ export class AdoptionAnnouncementListModel {
     moreDetails: string,
     status: boolean,
     hasRequest: boolean,
+    fromDate: string,
     photos: Photo[]
   ) {
     this.id = id;
@@ -29,6 +30,7 @@ export class AdoptionAnnouncementListModel {
     this.moreDetails = moreDetails;
     this.status = status;
     this.hasRequest = hasRequest;
+    this.fromDate = fromDate;
     this.photos = photos;
   }
   id: number;
@@ -42,6 +44,7 @@ export class AdoptionAnnouncementListModel {
   moreDetails: string;
   status: boolean;
   hasRequest: boolean;
+  fromDate: string;
   photos: Photo[];
 }
 
