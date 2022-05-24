@@ -1,16 +1,19 @@
 <mat-card>
   <mat-card-header>
-        <mat-card-title fxLayoutAlign="center center">
-          #{{fosteringAnnouncementModel.id}} {{ fosteringAnnouncementModel.title }}
-        </mat-card-title>
-      <mat-card-subtitle fxLayoutAlign="center center">
-        {{ fosteringAnnouncementModel.description }}
-      </mat-card-subtitle>
+    <mat-card-title fxLayoutAlign="center center">
+      #{{ fosteringAnnouncementModel.id }}
+      {{ fosteringAnnouncementModel.title }}
+    </mat-card-title>
+    <mat-card-subtitle fxLayoutAlign="center center">
+      {{ fosteringAnnouncementModel.description }}
+    </mat-card-subtitle>
+    <div fxLayout="row">
       <mat-chip-list class="margin">
         <mat-chip>
           {{ isActive }}
         </mat-chip>
       </mat-chip-list>
+    </div>
   </mat-card-header>
   <mat-card-content>
     <div fxLayout="row">
@@ -20,9 +23,7 @@
         </div>
         <div fxLayput="column" class="mr-20" fxLayoutAlign="center center">
           <span
-            >{{
-              animalTranslations[fosteringAnnouncementModel.animalType]
-            }}
+            >{{ animalTranslations[fosteringAnnouncementModel.animalType] }}
           </span>
         </div>
       </div>
@@ -32,11 +33,20 @@
         </div>
         <div fxLayput="column" fxLayoutAlign="center center">
           <span
-            >{{
-              sizeTranslations[fosteringAnnouncementModel.animalSize]
-            }}
+            >{{ sizeTranslations[fosteringAnnouncementModel.animalSize] }}
           </span>
         </div>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxLayput="column" class="margins" fxLayoutAlign="center center">
+        <span class="bold" i18n="@@period">Period:</span>
+      </div>
+      <div fxLayput="column" fxLayoutAlign="center center">
+        <span
+          >{{ fosteringAnnouncementModel.startDate }} - 
+          {{ fosteringAnnouncementModel.endDate }}
+        </span>
       </div>
     </div>
     <div fxLayout="row">
@@ -83,18 +93,37 @@
   </mat-card-content>
   <mat-card-actions>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <div fxLayout="column"  *ngIf="accountService.isBasicUser && !fosteringAnnouncementModel.hasRequest">
-        <button i18n="@@addFosteringRequest" (click)="addFosteringRequest()" mat-raised-button type="submit">
+      <div
+        fxLayout="column"
+        *ngIf="
+          accountService.isBasicUser && !fosteringAnnouncementModel.hasRequest
+        "
+      >
+        <button
+          i18n="@@addFosteringRequest"
+          (click)="addFosteringRequest()"
+          mat-raised-button
+          type="submit"
+        >
           Add fostering request
         </button>
       </div>
-      <div fxLayout="column"  *ngIf="fosteringAnnouncementModel.hasRequest">
-        <button  i18n="@@showMyRequest" (click)="showMyRequest()" mat-raised-button type="submit">
+      <div fxLayout="column" *ngIf="fosteringAnnouncementModel.hasRequest">
+        <button
+          i18n="@@showMyRequest"
+          (click)="showMyRequest()"
+          mat-raised-button
+          type="submit"
+        >
           Show my request
         </button>
       </div>
     </div>
-    <div fxLayout="row" *ngIf="accountService.isNgo" fxLayoutAlign="center center">
+    <div
+      fxLayout="row"
+      *ngIf="accountService.isNgo"
+      fxLayoutAlign="space-between center"
+    >
       <div fxLayout="column">
         <button (click)="deleteAnnouncement()" mat-icon-button type="submit">
           <mat-icon>delete</mat-icon>
@@ -105,6 +134,7 @@
           <mat-icon>list</mat-icon>
         </button>
       </div>
+      <div fxLayout="column" class="color">{{ fosteringAnnouncementModel.fromDate }}</div>
     </div>
   </mat-card-actions>
 </mat-card>

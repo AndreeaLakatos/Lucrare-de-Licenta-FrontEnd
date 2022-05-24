@@ -15,7 +15,10 @@ export class FosteringAnnouncementListModel {
     street: string,
     moreDetails: string,
     status: boolean,
+    startDate: string,
+    endDate: string,
     hasRequest: boolean,
+    fromDate: string,
     photos: Photo[]
   ) {
     this.id = id;
@@ -28,7 +31,10 @@ export class FosteringAnnouncementListModel {
     this.street = street;
     this.moreDetails = moreDetails;
     this.status = status;
+    this.startDate = startDate;
+    this.endDate = endDate;
     this.hasRequest = hasRequest;
+    this.fromDate = fromDate;
     this.photos = photos;
   }
   id: number;
@@ -41,7 +47,10 @@ export class FosteringAnnouncementListModel {
   street: string;
   moreDetails: string;
   status: boolean;
+  startDate: string;
+  endDate: string;
   hasRequest: boolean;
+  fromDate: string;
   photos: Photo[];
 }
 
