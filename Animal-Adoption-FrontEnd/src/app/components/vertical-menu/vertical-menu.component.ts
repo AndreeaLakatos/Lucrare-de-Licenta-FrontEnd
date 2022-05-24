@@ -32,6 +32,12 @@ export class VerticalMenuComponent implements OnInit {
     });
   }
 
+  public redirectToStatistics() {
+    this.router.navigateByUrl('/statistics').then(() => {
+      window.location.reload();
+    });
+  }
+
   public logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/login');

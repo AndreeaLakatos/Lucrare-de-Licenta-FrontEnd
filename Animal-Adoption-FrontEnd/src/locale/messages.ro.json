@@ -158,6 +158,16 @@
     "requestSent": "Cu cerere trimisă",
     "requestNotSent": "Fără cerere trimisă",
     "myRequest": "Cererea mea pentru anunțul cu nr. ",
-    "status": "Status"
+    "status": "Status",
+    "activeAnnouncements": "Active Announcements",
+    "closedAnnouncements": "Closed Announcements",
+    "requestsNumber": "Requests Number",
+    "averageRequests": "Request average per announcement",
+    "announcementsNo": "Total announcements count",
+    "usersAdoptionRequests": "Users Adoption Requests",
+    "usersNo": "Total users with requests",
+    "acceptedRequests": "Accepted Requests",
+    "rejectedRequests": "Rejected Requests",
+    "usersFosteringRequests": "Users Fostering Requests"
   }
 }

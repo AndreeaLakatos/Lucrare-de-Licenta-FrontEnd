@@ -34,7 +34,7 @@
       <mat-icon>watch_later</mat-icon>
       <span class="margins" i18n="@@fosteringAnnouncements">Fostering announcements</span>
     </button>  
-    <button mat-list-item *ngIf="accountService.isNgo">
+    <button mat-list-item *ngIf="accountService.isNgo" (click)="redirectToStatistics()">
       <mat-icon>timeline</mat-icon>
       <span class="margins" i18n="@@statistics">Statistics</span>
     </button>

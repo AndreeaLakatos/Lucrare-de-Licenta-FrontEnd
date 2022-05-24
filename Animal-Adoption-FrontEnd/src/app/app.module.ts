@@ -26,8 +26,6 @@ import { UserPreferencesComponent } from './components/user-preferences/user-pre
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { NgoDetailsComponent } from './components/ngo-details/ngo-details.component';
-import { ChatComponent } from './components/chat-list/chat/chat.component';
-import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { FosteringComponent } from './components/fostering-announcements-list/fostering/fostering.component';
 import { FosteringAnnouncementsListComponent } from './components/fostering-announcements-list/fostering-announcements-list.component';
 import { AdoptionComponent } from './components/adoption-announces-list/adoption/adoption.component';
@@ -49,6 +47,7 @@ import { NgoStatisticsComponent } from './components/ngo-statistics/ngo-statisti
 import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
 import { AdoptionUserRequestComponent } from './components/adoption-user-request/adoption-user-request.component';
 import { FosteringUserRequestComponent } from './components/fostering-user-request/fostering-user-request.component';
+import { BreadcrumpComponent } from './components/breadcrump/breadcrump.component';
 
 
 const dbConfig: DBConfig = {
@@ -142,8 +141,6 @@ const dbConfig: DBConfig = {
     UserPreferencesComponent,
     UserDetailsComponent,
     NgoDetailsComponent,
-    ChatComponent,
-    ChatListComponent,
     FosteringComponent,
     FosteringAnnouncementsListComponent,
     AdoptionAnnouncementListModelComponent,
@@ -163,6 +160,7 @@ const dbConfig: DBConfig = {
     AdoptionUserRequestComponent,
     FosteringUserRequestComponent,
     FosteringAnnouncementsListComponent,
+    BreadcrumpComponent,
   ],
   imports: [
     BrowserModule,

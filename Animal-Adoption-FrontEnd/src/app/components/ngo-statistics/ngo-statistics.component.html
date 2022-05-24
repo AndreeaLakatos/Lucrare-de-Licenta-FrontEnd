@@ -1,1 +1,170 @@
-<p>ngo-statistics works!</p>
+<div fxLayoutAlign="center center" class="mt-10">
+    <h1 i18n="@@statistics">Statistics</h1>
+</div>
+
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column wrap"
+  fxLayoutAlign="center center"
+  class="mt-10"
+>
+  <mat-card class="card margins">
+    <mat-card-header>
+      <mat-card-title>
+        <div fxLayoutGap="10px">
+          <mat-icon>groups</mat-icon>
+          <span i18n="@@adoptionAnnouncements">Adoption Announcements</span>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label i18n="@@announcementsNo"
+            >Total announcements count</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="2%">
+        <mat-form-field appearance="outline" fxFlex="49">
+          <mat-label i18n="@@activeAnnouncements"
+            >Active Announcements</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" fxFlex="49">
+          <mat-label i18n="@@closedAnnouncements"
+            >Closed Announcements</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="2%">
+        <mat-form-field appearance="outline" fxFlex="49">
+          <mat-label i18n="@@requestsNumber">Requests Number</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" fxFlex="49">
+          <mat-label i18n="@@averageRequests"
+            >Request average per announcement</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="card margins">
+    <mat-card-header>
+      <mat-card-title>
+        <div fxLayoutGap="10px">
+          <mat-icon>groups</mat-icon>
+          <span i18n="@@fosteringAnnouncements">Fostering Announcements</span>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label i18n="@@announcementsNo"
+            >Total announcements count</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="2%">
+        <mat-form-field appearance="outline" fxFlex="49">
+          <mat-label i18n="@@activeAnnouncements"
+            >Active Announcements</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" fxFlex="49">
+          <mat-label i18n="@@closedAnnouncements"
+            >Closed Announcements</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="2%">
+        <mat-form-field appearance="outline" fxFlex="49">
+          <mat-label i18n="@@requestsNumber">Requests Number</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" fxFlex="49">
+          <mat-label i18n="@@averageRequests"
+            >Request average per announcement</mat-label
+          >
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column wrap"
+  fxLayoutAlign="center center"
+  class="mt-10"
+>
+  <mat-card class="card margins">
+    <mat-card-header>
+      <mat-card-title>
+        <div fxLayoutGap="10px">
+          <mat-icon>groups</mat-icon>
+          <span i18n="@@usersAdoptionRequests">Users Adoption Requests </span>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label i18n="@@usersNo">Total users with requests</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="2%">
+        <mat-form-field appearance="outline" fxFlex="49">
+          <mat-label i18n="@@acceptedRequests">Accepted Requests</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" fxFlex="49">
+          <mat-label i18n="@@rejectedRequests">Rejected Requests</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="card margins">
+    <mat-card-header>
+      <mat-card-title>
+        <div fxLayoutGap="10px">
+          <mat-icon>groups</mat-icon>
+          <span i18n="@@usersFosteringRequests">Users Fostering Requests </span>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="row">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label i18n="@@usersNo">Total users with requests</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="2%">
+        <mat-form-field appearance="outline" fxFlex="49">
+          <mat-label i18n="@@acceptedRequests">Accepted Requests</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" fxFlex="49">
+          <mat-label i18n="@@rejectedRequests">Rejected Requests</mat-label>
+          <input type="number" class="bold" matInput readonly [value]="23" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -157,6 +157,16 @@
     "requestSent": "With request sent",
     "requestNotSent": "Without request sent",
     "myRequest": "My request for announcement no. ",
-    "status": "Status"
+    "status": "Status",
+    "activeAnnouncements": "Active Announcements",
+    "closedAnnouncements": "Closed Announcements",
+    "requestsNumber": "Requests Number",
+    "averageRequests": "Request average per announcement",
+    "announcementsNo": "Total announcements count",
+    "usersAdoptionRequests": "Users Adoption Requests",
+    "usersNo": "Total users with requests",
+    "acceptedRequests": "Accepted Requests",
+    "rejectedRequests": "Rejected Requests",
+    "usersFosteringRequests": "Users Fostering Requests"
   }
 }
