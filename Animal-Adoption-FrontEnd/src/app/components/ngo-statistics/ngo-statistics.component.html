@@ -20,11 +20,11 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       <div fxLayout="row">
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="full-width mt-10" appearance="outline">
           <mat-label i18n="@@announcementsNo"
             >Total announcements count</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.adoptionAnnouncementsCount ?? 0" />
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutGap="2%">
@@ -32,25 +32,25 @@
           <mat-label i18n="@@activeAnnouncements"
             >Active Announcements</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.activeAdoptionAnnouncements ?? 0" />
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" fxFlex="49">
           <mat-label i18n="@@closedAnnouncements"
             >Closed Announcements</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.closedAdoptionAnnouncements ?? 0" />
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutGap="2%">
         <mat-form-field appearance="outline" fxFlex="49">
           <mat-label i18n="@@requestsNumber">Requests Number</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.adoptionRequestsNumber ?? 0" />
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" fxFlex="49">
           <mat-label i18n="@@averageRequests"
             >Request average per announcement</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.adoptionAverage ?? 0" />
         </mat-form-field>
       </div>
     </mat-card-content>
@@ -67,11 +67,11 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       <div fxLayout="row">
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="full-width mt-10" appearance="outline">
           <mat-label i18n="@@announcementsNo"
             >Total announcements count</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.fosteringAnnouncementsCount ?? 0" />
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutGap="2%">
@@ -79,25 +79,25 @@
           <mat-label i18n="@@activeAnnouncements"
             >Active Announcements</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.activeFosteringAnnouncements ?? 0" />
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" fxFlex="49">
           <mat-label i18n="@@closedAnnouncements"
             >Closed Announcements</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.closedFosteringAnnouncements ?? 0" />
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutGap="2%">
         <mat-form-field appearance="outline" fxFlex="49">
           <mat-label i18n="@@requestsNumber">Requests Number</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.fosteringRequestsNumber ?? 0" />
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" fxFlex="49">
           <mat-label i18n="@@averageRequests"
             >Request average per announcement</mat-label
           >
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.fosteringAverage ?? 0" />
         </mat-form-field>
       </div>
     </mat-card-content>
@@ -121,19 +121,19 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       <div fxLayout="row">
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="full-width mt-10" appearance="outline">
           <mat-label i18n="@@usersNo">Total users with requests</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.adoptionUsersNo ?? 0" />
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutGap="2%">
         <mat-form-field appearance="outline" fxFlex="49">
           <mat-label i18n="@@acceptedRequests">Accepted Requests</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.acceptedAdoptionRequests ?? 0" />
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" fxFlex="49">
           <mat-label i18n="@@rejectedRequests">Rejected Requests</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.rejectedAdoptionRequests ?? 0" />
         </mat-form-field>
       </div>
     </mat-card-content>
@@ -150,19 +150,19 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       <div fxLayout="row">
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="full-width mt-10" appearance="outline">
           <mat-label i18n="@@usersNo">Total users with requests</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.fosteringUsersNo ?? 0" />
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutGap="2%">
         <mat-form-field appearance="outline" fxFlex="49">
           <mat-label i18n="@@acceptedRequests">Accepted Requests</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.acceptedFosteringRequests ?? 0" />
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" fxFlex="49">
           <mat-label i18n="@@rejectedRequests">Rejected Requests</mat-label>
-          <input type="number" class="bold" matInput readonly [value]="23" />
+          <input type="number" class="bold" matInput readonly [value]="statistics?.rejectedFosteringRequests ?? 0" />
         </mat-form-field>
       </div>
     </mat-card-content>

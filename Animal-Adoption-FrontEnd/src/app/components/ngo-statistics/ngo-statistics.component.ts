@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { Statistics } from './models/statistics.model';
 
 @Component({
   selector: 'app-ngo-statistics',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgoStatisticsComponent implements OnInit {
 
-  constructor() { }
+  public statistics?: Statistics;
+  constructor(public ngoService: NgoService) { }
 
   ngOnInit(): void {
+    this.getStatistics();
+  }
+
+  public getStatistics() {
+    this.ngoService.getStatistics().subscribe((res) => {
+      this.statistics = res;
+      console.log(res);
+    });
   }
 
 }

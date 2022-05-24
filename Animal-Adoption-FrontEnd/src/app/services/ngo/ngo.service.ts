@@ -23,6 +23,7 @@ import { FosteringAnnouncementModel } from 'src/app/components/fostering-announc
 import { FosteringAnnouncementsParams } from 'src/app/components/fostering-announcements-list/models/fostering-announcements-params.model';
 import { FosteringRequestListModel } from 'src/app/components/fostering-requests-list/models/fostering-request-list-model.model';
 import { UserFosteringRequest } from 'src/app/components/fostering-user-request/models/user-fostering-request.model';
+import { Statistics } from 'src/app/components/ngo-statistics/models/statistics.model';
 import { getPaginatedResult } from 'src/app/utils/helpers/pagination-helper';
 import { PaginatedResult } from 'src/app/utils/models/pagination.model';
 import { environment } from 'src/environments/environment';
@@ -287,7 +288,7 @@ export class NgoService {
     announcementId: number
   ): Observable<UserAdoptionRequest> {
     return this.httpClient.get<UserAdoptionRequest>(
-      `${this.apiUrl}user-adoption-request/${this.accountService.getUserUsername}/${announcementId}`
+      `${this.apiUrl}user-adoption-request/${this.accountService.getUserUsername()}/${announcementId}`
     );
   }
 
@@ -295,7 +296,15 @@ export class NgoService {
     announcementId: number
   ): Observable<UserFosteringRequest> {
     return this.httpClient.get<UserFosteringRequest>(
-      `${this.apiUrl}user-fostering-request/${this.accountService.getUserUsername}/${announcementId}`
+      `${this.apiUrl}user-fostering-request/${this.accountService.getUserUsername()}/${announcementId}`
+    );
+  }
+
+  public getStatistics(): Observable<Statistics> {
+    var username = this.accountService.getUserUsername();
+    console.log(username);
+    return this.httpClient.get<Statistics>(
+      `${this.apiUrl}statistics/${username}`
     );
   }
 }
