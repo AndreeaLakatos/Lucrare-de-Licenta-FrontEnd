@@ -92,7 +92,7 @@
     </ngb-carousel>
   </mat-card-content>
   <mat-card-actions>
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
       <div
         fxLayout="column"
         *ngIf="
@@ -118,6 +118,7 @@
           Show my request
         </button>
       </div>
+      <div fxLayout="column" class="color">{{ fosteringAnnouncementModel.fromDate }}</div>
     </div>
     <div
       fxLayout="row"

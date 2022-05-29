@@ -11,11 +11,16 @@ export class ErrorCodeTranslationService {
 
   public translate(error: Error){
     const {errorCode, message} = { ...error };
+    console.log(errorCode);
 
     const localizedMessages: LocalizedError[] = [
       {
+        errorCode: ErrorCode.InvalidUsernameOrPassword,
+        localizedMessage: $localize`:@@invalidUsernameOrPassword: Invalid username or password!`
+      },
+      {
         errorCode: ErrorCode.UserAlreadyExist,
-        localizedMessage: $localize`:@@userAlreadyExist: The user with this username already exist!`
+        localizedMessage: $localize`:@@userAlreadyExists: User already exists!`
       }
     ];
 

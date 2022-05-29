@@ -167,6 +167,8 @@
     "usersNo": "Total users with requests",
     "acceptedRequests": "Accepted Requests",
     "rejectedRequests": "Rejected Requests",
-    "usersFosteringRequests": "Users Fostering Requests"
+    "usersFosteringRequests": "Users Fostering Requests",
+    "invalidUsernameOrPassword": "Invalid username or password!",
+    "userAlreadyExists": "User already exists!"
   }
 }
