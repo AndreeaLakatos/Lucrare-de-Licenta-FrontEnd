@@ -7,12 +7,12 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { AccountService } from '../services/account/account.service';
+import { AccountService } from '../account/account.service';
 import { catchError, finalize, map } from 'rxjs/operators';
-import { ErrorCode } from '../models/enums/error-code';
-import { Error } from '../models/error/error';
-import { HttpStatusCode } from '../models/enums/http-status-code';
-import { SnackbarService } from '../services/snackbar/snackbar.service';
+import { ErrorCode } from '../../models/enums/error-code';
+import { Error } from '../../models/error/error';
+import { HttpStatusCode } from '../../models/enums/http-status-code';
+import { SnackbarService } from '../snackbar/snackbar.service';
 import { ErrorCodeTranslationService } from 'src/locale/error-code-translation.service';
 
 @Injectable()

@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './angular-components.adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DynamicLocaleService } from 'src/locale/dynamic-locale.service';
-import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { JwtInterceptor } from './services/interceptor/jwt.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
