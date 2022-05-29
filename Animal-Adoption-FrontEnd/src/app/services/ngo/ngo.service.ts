@@ -24,8 +24,8 @@ import { FosteringAnnouncementsParams } from 'src/app/components/fostering-annou
 import { FosteringRequestListModel } from 'src/app/components/fostering-requests-list/models/fostering-request-list-model.model';
 import { UserFosteringRequest } from 'src/app/components/fostering-user-request/models/user-fostering-request.model';
 import { Statistics } from 'src/app/components/ngo-statistics/models/statistics.model';
-import { getPaginatedResult } from 'src/app/utils/helpers/pagination-helper';
-import { PaginatedResult } from 'src/app/utils/models/pagination.model';
+import { getPaginatedResult } from 'src/app/models/utils/helpers/pagination-helper';
+import { PaginatedResult } from 'src/app/models/utils/models/pagination.model';
 import { environment } from 'src/environments/environment';
 import { AccountService } from '../account/account.service';
 import { OfflineService } from '../offline/offline.service';

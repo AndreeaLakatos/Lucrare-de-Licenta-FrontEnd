@@ -5,7 +5,7 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-import { PaginationMetaData } from 'src/app/utils/models/pagination.model';
+import { PaginationMetaData } from 'src/app/models/utils/models/pagination.model';
 import { FosteringComponent } from './fostering/fostering.component';
 import { FilterFosteringAnnouncement, MenuItem } from './models/filter-fostering-announcements.model';
 import { AnimalTranslations, FosteringAnnouncementListModel, SizeTranslations } from './models/fostering-announcement-list.model';

@@ -5,7 +5,7 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { OfflineService } from 'src/app/services/offline/offline.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-import { PaginationMetaData } from 'src/app/utils/models/pagination.model';
+import { PaginationMetaData } from 'src/app/models/utils/models/pagination.model';
 import { AdoptionComponent } from './adoption/adoption.component';
 import { AdoptionAnnouncementListModel } from './models/adoption-announcement-list.model';
 import { AdoptionAnnouncementModel } from './models/adoption-announcement.model';
