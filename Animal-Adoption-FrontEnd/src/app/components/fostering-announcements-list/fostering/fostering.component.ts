@@ -19,6 +19,7 @@ export class FosteringComponent implements OnInit {
   public selectedFiles?: FileList;
   public selectedFileNames: string[] = [];
   punprogressInfos: any[] = [];
+  public saved = false;
   message: string[] = [];
   previews: string[] = [];
   imageInfos?: Observable<any>;
@@ -80,8 +81,8 @@ export class FosteringComponent implements OnInit {
     this.ngoService.addFosteringAnnouncement(data).subscribe((res) => {
       this.fosteringAnnouncement = res;
       this.uploadFiles(this.fosteringAnnouncement.id);
-      setTimeout(() => 2000);
-      this.dialogRef.close();
+      this.fosteringAnnouncementForm.disable();
+      this.saved = true;
     });
   }
 

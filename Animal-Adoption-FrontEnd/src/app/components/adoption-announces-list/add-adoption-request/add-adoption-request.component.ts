@@ -77,7 +77,7 @@ export class AddAdoptionRequestComponent implements OnInit {
       (_) => {
         this.snackbarService.success($localize`:@@successfullSent: Request successfully sent!`);
         this.adoptionRequestForm.disable();
-        this.saved = false;
+        this.saved = true;
       }
     );
   }

@@ -15,7 +15,7 @@ export class AddFosteringRequestComponent implements OnInit {
   public fosteringRequestForm!: FormGroup;
   public isEditing: boolean = false;
   public minDate: Date = new Date();
-
+  public saved = false;
   constructor(
     public accounService: AccountService,
     public ngoService: NgoService,
@@ -82,7 +82,7 @@ export class AddFosteringRequestComponent implements OnInit {
     this.ngoService.addFosteringRequest(addFosteringRequest).subscribe((_) => {
       this.snackbarService.success($localize`:@@successfullSent: Request successfully sent!`);
       this.fosteringRequestForm.disable();
-      this.isEditing = false;
+      this.saved = true;
     });
   }
 }

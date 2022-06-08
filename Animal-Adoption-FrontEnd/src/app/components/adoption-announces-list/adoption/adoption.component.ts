@@ -22,6 +22,7 @@ export class AdoptionComponent implements OnInit {
   public isEditing: boolean = false;
   public selectedFiles?: FileList;
   public selectedFileNames: string[] = [];
+  public saved = false;
   punprogressInfos: any[] = [];
   message: string[] = [];
   previews: string[] = [];
@@ -81,7 +82,8 @@ export class AdoptionComponent implements OnInit {
     this.ngoService.addAdoptionAnnouncement(data).subscribe((res) => {
       this.adoptionAnnouncement = res;
       this.uploadFiles(this.adoptionAnnouncement.id);
-      this.dialogRef.close();
+      this.adoptionAnnouncementForm.disable();
+      this.saved = true;
     });
   }
 

@@ -104,6 +104,7 @@ Adoption announcement
       mat-raised-button
       (click)="save()"
       i18n="@@save"
+      *ngIf="!saved"
     >
       Save
     </button>
