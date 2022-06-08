@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AdoptionRequestListModel } from '../../adoption-requests-list/models/adoption-request-list-model.model';
 import { AdoptionUserRequestComponent } from '../../adoption-user-request/adoption-user-request.component';
 import { AddAdoptionRequestComponent } from '../add-adoption-request/add-adoption-request.component';
@@ -34,7 +35,8 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
     public config: NgbCarouselConfig,
     public adoptionRequestDialog: MatDialog,
     public myRequestDialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private snackbarService: SnackbarService
   ) {
     config.interval = 10000;
     config.wrap = false;
@@ -47,26 +49,38 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   ngOnInit(): void {}
 
   public addAdoptionRequest() {
-    const adoptionRequest = new AddAdoptionRequestModel(
-      0,
-      this.adoptionAnnouncementModel.id,
-      '',
-      new Date(),
-      '',
-      ''
-    );
-    this.adoptionRequestDialog.open(AddAdoptionRequestComponent, {
-      height: '400px',
-      width: '400px',
-      data: adoptionRequest,
-    });
+    if (window.navigator.onLine) {
+      const adoptionRequest = new AddAdoptionRequestModel(
+        0,
+        this.adoptionAnnouncementModel.id,
+        '',
+        new Date(),
+        '',
+        ''
+      );
+      this.adoptionRequestDialog.open(AddAdoptionRequestComponent, {
+        height: '400px',
+        width: '400px',
+        data: adoptionRequest,
+      });
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public deleteAnnouncement() {
-    this.ngoService
-      .deleteAdoptionAnnouncement(this.adoptionAnnouncementModel.id)
-      .subscribe();
-    this.delete.emit(this.adoptionAnnouncementModel);
+    if (window.navigator.onLine) {
+      this.ngoService
+        .deleteAdoptionAnnouncement(this.adoptionAnnouncementModel.id)
+        .subscribe();
+      this.delete.emit(this.adoptionAnnouncementModel);
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public showAllRequests() {
@@ -76,9 +90,16 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   }
 
   public showMyRequest() {
-    this.myRequestDialog.open(AdoptionUserRequestComponent, {
-      data: { announcementId: this.adoptionAnnouncementModel.id },
-    });
+    if (window.navigator.onLine) {
+      this.myRequestDialog.open(AdoptionUserRequestComponent, {
+        data: { announcementId: this.adoptionAnnouncementModel.id },
+      });
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
+    
   }
 
   public get isActive(): string {

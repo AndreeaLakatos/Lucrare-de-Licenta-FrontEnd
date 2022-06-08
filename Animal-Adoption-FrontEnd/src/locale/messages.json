@@ -140,7 +140,7 @@
     "accepted": "Accepted",
     "rejected": "Rejected",
     "alreadyAcceptedThis": "This request is already accepted",
-    "alreadyAccepted": "There is already a request accepted for this announcement",
+    "alreadyAccepted": "This request has been rejected",
     "filterBySize": "Filter by size",
     "filterByType": "Filter by type",
     "filterByOpen": "Filter by status",

@@ -92,12 +92,10 @@
     </ngb-carousel>
   </mat-card-content>
   <mat-card-actions>
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="accountService.isBasicUser">
       <div
         fxLayout="column"
-        *ngIf="
-          accountService.isBasicUser && !fosteringAnnouncementModel.hasRequest
-        "
+        *ngIf=" !fosteringAnnouncementModel.hasRequest"
       >
         <button
           i18n="@@addFosteringRequest"

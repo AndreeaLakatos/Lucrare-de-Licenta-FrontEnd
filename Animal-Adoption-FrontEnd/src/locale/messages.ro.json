@@ -140,7 +140,7 @@
     "accepted": "Acceptat",
     "rejected": "Respins",
     "alreadyAcceptedThis": "Această cerere a fost deja acceptată",
-    "alreadyAccepted": "A fost deja acceptată o cerere pentru acest anunț",
+    "alreadyAccepted": "Această cerere a fost respinsă",
     "type": "Rasă",
     "filterBySize": "Filtrare după mărime",
     "filterByType": "Filtrare după rasă",

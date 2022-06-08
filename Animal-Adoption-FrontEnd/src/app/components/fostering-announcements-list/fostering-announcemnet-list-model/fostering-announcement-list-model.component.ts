@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { FosteringUserRequestComponent } from '../../fostering-user-request/fostering-user-request.component';
 import { AddFosteringRequestComponent } from '../add-fostering-request/add-fostering-request.component';
 import { AddFosteringRequestModel } from '../add-fostering-request/models/add-fostering-request.model';
@@ -32,7 +33,8 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
     public addressCoordinatessDialog: MatDialog,
     public fosteringRequestDialog: MatDialog,
     public myRequestDialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private snackbarService: SnackbarService
   ) {
     config.interval = 10000;
     config.wrap = false;
@@ -45,25 +47,38 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   ngOnInit(): void {}
 
   public addFosteringRequest() {
-    const fosteringRequest = new AddFosteringRequestModel(
-      0,
-      this.fosteringAnnouncementModel.id,
-      '',
-      new Date(),
-      '',
-      ''
-    );
-    this.fosteringRequestDialog.open(AddFosteringRequestComponent, {
-      height: '500px',
-      width: '400px',
-      data: fosteringRequest,
-    });
+    if (window.navigator.onLine) {
+      const fosteringRequest = new AddFosteringRequestModel(
+        0,
+        this.fosteringAnnouncementModel.id,
+        '',
+        new Date(),
+        '',
+        ''
+      );
+      this.fosteringRequestDialog.open(AddFosteringRequestComponent, {
+        height: '500px',
+        width: '400px',
+        data: fosteringRequest,
+      });
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public deleteAnnouncement() {
-    this.ngoService
+    if (window.navigator.onLine) {
+      this.ngoService
       .deleteFosteringAnnouncement(this.fosteringAnnouncementModel.id)
       .subscribe((_) => this.delete.emit(this.fosteringAnnouncementModel));
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
+    
   }
 
   public showAllRequests() {
@@ -73,9 +88,15 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   }
 
   public showMyRequest() {
-    this.myRequestDialog.open(FosteringUserRequestComponent, {
-      data: { announcementId: this.fosteringAnnouncementModel.id },
-    });
+    if (window.navigator.onLine) {
+      this.myRequestDialog.open(FosteringUserRequestComponent, {
+        data: { announcementId: this.fosteringAnnouncementModel.id },
+      });
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public get isActive(): string {

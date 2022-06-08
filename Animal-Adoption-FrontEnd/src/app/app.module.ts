@@ -38,10 +38,6 @@ import { AdoptionRequestsListComponent } from './components/adoption-requests-li
 import { FosteringRequestsListComponent } from './components/fostering-requests-list/fostering-requests-list.component';
 import { AdoptionRequestListModelComponent } from './components/adoption-requests-list/adoption-request-list-model/adoption-request-list-model.component';
 import { FosteringRequestListModelComponent } from './components/fostering-requests-list/fostering-request-list-model/fostering-request-list-model.component';
-import { UserAdoptionRequestListComponent } from './components/user-adoption-request-list/user-adoption-request-list.component';
-import { UserAdoptionRequestModelComponent } from './components/user-adoption-request-list/user-adoption-request-model/user-adoption-request-model.component';
-import { UserFosteringRequestModelComponent } from './components/user-fostering-request-list/user-fostering-request-model/user-fostering-request-model.component';
-import { UserFosteringRequestListComponent } from './components/user-fostering-request-list/user-fostering-request-list.component';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { NgoStatisticsComponent } from './components/ngo-statistics/ngo-statistics.component';
 import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
@@ -65,6 +61,8 @@ const dbConfig: DBConfig = {
       {name: 'street', keypath: 'street', options: { unique: false}},
       {name: 'moreDetails', keypath: 'moreDetails', options: { unique: false}},
       {name: 'status', keypath: 'status', options: { unique: false}},
+      {name: 'hasRequest', keypath: 'hasRequest', options: { unique: false}},
+      {name: 'fromDate', keypath: 'fromDate', options: { unique: false}},
       {name: 'photos', keypath: 'photos', options: { unique: false}}
     ]
   },
@@ -81,6 +79,10 @@ const dbConfig: DBConfig = {
       {name: 'street', keypath: 'street', options: { unique: false}},
       {name: 'moreDetails', keypath: 'moreDetails', options: { unique: false}},
       {name: 'status', keypath: 'status', options: { unique: false}},
+      {name: 'startDate', keypath: 'startDate', options: { unique: false}},
+      {name: 'endDate', keypath: 'endDate', options: { unique: false}},
+      {name: 'hasRequest', keypath: 'hasRequest', options: { unique: false}},
+      {name: 'fromDate', keypath: 'fromDate', options: { unique: false}},
       {name: 'photos', keypath: 'photos', options: { unique: false}}
     ]
   },
@@ -150,10 +152,6 @@ const dbConfig: DBConfig = {
     FosteringRequestsListComponent,
     AdoptionRequestListModelComponent,
     FosteringRequestListModelComponent,
-    UserAdoptionRequestListComponent,
-    UserAdoptionRequestModelComponent,
-    UserFosteringRequestListComponent,
-    UserFosteringRequestModelComponent,
     NgoStatisticsComponent,
     UserNotificationsComponent,
     AdoptionUserRequestComponent,

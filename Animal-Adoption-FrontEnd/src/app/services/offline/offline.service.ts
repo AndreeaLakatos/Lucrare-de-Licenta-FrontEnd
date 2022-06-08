@@ -12,8 +12,7 @@ import { SnackbarService } from '../snackbar/snackbar.service';
 })
 export class OfflineService {
 
-  constructor(private snackbarService: SnackbarService,
-    private dbService: NgxIndexedDBService) { }
+  constructor(private dbService: NgxIndexedDBService) { }
 
   public getAdoptionAnnouncementsOffline(): Observable<AdoptionAnnouncementListModel[]> {
     return this.dbService.getAll('adoptionAnnouncements');
@@ -33,6 +32,8 @@ export class OfflineService {
         street: ad.street,
         moreDetails: ad.moreDetails,
         status: ad.status,
+        hasRequest: ad.hasRequest,
+        fromDate: ad.fromDate,
         photos: ad.photos
       })
       .subscribe();
@@ -57,6 +58,10 @@ export class OfflineService {
         street: ad.street,
         moreDetails: ad.moreDetails,
         status: ad.status,
+        startDate: ad.startDate,
+        endDate: ad.endDate,
+        hasRequest: ad.hasRequest,
+        fromDate: ad.fromDate,
         photos: ad.photos
       })
       .subscribe();
@@ -74,6 +79,7 @@ export class OfflineService {
         id: ad.id,
         firstName: ad.firstName,
         lastName: ad.lastName,
+        phoneNumber: ad.phoneNumber,
         email: ad.email,
         county: ad.county,
         city: ad.city,
@@ -100,6 +106,7 @@ export class OfflineService {
         id: ad.id,
         firstName: ad.firstName,
         lastName: ad.lastName,
+        phoneNumber: ad.phoneNumber,
         email: ad.email,
         county: ad.county,
         city: ad.city,

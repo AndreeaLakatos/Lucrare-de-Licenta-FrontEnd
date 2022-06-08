@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { City } from 'src/app/models/city';
 import { County } from 'src/app/models/county';
 import { AccountService } from 'src/app/services/account/account.service';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { NgoDetailsModel } from './models/ngo-details.model';
 
@@ -22,6 +23,7 @@ export class NgoDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     public accountService: AccountService,
     private utilsService: UtilsService,
+    private snackbarService: SnackbarService,
     public dialogRef: MatDialogRef<NgoDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: NgoDetailsModel
   ) {}
@@ -32,12 +34,19 @@ export class NgoDetailsComponent implements OnInit {
   }
 
   public save(): void {
-    this.accountService
+    if (window.navigator.onLine) {
+      this.accountService
       .saveNgoDetails(this.ngoDetailsForm.value)
       .subscribe(() => {
         this.ngoDetailsForm.disable();
         this.isEditing = false;
       });
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
+    
   }
 
   public getCities(county: County) {

@@ -9,7 +9,7 @@ import { UserFosteringRequest } from './models/user-fostering-request.model';
 @Component({
   selector: 'app-fostering-user-request',
   templateUrl: './fostering-user-request.component.html',
-  styleUrls: ['./fostering-user-request.component.scss']
+  styleUrls: ['./fostering-user-request.component.scss'],
 })
 export class FosteringUserRequestComponent implements OnInit {
   public userFosteringRequest!: UserFosteringRequest;
@@ -28,18 +28,23 @@ export class FosteringUserRequestComponent implements OnInit {
 
   public getUserFosteringRequest() {
     this.ngoService.getUserFosteringRequest(this.data.announcementId).subscribe(
-      (res) => this.userFosteringRequest = res,
+      (res) => (this.userFosteringRequest = res),
       (err) => console.log(err.error)
     );
   }
 
   public get title(): string {
-    return $localize`:@@myRequest: My request for announcement no. ` + this.userFosteringRequest.announcementId;
+    return (
+      $localize`:@@myRequest: My request for announcement no. ` +
+      this.userFosteringRequest.announcementId
+    );
   }
 
   public get isEvaluated(): string {
-    if (!this.userFosteringRequest.reviewed) return $localize`:@@notrated: Unrated`;
-    return this.userFosteringRequest.status ? $localize`:@@accepted: Accepted` : $localize`:@@rejected: Rejected`;
+    if (!this.userFosteringRequest.reviewed)
+      return $localize`:@@notrated: Unrated`;
+    return this.userFosteringRequest.status
+      ? $localize`:@@accepted: Accepted`
+      : $localize`:@@rejected: Rejected`;
   }
-
 }

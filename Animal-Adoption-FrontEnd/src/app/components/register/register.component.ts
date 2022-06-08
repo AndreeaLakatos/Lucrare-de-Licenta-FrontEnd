@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
-    private snackbarService: SnackbarService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -43,21 +43,27 @@ export class RegisterComponent implements OnInit {
       street: ['', Validators.required],
       city: ['', Validators.required],
       county: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
   register(): void {
-    this.accountService.register(this.registerForm.value).subscribe(
-      () => {
-        const message = $localize`:@@successfullyRegister: Registration succeded!`;
-        this.snackbarService.success(message);
-        this.successfullyRegister = true;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (window.navigator.onLine) {
+      this.accountService.register(this.registerForm.value).subscribe(
+        () => {
+          const message = $localize`:@@successfullyRegister: Registration succeded!`;
+          this.snackbarService.success(message);
+          this.successfullyRegister = true;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public backToLogin() {
@@ -71,7 +77,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public getCities() {
-    var county = this.registerForm.get("county")?.value.id;
+    var county = this.registerForm.get('county')?.value.id;
     this.utilsService.getCities(county).subscribe((cities) => {
       this.cities = cities;
     });

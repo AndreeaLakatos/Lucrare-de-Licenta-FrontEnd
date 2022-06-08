@@ -54,16 +54,23 @@ export class RegisterNgoComponent implements OnInit {
   }
 
   public register(): void {
-    this.accountService.registerNgo(this.registerForm.value).subscribe(
-      () => {
-        const message = $localize`:@@successfullyRegister: Registration succeded!`;
-        this.snackbarService.success(message);
-        this.successfullyRegister = true;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (window.navigator.onLine) {
+      this.accountService.registerNgo(this.registerForm.value).subscribe(
+        () => {
+          const message = $localize`:@@successfullyRegister: Registration succeded!`;
+          this.snackbarService.success(message);
+          this.successfullyRegister = true;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
+    
   }
 
   public backToLogin() {

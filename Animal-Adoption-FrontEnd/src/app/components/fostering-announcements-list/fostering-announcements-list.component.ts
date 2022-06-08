@@ -74,15 +74,22 @@ export class FosteringAnnouncementsListComponent implements OnInit {
   public editAnnouncement(
     adoptionAnnouncement: FosteringAnnouncementModel | undefined
   ) {
-    const dialogRef = this.fosteringAnnouncementDialog.open(
-      FosteringComponent,
-      {
-        width: '600px',
-        data: adoptionAnnouncement,
-      }
-    );
-
-    dialogRef.afterClosed().subscribe((_) => this.getFosteringAnnouncements());
+    if (window.navigator.onLine) {
+      const dialogRef = this.fosteringAnnouncementDialog.open(
+        FosteringComponent,
+        {
+          width: '600px',
+          data: adoptionAnnouncement,
+        }
+      );
+  
+      dialogRef.afterClosed().subscribe((_) => this.getFosteringAnnouncements());
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
+    
   }
 
   public getFosteringAnnouncements() {

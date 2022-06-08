@@ -7,10 +7,9 @@ import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent implements OnInit {
-
   public changePasswordForm!: FormGroup;
   public hide: boolean = true;
   public successfullyChanged: boolean = false;
@@ -22,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -35,27 +34,34 @@ export class ResetPasswordComponent implements OnInit {
     this.changePasswordForm = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(10)]],
       email: this._email,
-      token: this._token
+      token: this._token,
     });
   }
 
   public changePassword(): void {
-    this.accountService.resetPassword(this.changePasswordForm.value).subscribe(
-      (_) => {
-        const message = $localize`:@@passwordSuccessfullyChanged: Password successfully changed!`;
-        this.snackbarService.success(message);
-        this.successfullyChanged = true;
-        this.unsuccessfullyChanged = false;
-      },
-      (_) => {
-        this.unsuccessfullyChanged = true;
-        this.successfullyChanged = false;
-      }
-    );
+    if (window.navigator.onLine) {
+      this.accountService
+        .resetPassword(this.changePasswordForm.value)
+        .subscribe(
+          (_) => {
+            const message = $localize`:@@passwordSuccessfullyChanged: Password successfully changed!`;
+            this.snackbarService.success(message);
+            this.successfullyChanged = true;
+            this.unsuccessfullyChanged = false;
+          },
+          (_) => {
+            this.unsuccessfullyChanged = true;
+            this.successfullyChanged = false;
+          }
+        );
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public backToLogin() {
     this.router.navigateByUrl('login');
   }
-
 }

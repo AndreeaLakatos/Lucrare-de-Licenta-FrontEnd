@@ -9,7 +9,10 @@ import { PaginationMetaData } from 'src/app/models/utils/models/pagination.model
 import { AdoptionComponent } from './adoption/adoption.component';
 import { AdoptionAnnouncementListModel } from './models/adoption-announcement-list.model';
 import { AdoptionAnnouncementModel } from './models/adoption-announcement.model';
-import { FilterAdoptionAnnouncement, MenuItem } from './models/filter-adoption-announcements.model';
+import {
+  FilterAdoptionAnnouncement,
+  MenuItem,
+} from './models/filter-adoption-announcements.model';
 
 @Component({
   selector: 'app-adoption-announces-list',
@@ -24,40 +27,64 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   public adoptionAnnouncements?: AdoptionAnnouncementListModel[] = [];
 
   public sizeFilters: MenuItem[] = [
-    new MenuItem( $localize`:@@extraSmall: Extra small`, false, "EXTRA_SMALL"),
-    new MenuItem( $localize`:@@small: Small`, false, "SMALL"),
-    new MenuItem( $localize`:@@medium: Medium`, false, "MEDIUM"),
-    new MenuItem( $localize`:@@large: Large`, false, "LARGE"),
-    new MenuItem( $localize`:@@extraLarge: Extra large`, false, "EXTRA_LARGE"),
-  ]
+    new MenuItem($localize`:@@extraSmall: Extra small`, false, 'EXTRA_SMALL'),
+    new MenuItem($localize`:@@small: Small`, false, 'SMALL'),
+    new MenuItem($localize`:@@medium: Medium`, false, 'MEDIUM'),
+    new MenuItem($localize`:@@large: Large`, false, 'LARGE'),
+    new MenuItem($localize`:@@extraLarge: Extra large`, false, 'EXTRA_LARGE'),
+  ];
 
-   public animalFilters: MenuItem[] = [
-    new MenuItem( $localize`:@@cat: Cat`, false, "CAT"),
-    new MenuItem( $localize`:@@dog: Dog`, false, "DOG"),
-    new MenuItem( $localize`:@@rabbit: Rabbit`, false, "RABBIT")
-   ]
+  public animalFilters: MenuItem[] = [
+    new MenuItem($localize`:@@cat: Cat`, false, 'CAT'),
+    new MenuItem($localize`:@@dog: Dog`, false, 'DOG'),
+    new MenuItem($localize`:@@rabbit: Rabbit`, false, 'RABBIT'),
+  ];
 
-   public othersFilters: MenuItem[] = [
-    new MenuItem( $localize`:@@preferences: Preferences`, false, "preferences"),
-    new MenuItem( $localize`:@@requestSent: With request sent`, false, "request"),
-    new MenuItem( $localize`:@@requestNotSent: Without request sent`, false, "notRequest")
-   ]
+  public othersFilters: MenuItem[] = [
+    new MenuItem($localize`:@@preferences: Preferences`, false, 'preferences'),
+    new MenuItem(
+      $localize`:@@requestSent: With request sent`,
+      false,
+      'request'
+    ),
+    new MenuItem(
+      $localize`:@@requestNotSent: Without request sent`,
+      false,
+      'notRequest'
+    ),
+  ];
 
-   public statusFilters: MenuItem[] = [
-    new MenuItem( $localize`:@@active: Active`, false, "active"),
-    new MenuItem( $localize`:@@inactive: Inactive`, false, "inactive"),
-   ]
+  public statusFilters: MenuItem[] = [
+    new MenuItem($localize`:@@active: Active`, false, 'active'),
+    new MenuItem($localize`:@@inactive: Inactive`, false, 'inactive'),
+  ];
 
   public filters: FilterAdoptionAnnouncement[] = [
-    new FilterAdoptionAnnouncement($localize`:@@size: Size`, this.sizeFilters, "Sizes"),
-    new FilterAdoptionAnnouncement($localize`:@@type: Type`, this.animalFilters,  "Types"),
+    new FilterAdoptionAnnouncement(
+      $localize`:@@size: Size`,
+      this.sizeFilters,
+      'Sizes'
+    ),
+    new FilterAdoptionAnnouncement(
+      $localize`:@@type: Type`,
+      this.animalFilters,
+      'Types'
+    ),
     // new FilterAdoptionAnnouncement($localize`:@@city: City`, []),
-    new FilterAdoptionAnnouncement($localize`:@@others: Others`, this.othersFilters, "Others"),
-    new FilterAdoptionAnnouncement($localize`:@@status: Status`, this.statusFilters, "Status")
+    new FilterAdoptionAnnouncement(
+      $localize`:@@others: Others`,
+      this.othersFilters,
+      'Others'
+    ),
+    new FilterAdoptionAnnouncement(
+      $localize`:@@status: Status`,
+      this.statusFilters,
+      'Status'
+    ),
   ];
 
   public appliedFilters = [[], [], [], []];
-  
+
   constructor(
     public accountService: AccountService,
     public ngoService: NgoService,
@@ -71,7 +98,13 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   }
 
   public addAnnouncement() {
-    this.editAnnouncement(undefined);
+    if (window.navigator.onLine) {
+      this.editAnnouncement(undefined);
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public editAnnouncement(
@@ -123,12 +156,24 @@ export class AdoptionAnnouncesListComponent implements OnInit {
     );
     this.getAdoptionAnnounces();
   }
-  
+
   public computeFilters() {
-    this.ngoService.adoptionAnnouncementsParams.sizes = this.filters[0].menuItems.filter(x => x.checked).map(x => x.value) as string[];
-    this.ngoService.adoptionAnnouncementsParams.types = this.filters[1].menuItems.filter(x => x.checked).map(x => x.value) as string[];
-    this.ngoService.adoptionAnnouncementsParams.others = this.filters[2].menuItems.filter(x => x.checked).map(x => x.value) as string[];
-    this.ngoService.adoptionAnnouncementsParams.status = this.filters[3].menuItems.filter(x => x.checked).map(x => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.sizes =
+      this.filters[0].menuItems
+        .filter((x) => x.checked)
+        .map((x) => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.types =
+      this.filters[1].menuItems
+        .filter((x) => x.checked)
+        .map((x) => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.others =
+      this.filters[2].menuItems
+        .filter((x) => x.checked)
+        .map((x) => x.value) as string[];
+    this.ngoService.adoptionAnnouncementsParams.status =
+      this.filters[3].menuItems
+        .filter((x) => x.checked)
+        .map((x) => x.value) as string[];
     this.getAdoptionAnnounces();
   }
 }

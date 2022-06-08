@@ -98,6 +98,7 @@ export class AccountService {
   }
 
   public getUserPreferences(): Observable<UserPreferencesModel> {
+    console.log(this.getUserUsername());
     return this.httpClient.get<UserPreferencesModel>(`${this.apiUrl}user-preferences/${this.getUserUsername()}`);
   }
 
