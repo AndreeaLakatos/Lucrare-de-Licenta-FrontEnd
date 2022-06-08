@@ -81,8 +81,7 @@ export class AdoptionComponent implements OnInit {
     this.ngoService.addAdoptionAnnouncement(data).subscribe((res) => {
       this.adoptionAnnouncement = res;
       this.uploadFiles(this.adoptionAnnouncement.id);
-      this.adoptionAnnouncementForm.disable();
-      this.isEditing = false;
+      this.dialogRef.close();
     });
   }
 
@@ -126,7 +125,6 @@ export class AdoptionComponent implements OnInit {
         const reader = new FileReader();
 
         reader.onload = (e: any) => {
-          console.log(e.target.result);
           this.previews.push(e.target.result);
         };
 
@@ -164,27 +162,5 @@ export class AdoptionComponent implements OnInit {
       animalSize: ['', Validators.required],
       moreDetails: [''],
     });
-    if (this.data) {
-      this.adoptionAnnouncementForm.get('title')!.setValue(this.data.title);
-      this.adoptionAnnouncementForm
-        .get('description')!
-        .setValue(this.data.description);
-      this.adoptionAnnouncementForm
-        .get('animalType')!
-        .setValue(this.data.animalType);
-      this.adoptionAnnouncementForm
-        .get('animalSize')!
-        .setValue(this.data.animalSize);
-      this.adoptionAnnouncementForm
-        .get('moreDetails')!
-        .setValue(this.data.moreDetails);
-      this.adoptionAnnouncementForm
-        .get('animalType')!
-        .setValue(this.data.animalType);
-      this.adoptionAnnouncementForm
-        .get('animalSize')!
-        .setValue(this.data.animalSize);
-      this.adoptionAnnouncementForm.disable();
-    } else this.isEditing = true;
   }
 }

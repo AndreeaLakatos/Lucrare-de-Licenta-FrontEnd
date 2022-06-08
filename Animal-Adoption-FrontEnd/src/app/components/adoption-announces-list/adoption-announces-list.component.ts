@@ -70,7 +70,6 @@ export class AdoptionAnnouncesListComponent implements OnInit {
       this.animalFilters,
       'Types'
     ),
-    // new FilterAdoptionAnnouncement($localize`:@@city: City`, []),
     new FilterAdoptionAnnouncement(
       $localize`:@@others: Others`,
       this.othersFilters,

@@ -22,6 +22,7 @@ export class FosteringComponent implements OnInit {
   message: string[] = [];
   previews: string[] = [];
   imageInfos?: Observable<any>;
+  public minDate: Date = new Date();
   public fosteringAnnouncement?: FosteringAnnouncementModel;
 
   public animals = [AnimalType.CAT, AnimalType.DOG, AnimalType.RABBIT];
@@ -79,8 +80,8 @@ export class FosteringComponent implements OnInit {
     this.ngoService.addFosteringAnnouncement(data).subscribe((res) => {
       this.fosteringAnnouncement = res;
       this.uploadFiles(this.fosteringAnnouncement.id);
-      this.fosteringAnnouncementForm.disable();
-      this.isEditing = false;
+      setTimeout(() => 2000);
+      this.dialogRef.close();
     });
   }
 
@@ -157,37 +158,9 @@ export class FosteringComponent implements OnInit {
       description: ['', Validators.required],
       animalType: ['', Validators.required],
       animalSize: ['', Validators.required],
-      startDate: ['', Validators.required],
+      startDate: ['', Validators.required, Validators.min],
       endDate: ['', Validators.required],
       moreDetails: [''],
     });
-    if (this.data) {
-      this.fosteringAnnouncementForm.get('title')!.setValue(this.data.title);
-      this.fosteringAnnouncementForm
-        .get('description')!
-        .setValue(this.data.description);
-      this.fosteringAnnouncementForm
-        .get('animalType')!
-        .setValue(this.data.animalType);
-      this.fosteringAnnouncementForm
-        .get('animalSize')!
-        .setValue(this.data.animalSize);
-      this.fosteringAnnouncementForm
-        .get('startDate')!
-        .setValue(this.data.startDate);
-      this.fosteringAnnouncementForm
-        .get('endDate')!
-        .setValue(this.data.endDate);
-      this.fosteringAnnouncementForm
-        .get('moreDetails')!
-        .setValue(this.data.moreDetails);
-      this.fosteringAnnouncementForm
-        .get('animalType')!
-        .setValue(this.data.animalType);
-      this.fosteringAnnouncementForm
-        .get('animalSize')!
-        .setValue(this.data.animalSize);
-      this.fosteringAnnouncementForm.disable();
-    } else this.isEditing = true;
   }
 }

@@ -169,8 +169,13 @@
     "rejectedRequests": "Rejected Requests",
     "usersFosteringRequests": "Users Fostering Requests",
     "invalidUsernameOrPassword": "Invalid username or password!",
-    "userAlreadyExists": "User already exists!",
+    "userAlreadyExists": "There is already an user with this username!",
     "noConnection": "You do not have internet connection, please verify your connection or try again later!",
-    "announcementWithRequests": "You can not delete this announcement because already has requests!"
+    "announcementWithRequests": "You can not delete this announcement because already has requests!",
+    "announcementsType": "What type of announcements you want to see?",
+    "seeRequestSent": "Do you want to see the announcements that you requested?",
+    "invalidEmailAddress": "Invalid email address!",
+    "userEmailAlreadyExists": "There is already an user with this email!",
+    "foundedDateInvalid": "Founded date is invalid"
   }
 }

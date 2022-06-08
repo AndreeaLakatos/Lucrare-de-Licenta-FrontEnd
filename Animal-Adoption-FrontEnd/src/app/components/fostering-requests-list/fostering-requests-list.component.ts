@@ -22,7 +22,6 @@ export class FosteringRequestsListComponent implements OnInit {
   public getFosteringAnnouncementRequests() {
     const id = this.route.snapshot.params.id;
     this.ngoService.getFosteringAnnouncementRequests(id).subscribe((list) => {
-      console.log(list);
       this.fosteringRequests = list.filter(x => x.fosteringAnnouncementId == id);
       if (window.navigator.onLine)
           this.offlineService.updateFosteringRequests(this.fosteringRequests);

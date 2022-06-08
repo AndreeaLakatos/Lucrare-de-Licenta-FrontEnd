@@ -228,7 +228,7 @@
             <div fxLayout="row">
               <mat-form-field class="date" appearance="outline">
                 <mat-label i18n="@@foundedDate">Founded date</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="foundedDate" required/>
+                <input matInput [matDatepicker]="picker" [max]="maxDate"  formControlName="foundedDate" required/>
                 <mat-datepicker-toggle
                   matSuffix
                   [for]="picker"
@@ -240,6 +240,13 @@
                   "
                   i18n="@@foundedDateRequired"
                   >Founded date is required</mat-error
+                >
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['foundedDate'].hasError('matDatepickerMax')
+                  "
+                  i18n="@@foundedDateInvalid"
+                  >Founded date is invalid</mat-error
                 >
               </mat-form-field>
             </div>

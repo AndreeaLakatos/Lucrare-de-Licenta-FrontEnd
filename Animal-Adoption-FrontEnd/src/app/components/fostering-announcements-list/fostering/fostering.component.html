@@ -1,15 +1,5 @@
+
 <h1
-  *ngIf="isEditing"
-  mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
-  i18n="@@editFosteringAnnouncement"
->
-Edit fostering application
-</h1>
-<h1
-  *ngIf="!isEditing"
   mat-dialog-title
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
@@ -84,13 +74,14 @@ Fostering announcement
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field appearance="fill">
         <mat-label i18n="@@period">Period</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
+        <mat-date-range-input [rangePicker]="picker" [min]="minDate">
           <input matStartDate formControlName="startDate" placeholder="Start date">
           <input matEndDate formControlName="endDate" placeholder="End date">
         </mat-date-range-input>
         <mat-hint>dd/MM/yyyy – dd/MM/yyyy</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-error i18n="@@invalidStartDate" *ngIf="fosteringAnnouncementForm.controls['startDate'].hasError('matDatepickerMin')">Invalid start date</mat-error>
         <mat-error i18n="@@invalidStartDate" *ngIf="fosteringAnnouncementForm.controls['startDate'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
         <mat-error i18n="@@invalidEndDate" *ngIf="fosteringAnnouncementForm.controls['endDate'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
       </mat-form-field>
@@ -116,16 +107,6 @@ Fostering announcement
   </div>
   <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
     <button
-      *ngIf="isEditing"
-      mat-raised-button
-      (click)="cancel()"
-      cdkFocusInitial
-      i18n="@@cancel"
-    >
-     Cancel
-    </button>
-    <button
-      *ngIf="!isEditing"
       mat-raised-button
       mat-dialog-close
       cdkFocusInitial
@@ -134,16 +115,6 @@ Fostering announcement
       Close
     </button>
     <button
-      *ngIf="!isEditing"
-      class="margins"
-      mat-raised-button
-      (click)="edit()"
-      i18n="@@edit"
-    >
-      Edit
-    </button>
-    <button
-      *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"

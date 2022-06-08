@@ -14,6 +14,7 @@ import { AddFosteringRequestModel } from './models/add-fostering-request.model';
 export class AddFosteringRequestComponent implements OnInit {
   public fosteringRequestForm!: FormGroup;
   public isEditing: boolean = false;
+  public minDate: Date = new Date();
 
   constructor(
     public accounService: AccountService,
@@ -26,6 +27,7 @@ export class AddFosteringRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.minDate = new Date();
   }
 
   public edit() {
@@ -36,7 +38,7 @@ export class AddFosteringRequestComponent implements OnInit {
   private initForm() {
     this.fosteringRequestForm = this.formBuilder.group({
       reason: ['', Validators.required],
-      availableDate: ['', Validators.required],
+      availableDate: ['', Validators.required, Validators.min],
       somethingElse: [''],
     });
 

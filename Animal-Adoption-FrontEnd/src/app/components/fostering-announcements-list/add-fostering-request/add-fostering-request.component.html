@@ -40,6 +40,7 @@
         matInput
         [matDatepicker]="picker"
         formControlName="availableDate"
+        [min]="minDate"
         required
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

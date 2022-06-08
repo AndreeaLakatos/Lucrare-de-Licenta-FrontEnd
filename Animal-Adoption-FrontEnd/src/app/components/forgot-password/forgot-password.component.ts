@@ -34,17 +34,23 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   public forgotPassword(): void {
-    this.accountService.forgotPassword(this.forgotPasswordForm.value).subscribe(
-      (_) => {
-        const message = $localize`:@@verifyEmail: Email successfully sent! Please verify your email.`;
-        this.snackbarService.success(message);
-        this.successfullySent = true;
-      },
-      (err) => {
-        console.log(err.message);
-        this.unsuccessfullySent = true;
-      }
-    );
+    if (window.navigator.onLine) {
+      this.accountService.forgotPassword(this.forgotPasswordForm.value).subscribe(
+        (_) => {
+          const message = $localize`:@@verifyEmail: Email successfully sent! Please verify your email.`;
+          this.snackbarService.success(message);
+          this.successfullySent = true;
+        },
+        (err) => {
+          console.log(err.message);
+          this.unsuccessfullySent = true;
+        }
+      );
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   public recover(): void {}

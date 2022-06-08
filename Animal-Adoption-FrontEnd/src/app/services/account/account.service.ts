@@ -34,7 +34,6 @@ export class AccountService {
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('token', user.token);
           localStorage.setItem('username', user.username);
-          console.log(user.token);
         }
       })
     );
@@ -98,7 +97,6 @@ export class AccountService {
   }
 
   public getUserPreferences(): Observable<UserPreferencesModel> {
-    console.log(this.getUserUsername());
     return this.httpClient.get<UserPreferencesModel>(`${this.apiUrl}user-preferences/${this.getUserUsername()}`);
   }
 

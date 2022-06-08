@@ -55,10 +55,22 @@ export class LoginComponent implements OnInit {
   }
 
   registerBasicUser(): void {
-    this.router.navigateByUrl('basic-registration');
+    if (window.navigator.onLine) {
+      this.router.navigateByUrl('basic-registration');
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 
   registerNGO(): void {
-    this.router.navigateByUrl('ngo-registration');
+    if (window.navigator.onLine) {
+      this.router.navigateByUrl('ngo-registration');
+    } else {
+      this.snackbarService.warn(
+        $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
+      );
+    }
   }
 }

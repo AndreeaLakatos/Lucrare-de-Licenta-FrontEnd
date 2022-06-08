@@ -8,5 +8,6 @@ export enum ErrorCode {
   InvalidEmailAddress,
   InvalidPassword,
   AnnouncementWithRequests,
+  UserEmailAlreadyExists,
   Unauthorized,
 }

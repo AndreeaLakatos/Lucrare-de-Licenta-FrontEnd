@@ -65,7 +65,6 @@ export class NgoService {
     )
       .pipe(map(() => navigator.onLine))
       .subscribe((status) => {
-        console.log('status', status);
         this.networkStatus = status;
       });
   }
@@ -302,7 +301,6 @@ export class NgoService {
 
   public getStatistics(): Observable<Statistics> {
     var username = this.accountService.getUserUsername();
-    console.log(username);
     return this.httpClient.get<Statistics>(
       `${this.apiUrl}statistics/${username}`
     );

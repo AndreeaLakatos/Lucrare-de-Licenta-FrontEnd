@@ -19,6 +19,7 @@ export class RegisterNgoComponent implements OnInit {
   public counties?: County[];
   public hide: boolean = true;
   public successfullyRegister: boolean = false;
+  public maxDate: Date = new Date();
 
   constructor(
     public accountService: AccountService,
@@ -31,6 +32,7 @@ export class RegisterNgoComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.getCounties();
+    this.maxDate = new Date();
   }
 
   private initForm(): void {
@@ -45,7 +47,7 @@ export class RegisterNgoComponent implements OnInit {
       county: ['', Validators.required],
       ngoName: ['', Validators.required],
       code: ['', Validators.required],
-      foundedDate: ['', Validators.required],
+      foundedDate: ['', Validators.required, Validators.max],
       ngoStreet: ['', Validators.required],
       ngoCity: ['', Validators.required],
       ngoCounty: ['', Validators.required],

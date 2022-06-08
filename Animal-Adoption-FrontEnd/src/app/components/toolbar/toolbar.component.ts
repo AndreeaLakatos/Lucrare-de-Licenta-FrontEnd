@@ -85,6 +85,7 @@ export class ToolbarComponent implements OnInit {
   public editUserPreferences() {
     this.userPreferencesDialog.open(UserPreferencesComponent, {
       data: this.userPreferencesModel,
+      width: '500px'
     });
   }
 

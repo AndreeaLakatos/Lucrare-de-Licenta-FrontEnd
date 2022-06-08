@@ -11,7 +11,6 @@ export class ErrorCodeTranslationService {
 
   public translate(error: Error){
     const {errorCode, message} = { ...error };
-    console.log(errorCode);
 
     const localizedMessages: LocalizedError[] = [
       {
@@ -20,12 +19,20 @@ export class ErrorCodeTranslationService {
       },
       {
         errorCode: ErrorCode.UserAlreadyExist,
-        localizedMessage: $localize`:@@userAlreadyExists: User already exists!`
+        localizedMessage: $localize`:@@userAlreadyExists: There is already an user with this username!`
       },
       {
         errorCode: ErrorCode.AnnouncementWithRequests,
         localizedMessage: $localize`:@@announcementWithRequests: You can not delete this announcement because already has requests!`
-      } 
+      },
+      {
+        errorCode: ErrorCode.InvalidEmailAddress,
+        localizedMessage: $localize`:@@invalidEmailAddress: Invalid email address!`
+      },
+      {
+        errorCode: ErrorCode.UserEmailAlreadyExists,
+        localizedMessage: $localize`:@@userEmailAlreadyExists: There is already an user with this email!`
+      },
     ];
 
     const newMessage: LocalizedError | any = localizedMessages.find((x) => x.errorCode === errorCode);

@@ -17,6 +17,8 @@ import { AddAdoptionRequestModel } from './models/add-adoption-request.model';
 export class AddAdoptionRequestComponent implements OnInit {
   public adoptionRequestForm!: FormGroup;
   public isEditing: boolean = false;
+  public minDate: Date = new Date();
+  public saved: boolean = false;
 
   constructor(
     public accounService: AccountService,
@@ -29,6 +31,7 @@ export class AddAdoptionRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.minDate = new Date();
   }
 
   public edit() {
@@ -39,7 +42,7 @@ export class AddAdoptionRequestComponent implements OnInit {
   private initForm() {
     this.adoptionRequestForm = this.formBuilder.group({
       reason: ['', Validators.required],
-      availableDate: ['', Validators.required],
+      availableDate: ['', Validators.required, Validators.min],
       somethingElse: [''],
     });
 
@@ -74,7 +77,7 @@ export class AddAdoptionRequestComponent implements OnInit {
       (_) => {
         this.snackbarService.success($localize`:@@successfullSent: Request successfully sent!`);
         this.adoptionRequestForm.disable();
-        this.isEditing = false;
+        this.saved = false;
       }
     );
   }
