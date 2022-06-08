@@ -27,6 +27,7 @@
   <div class="margins" *ngFor="let announcement of fosteringAnnouncements">
     <app-fostering-announcement-list-model
       (delete)="refreshPage($event)"
+      (add)="getFosteringAnnouncements()"
       [fosteringAnnouncementModel]="announcement"
     ></app-fostering-announcement-list-model>
   </div>

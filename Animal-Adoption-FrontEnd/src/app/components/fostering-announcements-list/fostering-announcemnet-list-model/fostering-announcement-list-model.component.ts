@@ -24,6 +24,7 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   fosteringAnnouncementModel!: FosteringAnnouncementListModel;
   @Output() delete: EventEmitter<FosteringAnnouncementListModel> =
     new EventEmitter<FosteringAnnouncementListModel>();
+  @Output() add = new EventEmitter();
   public animalTranslations = AnimalTranslations;
   public sizeTranslations = SizeTranslations;
   constructor(
@@ -56,11 +57,12 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
         '',
         ''
       );
-      this.fosteringRequestDialog.open(AddFosteringRequestComponent, {
+      const dialogRef = this.fosteringRequestDialog.open(AddFosteringRequestComponent, {
         height: '500px',
         width: '400px',
         data: fosteringRequest,
       });
+      dialogRef.afterClosed().subscribe((_) => this.add.emit());
     } else {
       this.snackbarService.warn(
         $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`

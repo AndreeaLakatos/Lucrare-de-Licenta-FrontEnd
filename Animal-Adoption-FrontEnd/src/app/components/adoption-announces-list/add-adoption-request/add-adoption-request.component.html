@@ -1,58 +1,53 @@
-<h1
-  *ngIf="isEditing"
-  mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
-  i18n="@@editAdoptionRequest"
->
-  Edit adoption request
-</h1>
-<h1
-  *ngIf="!isEditing"
-  mat-dialog-title
-  cdkDrag
-  cdkDragRootElement=".cdk-overlay-pane"
-  cdkDragHandle
-  i18n="@@adoptionRequest"
->
-  Adoption request
-</h1>
+<div fxLayout="row">
+  <div fxLayou="column">
+    <h1>#{{ data.adoptionAnnouncementId }}:</h1>
+  </div>
+  <div fxLayout="column">
+    <h1
+      mat-dialog-title
+      cdkDrag
+      cdkDragRootElement=".cdk-overlay-pane"
+      cdkDragHandle
+      i18n="@@adoptionRequest"
+    >
+      Adoption request
+    </h1>
+  </div>
+</div>
 
 <form
   [formGroup]="adoptionRequestForm"
-  (ngSubmit)="adoptionRequestForm.valid"
+  (ngSubmit)="(adoptionRequestForm.valid)"
   autocomplete="off"
 >
   <div fxLayout="row" fxLayoutAlign="center center">
-      <mat-form-field appearance="outline">
-        <mat-label i18n="@@why">Why do you want this adoption?</mat-label>
-        <input type="text" matInput formControlName="title" required />
-        <mat-error i18n="@@whyRequired"
-          *ngIf="
-          adoptionRequestForm.controls['why'].hasError('required')
-          "
-          >The reason is required</mat-error
-        >
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label i18n="@@why">Why do you want this adoption?</mat-label>
+      <input type="text" matInput formControlName="reason" required />
+      <mat-error
+        i18n="@@whyRequired"
+        *ngIf="adoptionRequestForm.controls['reason'].hasError('required')"
+        >The reason is required</mat-error
+      >
+    </mat-form-field>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="date" appearance="outline">
-      <mat-label i18n="@@availableDate">When are you available for a phone call?</mat-label>
+      <mat-label i18n="@@availableDate"
+        >When are you available for a phone call?</mat-label
+      >
       <input
         matInput
         [matDatepicker]="picker"
         formControlName="availableDate"
         required
       />
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error i18n="@@availableDateRequired"
+      <mat-error
+        i18n="@@availableDateRequired"
         *ngIf="
-        adoptionRequestForm.controls['availableDate'].hasError('required')
+          adoptionRequestForm.controls['availableDate'].hasError('required')
         "
         >The date of availability is required</mat-error
       >
@@ -61,47 +56,18 @@
 
   <div fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field class="margins" appearance="outline">
-      <mat-label i18n="@@somethingElse">Do you want to tell us something else about yourself?</mat-label>
+      <mat-label i18n="@@somethingElse"
+        >Do you want to tell us something else about yourself?</mat-label
+      >
       <textarea matInput formControlName="somethingElse" required></textarea>
     </mat-form-field>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
-    <button
-      *ngIf="isEditing"
-      mat-raised-button
-      (click)="cancel()"
-      cdkFocusInitial
-      i18n="@@cancel"
-    >
-      Cancel
-    </button>
-    <button
-      *ngIf="!isEditing"
-      mat-raised-button
-      mat-dialog-close
-      cdkFocusInitial
-      i18n="@@close"
-    >
+    <button mat-raised-button mat-dialog-close cdkFocusInitial i18n="@@close">
       Close
     </button>
-    <button
-      *ngIf="!isEditing"
-      class="margins"
-      mat-raised-button
-      (click)="edit()"
-      i18n="@@edit"
-    >
-      Edit
-    </button>
-    <button
-      *ngIf="isEditing"
-      class="margins"
-      mat-raised-button
-      (click)="save()"
-      i18n="@@save"
-    >
+    <button class="margins" mat-raised-button (click)="save()" i18n="@@save">
       Save
     </button>
   </div>
 </form>
-

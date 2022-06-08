@@ -141,12 +141,7 @@ export class AdoptionAnnouncesListComponent implements OnInit {
   }
 
   public refreshPage(adoptionAnnouncement: AdoptionAnnouncementListModel) {
-    this.adoptionAnnouncements = this.adoptionAnnouncements?.filter(
-      (x) => x.id !== adoptionAnnouncement.id
-    );
-    this.snackbarService.success(
-      $localize`:@@deletionSucceded: Successfull deletion!`
-    );
+    this.getAdoptionAnnounces();
   }
 
   public onPaginateChange($event: PageEvent): void {

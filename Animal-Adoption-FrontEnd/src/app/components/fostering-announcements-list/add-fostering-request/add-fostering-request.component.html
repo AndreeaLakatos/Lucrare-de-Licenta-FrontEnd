@@ -4,19 +4,6 @@
   </div>
   <div fxLayout="column">
     <h1
-      *ngIf="isEditing"
-      mat-dialog-title
-      cdkDrag
-      cdkDragRootElement=".cdk-overlay-pane"
-      cdkDragHandle
-      i18n="@@editFosteringRequest"
-    >
-      Edit fostering request
-    </h1>
-  </div>
-  <div fxLayout="column">
-    <h1
-      *ngIf="!isEditing"
       mat-dialog-title
       cdkDrag
       cdkDragRootElement=".cdk-overlay-pane"
@@ -77,16 +64,6 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="center center" class="mt-10">
     <button
-      *ngIf="isEditing"
-      mat-raised-button
-      (click)="cancel()"
-      cdkFocusInitial
-      i18n="@@cancel"
-    >
-      Cancel
-    </button>
-    <button
-      *ngIf="!isEditing"
       mat-raised-button
       mat-dialog-close
       cdkFocusInitial
@@ -95,16 +72,6 @@
       Close
     </button>
     <button
-      *ngIf="!isEditing"
-      class="margins"
-      mat-raised-button
-      (click)="edit()"
-      i18n="@@edit"
-    >
-      Edit
-    </button>
-    <button
-      *ngIf="isEditing"
       class="margins"
       mat-raised-button
       (click)="save()"

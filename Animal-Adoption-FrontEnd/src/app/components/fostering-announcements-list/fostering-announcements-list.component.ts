@@ -114,12 +114,7 @@ export class FosteringAnnouncementsListComponent implements OnInit {
   public refreshPage(
     fosteringAnnouncementModel: FosteringAnnouncementListModel
   ) {
-    this.fosteringAnnouncements = this.fosteringAnnouncements?.filter(
-      (x) => x.id !== fosteringAnnouncementModel.id
-    );
-    this.snackbarService.success(
-      $localize`:@@deletionSucceded: Successfull deletion!`
-    );
+    this.getFosteringAnnouncements();
   }
 
   public onPaginateChange($event: PageEvent): void {

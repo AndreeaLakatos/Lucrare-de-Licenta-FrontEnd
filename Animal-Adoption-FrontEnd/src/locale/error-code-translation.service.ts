@@ -21,7 +21,11 @@ export class ErrorCodeTranslationService {
       {
         errorCode: ErrorCode.UserAlreadyExist,
         localizedMessage: $localize`:@@userAlreadyExists: User already exists!`
-      }
+      },
+      {
+        errorCode: ErrorCode.AnnouncementWithRequests,
+        localizedMessage: $localize`:@@announcementWithRequests: You can not delete this announcement because already has requests!`
+      } 
     ];
 
     const newMessage: LocalizedError | any = localizedMessages.find((x) => x.errorCode === errorCode);

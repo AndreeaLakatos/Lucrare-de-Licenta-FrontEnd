@@ -171,6 +171,7 @@
     "usersFosteringRequests": "Utilizatori care au trimis cerere de adopție temporară",
     "invalidUsernameOrPassword": "Numele de utilizator sau parola sunt invalide!",
     "userAlreadyExists": "Există deja un utilizator cu acest nume de utilizator sau email!",
-    "noConnection": "Nu există conexiune la internet, te rugăm verifică sau încearcă mai târziu!"
+    "noConnection": "Nu există conexiune la internet, te rugăm verifică sau încearcă mai târziu!",
+    "announcementWithRequests": "Nu poti șterge acest anunț deoarece s-au înregistrat deja cereri pentru el!"
   }
 }

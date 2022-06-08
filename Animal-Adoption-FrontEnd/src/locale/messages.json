@@ -170,6 +170,7 @@
     "usersFosteringRequests": "Users Fostering Requests",
     "invalidUsernameOrPassword": "Invalid username or password!",
     "userAlreadyExists": "User already exists!",
-    "noConnection": "You do not have internet connection, please verify your connection or try again later!"
+    "noConnection": "You do not have internet connection, please verify your connection or try again later!",
+    "announcementWithRequests": "You can not delete this announcement because already has requests!"
   }
 }

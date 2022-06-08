@@ -38,13 +38,13 @@ export class AddAdoptionRequestComponent implements OnInit {
 
   private initForm() {
     this.adoptionRequestForm = this.formBuilder.group({
-      why: ['', Validators.required],
+      reason: ['', Validators.required],
       availableDate: ['', Validators.required],
       somethingElse: [''],
     });
 
     if (this.data) {
-      this.adoptionRequestForm.get('why')!.setValue(this.data.reason);
+      this.adoptionRequestForm.get('reason')!.setValue(this.data.reason);
       this.adoptionRequestForm.get('availableDate')!.setValue(this.data.availableDate);
       this.adoptionRequestForm
         .get('somethingElse')!
@@ -55,7 +55,7 @@ export class AddAdoptionRequestComponent implements OnInit {
 
   public cancel() {
     if (this.data) {
-      this.adoptionRequestForm.get('why')!.setValue(this.data.reason);
+      this.adoptionRequestForm.get('reason')!.setValue(this.data.reason);
       this.adoptionRequestForm.get('availableDate')!.setValue(this.data.availableDate);
       this.adoptionRequestForm
         .get('somethingElse')!
@@ -68,7 +68,7 @@ export class AddAdoptionRequestComponent implements OnInit {
   }
 
   public save() {
-    const addAdoptionRequest = new AddAdoptionRequestModel(0, this.data.adoptionAnnouncementId, this.adoptionRequestForm.get('why')!.value, this.adoptionRequestForm.get('availableDate')!.value,
+    const addAdoptionRequest = new AddAdoptionRequestModel(0, this.data.adoptionAnnouncementId, this.adoptionRequestForm.get('reason')!.value, this.adoptionRequestForm.get('availableDate')!.value,
     this.adoptionRequestForm.get('somethingElse')!.value, '');
     this.ngoService.addAdoptionRequest(addAdoptionRequest).subscribe(
       (_) => {

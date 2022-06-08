@@ -25,6 +25,7 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   adoptionAnnouncementModel!: AdoptionAnnouncementListModel;
   @Output() delete: EventEmitter<AdoptionAnnouncementListModel> =
     new EventEmitter<AdoptionAnnouncementListModel>();
+  @Output() add = new EventEmitter();
 
   public adoptionRequests: AdoptionRequestListModel[] = [];
   public animalTranslations = AnimalTranslations;
@@ -58,11 +59,12 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
         '',
         ''
       );
-      this.adoptionRequestDialog.open(AddAdoptionRequestComponent, {
+      const dialogRef = this.adoptionRequestDialog.open(AddAdoptionRequestComponent, {
         height: '400px',
         width: '400px',
         data: adoptionRequest,
       });
+      dialogRef.afterClosed().subscribe((_) => this.add.emit());
     } else {
       this.snackbarService.warn(
         $localize`:@@noConnection:You do not have internet connection, please verify your connection or try again later!`
