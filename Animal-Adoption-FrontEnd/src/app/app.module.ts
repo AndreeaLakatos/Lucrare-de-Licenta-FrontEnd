@@ -47,7 +47,6 @@ import { NgoStatisticsComponent } from './components/ngo-statistics/ngo-statisti
 import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
 import { AdoptionUserRequestComponent } from './components/adoption-user-request/adoption-user-request.component';
 import { FosteringUserRequestComponent } from './components/fostering-user-request/fostering-user-request.component';
-import { BreadcrumpComponent } from './components/breadcrump/breadcrump.component';
 
 
 const dbConfig: DBConfig = {
@@ -160,7 +159,6 @@ const dbConfig: DBConfig = {
     AdoptionUserRequestComponent,
     FosteringUserRequestComponent,
     FosteringAnnouncementsListComponent,
-    BreadcrumpComponent,
   ],
   imports: [
     BrowserModule,
