@@ -84,24 +84,18 @@ export class ToolbarComponent implements OnInit {
 
   public editUserPreferences() {
     this.userPreferencesDialog.open(UserPreferencesComponent, {
-      height: '375px',
-      width: '500px',
       data: this.userPreferencesModel,
     });
   }
 
   public editAccountDetails() {
     this.accountDetailsDialog.open(UserDetailsComponent, {
-      height: '550px',
-      width: '475px',
       data: this.userDetailsModel,
     });
   }
 
   public editNgoDetails() {
     this.ngoDetailsDialog.open(NgoDetailsComponent, {
-      height: '375px',
-      width: '475px',
       data: this.ngoDetailsModel,
     });
   }

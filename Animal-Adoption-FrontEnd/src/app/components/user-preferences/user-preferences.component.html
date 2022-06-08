@@ -58,35 +58,24 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label i18n="@@forWho"
-          >Who do you want to adopt an animal for?</mat-label
+        <mat-label i18n="@@announcementsType"
+          >What type of announcements you want to see?</mat-label
         >
-        <mat-select formControlName="hasFamily">
-          <mat-option [value]="false" i18n="@@forMe"> For me</mat-option>
-          <mat-option [value]="true" i18n="@@forMe"> For family</mat-option>
+        <mat-select formControlName="open">
+          <mat-option [value]="true" i18n="@@active">Active</mat-option>
+          <mat-option [value]="false" i18n="@@inactive">Inactive</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div fxLayout="column">
       <mat-form-field class="margins" appearance="outline">
-        <mat-label i18n="@@haveChildren">Do you have kids?</mat-label>
-        <mat-select formControlName="haveChildren">
+        <mat-label i18n="@@seeRequestSent">Do you want to see the announcements that you requested?</mat-label>
+        <mat-select formControlName="requestSent">
           <mat-option [value]="true" i18n="@@yes"> Yes</mat-option>
           <mat-option [value]="false" i18n="@@no"> No</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-  </div>
-  <div fxLayout="row" fxLayoutAlign="center">
-    <mat-form-field class="margins" appearance="outline">
-      <mat-label i18n="@@whereLeave">Where do you leave?</mat-label>
-      <mat-select formControlName="livingPlace">
-        <mat-option [value]="'house'" i18n="@@house"> House</mat-option>
-        <mat-option [value]="'apartment'" i18n="@@apartment">
-          Apartment</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">

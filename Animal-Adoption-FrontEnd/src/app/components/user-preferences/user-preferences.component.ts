@@ -65,13 +65,10 @@ export class UserPreferencesComponent implements OnInit {
 
   public cancel() {
     if (this.data) {
-      this.userPreferencesForm.get('hasFamily')!.setValue(this.data.hasFamily);
+      this.userPreferencesForm.get('requestSent')!.setValue(this.data.requestSent);
       this.userPreferencesForm
-        .get('haveChildren')!
-        .setValue(this.data.haveChildren);
-      this.userPreferencesForm
-        .get('livingPlace')!
-        .setValue(this.data.livingPlace);
+        .get('open')!
+        .setValue(this.data.open);
       this.userPreferencesForm
         .get('animalSize')!
         .setValue(this.data.animalSize);
@@ -86,21 +83,17 @@ export class UserPreferencesComponent implements OnInit {
 
   private initForm(): void {
     this.userPreferencesForm = this.formBuilder.group({
-      hasFamily: ['', Validators.required],
-      haveChildren: ['', Validators.required],
-      livingPlace: ['', Validators.required],
+      open: ['', Validators.required],
+      requestSent: ['', Validators.required],
       animalSize: ['', Validators.required],
       animalType: ['', Validators.required],
     });
 
     if (this.data) {
-      this.userPreferencesForm.get('hasFamily')!.setValue(this.data.hasFamily);
+      this.userPreferencesForm.get('requestSent')!.setValue(this.data.requestSent);
       this.userPreferencesForm
-        .get('haveChildren')!
-        .setValue(this.data.haveChildren);
-      this.userPreferencesForm
-        .get('livingPlace')!
-        .setValue(this.data.livingPlace);
+        .get('open')!
+        .setValue(this.data.open);
       this.userPreferencesForm
         .get('animalSize')!
         .setValue(this.data.animalSize);

@@ -1,23 +1,5 @@
 <div *ngIf="accountService.isUserLoggedIn()">
   <mat-action-list class="vertical-menu">
-    <button mat-list-item (click)="showAccountSubmenu = !showAccountSubmenu">
-      <mat-icon>account_circle</mat-icon>
-      <span class="margins" i18n="@@myAccount">My account</span>
-    </button>
-    <div *ngIf="showAccountSubmenu" class="submenu">
-      <button mat-list-item>
-        <mat-icon>account_circle</mat-icon>
-        <span class="margins" i18n="@@accountDetails">Account details</span>
-      </button>
-      <button *ngIf="accountService.isBasicUser" mat-list-item>
-        <mat-icon>favorite</mat-icon>
-        <span class="margins" i18n="@@userPreferences">User preferences</span>
-      </button>
-      <button *ngIf="accountService.isNgo" mat-list-item>
-        <mat-icon>group_work</mat-icon>
-        <span class="margins" i18n="@@ngoDetails">NGO details</span>
-      </button>
-    </div>
     <button mat-list-item *ngIf="accountService.isNgo" (click)="redirectToAdoptionAnnouncements()">
       <mat-icon>announcement</mat-icon>
       <span class="margins" i18n="@@myAdoptionAnnounces">My adoption announcements</span>
