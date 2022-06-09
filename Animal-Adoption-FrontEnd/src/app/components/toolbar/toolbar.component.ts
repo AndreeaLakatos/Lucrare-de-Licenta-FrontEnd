@@ -153,7 +153,7 @@ export class ToolbarComponent implements OnInit {
     const url = window.location.pathname.split('/');
     let currentPath = '';
     for (let i = 2; i < url.length; i++) {
-      currentPath = `${currentPath}/${url[i]}`;
+      currentPath = `${currentPath}${url[i]}`;
     }
     return currentPath;
   }

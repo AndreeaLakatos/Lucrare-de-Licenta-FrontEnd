@@ -21,19 +21,19 @@ export class VerticalMenuComponent implements OnInit {
   }
 
   public redirectToAdoptionAnnouncements() {
-    this.router.navigateByUrl('/adoption-announcements').then(() => {
+    this.router.navigateByUrl('adoption-announcements').then(() => {
       window.location.reload();
     });;
   }
 
   public redirectToFosteringAnnouncements() {
-    this.router.navigateByUrl('/fostering-announcements').then(() => {
+    this.router.navigateByUrl('fostering-announcements').then(() => {
       window.location.reload();
     });
   }
 
   public redirectToStatistics() {
-    this.router.navigateByUrl('/statistics').then(() => {
+    this.router.navigateByUrl('statistics').then(() => {
       window.location.reload();
     });
   }
