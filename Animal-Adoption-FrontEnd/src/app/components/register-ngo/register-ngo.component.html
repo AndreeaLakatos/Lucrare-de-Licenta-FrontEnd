@@ -322,7 +322,7 @@
             <div fxLayout="column">
               <button
                 class="register-button"
-                [disabled]="!registerForm.valid || successfullyRegister"
+                [disabled]="successfullyRegister"
                 mat-raised-button
                 (click)="register()"
                 type="submit"

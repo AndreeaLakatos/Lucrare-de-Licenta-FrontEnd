@@ -5,6 +5,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { UserModel } from '../../adoption-user-request/models/user-model';
 import { FosteringUserRequestComponent } from '../../fostering-user-request/fostering-user-request.component';
 import { AddFosteringRequestComponent } from '../add-fostering-request/add-fostering-request.component';
 import { AddFosteringRequestModel } from '../add-fostering-request/models/add-fostering-request.model';
@@ -92,7 +93,7 @@ export class FosteringAnnouncementListModelComponent implements OnInit {
   public showMyRequest() {
     if (window.navigator.onLine) {
       this.myRequestDialog.open(FosteringUserRequestComponent, {
-        data: { announcementId: this.fosteringAnnouncementModel.id },
+        data: new UserModel(this.fosteringAnnouncementModel.id),
       });
     } else {
       this.snackbarService.warn(

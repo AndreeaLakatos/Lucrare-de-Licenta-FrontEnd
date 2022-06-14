@@ -5,6 +5,7 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { UserAdoptionRequest } from './models/user-adoption-request.model';
+import { UserModel } from './models/user-model';
 
 @Component({
   selector: 'app-adoption-user-request',
@@ -13,28 +14,30 @@ import { UserAdoptionRequest } from './models/user-adoption-request.model';
 })
 export class AdoptionUserRequestComponent implements OnInit {
   public userAdoptionRequest!: UserAdoptionRequest;
+  public announcementId!: number;
   constructor(
     public accounService: AccountService,
     public ngoService: NgoService,
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AdoptionUserRequestComponent>,
     private snackbarService: SnackbarService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: UserModel
   ) {}
 
   ngOnInit(): void {
+   this.announcementId = this.data.announcementId;
     this.getUserAdoptionRequest();
   }
 
   public getUserAdoptionRequest() {
-    this.ngoService.getUserAdoptionRequest(this.data.announcementId).subscribe(
+    this.ngoService.getUserAdoptionRequest(this.announcementId).subscribe(
       (res) => this.userAdoptionRequest = res,
       (err) => console.log(err.error)
     );
   }
 
   public get title(): string {
-    return $localize`:@@myRequest: My request for announcement no. ` + this.userAdoptionRequest.announcementId;
+    return $localize`:@@myRequest: My request for announcement no. ` + this.announcementId;
   }
 
   public get isEvaluated(): string {

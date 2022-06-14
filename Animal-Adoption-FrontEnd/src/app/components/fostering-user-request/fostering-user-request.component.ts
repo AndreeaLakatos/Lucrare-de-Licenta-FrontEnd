@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountService } from 'src/app/services/account/account.service';
 import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
+import { UserModel } from '../adoption-user-request/models/user-model';
 import { UserFosteringRequest } from './models/user-fostering-request.model';
 
 @Component({
@@ -19,7 +20,7 @@ export class FosteringUserRequestComponent implements OnInit {
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<FosteringUserRequestComponent>,
     private snackbarService: SnackbarService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: UserModel
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class FosteringUserRequestComponent implements OnInit {
   public get title(): string {
     return (
       $localize`:@@myRequest: My request for announcement no. ` +
-      this.userFosteringRequest.announcementId
+      this.data.announcementId
     );
   }
 

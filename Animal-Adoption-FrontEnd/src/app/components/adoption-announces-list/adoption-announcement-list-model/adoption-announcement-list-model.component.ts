@@ -7,6 +7,7 @@ import { NgoService } from 'src/app/services/ngo/ngo.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { AdoptionRequestListModel } from '../../adoption-requests-list/models/adoption-request-list-model.model';
 import { AdoptionUserRequestComponent } from '../../adoption-user-request/adoption-user-request.component';
+import { UserModel } from '../../adoption-user-request/models/user-model';
 import { AddAdoptionRequestComponent } from '../add-adoption-request/add-adoption-request.component';
 import { AddAdoptionRequestModel } from '../add-adoption-request/models/add-adoption-request.model';
 import {
@@ -94,7 +95,7 @@ export class AdoptionAnnouncementListModelComponent implements OnInit {
   public showMyRequest() {
     if (window.navigator.onLine) {
       this.myRequestDialog.open(AdoptionUserRequestComponent, {
-        data: { announcementId: this.adoptionAnnouncementModel.id },
+        data: new UserModel(this.adoptionAnnouncementModel.id),
       });
     } else {
       this.snackbarService.warn(
