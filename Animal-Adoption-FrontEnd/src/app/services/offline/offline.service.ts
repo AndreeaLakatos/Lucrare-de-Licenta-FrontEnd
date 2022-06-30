@@ -19,25 +19,28 @@ export class OfflineService {
   }
 
   public updateAdoptionAnnouncements(adoptionAnnouncements: AdoptionAnnouncementListModel[], elementsToDelete: number[]) {
-    this.dbService.bulkDelete('adoptionAnnouncements', elementsToDelete);
-    for(const ad of adoptionAnnouncements){
-      this.dbService.add('adoptionAnnouncements', {
-        id: ad.id,
-        title: ad.title,
-        description: ad.description,
-        animalType: ad.animalType,
-        animalSize: ad.animalSize,
-        county: ad.county,
-        city: ad.city,
-        street: ad.street,
-        moreDetails: ad.moreDetails,
-        status: ad.status,
-        hasRequest: ad.hasRequest,
-        fromDate: ad.fromDate,
-        photos: ad.photos
-      })
-      .subscribe();
-    }
+    this.getAdoptionAnnouncementsOffline().subscribe((res) => {
+      const elementsToDelete = res.map(x => x.id);
+      this.dbService.bulkDelete('adoptionAnnouncements', elementsToDelete);
+      for(const ad of adoptionAnnouncements){
+        this.dbService.add('adoptionAnnouncements', {
+          id: ad.id,
+          title: ad.title,
+          description: ad.description,
+          animalType: ad.animalType,
+          animalSize: ad.animalSize,
+          county: ad.county,
+          city: ad.city,
+          street: ad.street,
+          moreDetails: ad.moreDetails,
+          status: ad.status,
+          hasRequest: ad.hasRequest,
+          fromDate: ad.fromDate,
+          photos: ad.photos
+        })
+        .subscribe();
+      }
+    })
   }
 
   public getFosteringAnnouncementsOffline(): Observable<FosteringAnnouncementListModel[]> {
@@ -45,27 +48,30 @@ export class OfflineService {
   }
 
   public updateFosteringAnnouncements(fosteringAnnouncements: FosteringAnnouncementListModel[], elementsToDelete: number[]) {
-    this.dbService.bulkDelete('fosteringAnnouncements', elementsToDelete);
-    for(const ad of fosteringAnnouncements){
-      this.dbService.add('fosteringAnnouncements', {
-        id: ad.id,
-        title: ad.title,
-        description: ad.description,
-        animalType: ad.animalType,
-        animalSize: ad.animalSize,
-        county: ad.county,
-        city: ad.city,
-        street: ad.street,
-        moreDetails: ad.moreDetails,
-        status: ad.status,
-        startDate: ad.startDate,
-        endDate: ad.endDate,
-        hasRequest: ad.hasRequest,
-        fromDate: ad.fromDate,
-        photos: ad.photos
-      })
-      .subscribe();
-    }
+    this.getFosteringAnnouncementsOffline().subscribe((res) => {
+      const elementsToDelete = res.map(x => x.id);
+      this.dbService.bulkDelete('fosteringAnnouncements', elementsToDelete);
+      for(const ad of fosteringAnnouncements){
+        this.dbService.add('fosteringAnnouncements', {
+          id: ad.id,
+          title: ad.title,
+          description: ad.description,
+          animalType: ad.animalType,
+          animalSize: ad.animalSize,
+          county: ad.county,
+          city: ad.city,
+          street: ad.street,
+          moreDetails: ad.moreDetails,
+          status: ad.status,
+          startDate: ad.startDate,
+          endDate: ad.endDate,
+          hasRequest: ad.hasRequest,
+          fromDate: ad.fromDate,
+          photos: ad.photos
+        })
+        .subscribe();
+      }
+    });
   }
 
   public getAdoptionRequestsAnnouncementsOffline(adoptionAnnouncement: number): Observable<AdoptionRequestListModel[]> {
